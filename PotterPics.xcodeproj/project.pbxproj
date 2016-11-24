@@ -1,0 +1,798 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2BED6F7C77178D8FFF4A1B0B /* Pods_PotterPicsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4BB91CB294702887173BD6 /* Pods_PotterPicsUITests.framework */; };
+		633919A21DDD2B5400ABFF34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633919A11DDD2B5400ABFF34 /* AppDelegate.swift */; };
+		633919A71DDD2B5400ABFF34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 633919A51DDD2B5400ABFF34 /* Main.storyboard */; };
+		633919A91DDD2B5400ABFF34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 633919A81DDD2B5400ABFF34 /* Assets.xcassets */; };
+		633919AC1DDD2B5400ABFF34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 633919AA1DDD2B5400ABFF34 /* LaunchScreen.storyboard */; };
+		633919B71DDD2B5400ABFF34 /* PotterPicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633919B61DDD2B5400ABFF34 /* PotterPicsTests.swift */; };
+		633919C21DDD2B5400ABFF34 /* PotterPicsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633919C11DDD2B5400ABFF34 /* PotterPicsUITests.swift */; };
+		633919D11DDD2F1000ABFF34 /* IntroMusic.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 633919D01DDD2F1000ABFF34 /* IntroMusic.mp4 */; };
+		633919D31DDD32F200ABFF34 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633919D21DDD32F200ABFF34 /* HomeViewController.swift */; };
+		633919D81DDD352C00ABFF34 /* BackgroundVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633919D71DDD352C00ABFF34 /* BackgroundVideo.swift */; };
+		633919DB1DDD578800ABFF34 /* HomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633919DA1DDD578800ABFF34 /* HomeButton.swift */; };
+		63F4EB3C1DE689E5001832F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63F4EB3B1DE689E5001832F4 /* GoogleService-Info.plist */; };
+		8CBAEACF864FDB6D0D036B54 /* Pods_PotterPics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC66CBEF6CAADAECA954EFA3 /* Pods_PotterPics.framework */; };
+		B4A68C6759D618394E395D2D /* Pods_PotterPicsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4017A70A8CAF4A8155644A8B /* Pods_PotterPicsTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		633919B31DDD2B5400ABFF34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 633919961DDD2B5400ABFF34 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6339199D1DDD2B5400ABFF34;
+			remoteInfo = PotterPics;
+		};
+		633919BE1DDD2B5400ABFF34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 633919961DDD2B5400ABFF34 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6339199D1DDD2B5400ABFF34;
+			remoteInfo = PotterPics;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1C4BB91CB294702887173BD6 /* Pods_PotterPicsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PotterPicsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4017A70A8CAF4A8155644A8B /* Pods_PotterPicsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PotterPicsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6339199E1DDD2B5400ABFF34 /* PotterPics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PotterPics.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		633919A11DDD2B5400ABFF34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		633919A61DDD2B5400ABFF34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		633919A81DDD2B5400ABFF34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		633919AB1DDD2B5400ABFF34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		633919AD1DDD2B5400ABFF34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		633919B21DDD2B5400ABFF34 /* PotterPicsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PotterPicsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		633919B61DDD2B5400ABFF34 /* PotterPicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotterPicsTests.swift; sourceTree = "<group>"; };
+		633919B81DDD2B5400ABFF34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		633919BD1DDD2B5400ABFF34 /* PotterPicsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PotterPicsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		633919C11DDD2B5400ABFF34 /* PotterPicsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotterPicsUITests.swift; sourceTree = "<group>"; };
+		633919C31DDD2B5400ABFF34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		633919D01DDD2F1000ABFF34 /* IntroMusic.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = IntroMusic.mp4; sourceTree = "<group>"; };
+		633919D21DDD32F200ABFF34 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		633919D71DDD352C00ABFF34 /* BackgroundVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundVideo.swift; sourceTree = "<group>"; };
+		633919DA1DDD578800ABFF34 /* HomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeButton.swift; sourceTree = "<group>"; };
+		633919E41DDF9AF600ABFF34 /* PotterPics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PotterPics.entitlements; sourceTree = "<group>"; };
+		63F4EB3B1DE689E5001832F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6FD8AD91C27B308A584ACEAA /* Pods-PotterPicsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotterPicsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PotterPicsUITests/Pods-PotterPicsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		77F924F2B63D37AFD4B263B5 /* Pods-PotterPicsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotterPicsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PotterPicsTests/Pods-PotterPicsTests.release.xcconfig"; sourceTree = "<group>"; };
+		841C1D4EB105680E38118A37 /* Pods-PotterPicsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotterPicsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PotterPicsTests/Pods-PotterPicsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B5C6FF5FAFCD28EBA922BBC3 /* Pods-PotterPics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotterPics.release.xcconfig"; path = "Pods/Target Support Files/Pods-PotterPics/Pods-PotterPics.release.xcconfig"; sourceTree = "<group>"; };
+		CC66CBEF6CAADAECA954EFA3 /* Pods_PotterPics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PotterPics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3C916B7A307A51188192735 /* Pods-PotterPicsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotterPicsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PotterPicsUITests/Pods-PotterPicsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F547D28AB9D74E94184E48A3 /* Pods-PotterPics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotterPics.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PotterPics/Pods-PotterPics.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6339199B1DDD2B5400ABFF34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CBAEACF864FDB6D0D036B54 /* Pods_PotterPics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		633919AF1DDD2B5400ABFF34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4A68C6759D618394E395D2D /* Pods_PotterPicsTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		633919BA1DDD2B5400ABFF34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BED6F7C77178D8FFF4A1B0B /* Pods_PotterPicsUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5DBB93647EFFF284B99333FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC66CBEF6CAADAECA954EFA3 /* Pods_PotterPics.framework */,
+				4017A70A8CAF4A8155644A8B /* Pods_PotterPicsTests.framework */,
+				1C4BB91CB294702887173BD6 /* Pods_PotterPicsUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		633919951DDD2B5400ABFF34 = {
+			isa = PBXGroup;
+			children = (
+				633919A01DDD2B5400ABFF34 /* PotterPics */,
+				633919B51DDD2B5400ABFF34 /* PotterPicsTests */,
+				633919C01DDD2B5400ABFF34 /* PotterPicsUITests */,
+				6339199F1DDD2B5400ABFF34 /* Products */,
+				78C1FB455017BD611DBA4DD4 /* Pods */,
+				5DBB93647EFFF284B99333FF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6339199F1DDD2B5400ABFF34 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6339199E1DDD2B5400ABFF34 /* PotterPics.app */,
+				633919B21DDD2B5400ABFF34 /* PotterPicsTests.xctest */,
+				633919BD1DDD2B5400ABFF34 /* PotterPicsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		633919A01DDD2B5400ABFF34 /* PotterPics */ = {
+			isa = PBXGroup;
+			children = (
+				633919E41DDF9AF600ABFF34 /* PotterPics.entitlements */,
+				63F4EB3B1DE689E5001832F4 /* GoogleService-Info.plist */,
+				633919D91DDD352E00ABFF34 /* Helpers */,
+				633919D61DDD330500ABFF34 /* Models */,
+				633919D51DDD330000ABFF34 /* Views */,
+				633919D41DDD32FB00ABFF34 /* ViewControllers */,
+				633919CF1DDD2F0200ABFF34 /* Assets */,
+				633919A11DDD2B5400ABFF34 /* AppDelegate.swift */,
+				633919A51DDD2B5400ABFF34 /* Main.storyboard */,
+				633919A81DDD2B5400ABFF34 /* Assets.xcassets */,
+				633919AA1DDD2B5400ABFF34 /* LaunchScreen.storyboard */,
+				633919AD1DDD2B5400ABFF34 /* Info.plist */,
+			);
+			path = PotterPics;
+			sourceTree = "<group>";
+		};
+		633919B51DDD2B5400ABFF34 /* PotterPicsTests */ = {
+			isa = PBXGroup;
+			children = (
+				633919B61DDD2B5400ABFF34 /* PotterPicsTests.swift */,
+				633919B81DDD2B5400ABFF34 /* Info.plist */,
+			);
+			path = PotterPicsTests;
+			sourceTree = "<group>";
+		};
+		633919C01DDD2B5400ABFF34 /* PotterPicsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				633919C11DDD2B5400ABFF34 /* PotterPicsUITests.swift */,
+				633919C31DDD2B5400ABFF34 /* Info.plist */,
+			);
+			path = PotterPicsUITests;
+			sourceTree = "<group>";
+		};
+		633919CF1DDD2F0200ABFF34 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				633919D01DDD2F1000ABFF34 /* IntroMusic.mp4 */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		633919D41DDD32FB00ABFF34 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				633919D21DDD32F200ABFF34 /* HomeViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		633919D51DDD330000ABFF34 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				633919DA1DDD578800ABFF34 /* HomeButton.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		633919D61DDD330500ABFF34 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		633919D91DDD352E00ABFF34 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				633919D71DDD352C00ABFF34 /* BackgroundVideo.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		78C1FB455017BD611DBA4DD4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F547D28AB9D74E94184E48A3 /* Pods-PotterPics.debug.xcconfig */,
+				B5C6FF5FAFCD28EBA922BBC3 /* Pods-PotterPics.release.xcconfig */,
+				841C1D4EB105680E38118A37 /* Pods-PotterPicsTests.debug.xcconfig */,
+				77F924F2B63D37AFD4B263B5 /* Pods-PotterPicsTests.release.xcconfig */,
+				E3C916B7A307A51188192735 /* Pods-PotterPicsUITests.debug.xcconfig */,
+				6FD8AD91C27B308A584ACEAA /* Pods-PotterPicsUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6339199D1DDD2B5400ABFF34 /* PotterPics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 633919C61DDD2B5400ABFF34 /* Build configuration list for PBXNativeTarget "PotterPics" */;
+			buildPhases = (
+				B7846CC88D3048B2642C59D8 /* [CP] Check Pods Manifest.lock */,
+				6339199A1DDD2B5400ABFF34 /* Sources */,
+				6339199B1DDD2B5400ABFF34 /* Frameworks */,
+				6339199C1DDD2B5400ABFF34 /* Resources */,
+				3B05B9399D5E0AC33E264366 /* [CP] Embed Pods Frameworks */,
+				A4680ADD17B06347890F800B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PotterPics;
+			productName = PotterPics;
+			productReference = 6339199E1DDD2B5400ABFF34 /* PotterPics.app */;
+			productType = "com.apple.product-type.application";
+		};
+		633919B11DDD2B5400ABFF34 /* PotterPicsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 633919C91DDD2B5400ABFF34 /* Build configuration list for PBXNativeTarget "PotterPicsTests" */;
+			buildPhases = (
+				6F39E5BD0AB1992C7DFD6D66 /* [CP] Check Pods Manifest.lock */,
+				633919AE1DDD2B5400ABFF34 /* Sources */,
+				633919AF1DDD2B5400ABFF34 /* Frameworks */,
+				633919B01DDD2B5400ABFF34 /* Resources */,
+				EE4A4055366AEA4BBE9AF956 /* [CP] Embed Pods Frameworks */,
+				AFA1FBE6B9DB6E6CA68F2029 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				633919B41DDD2B5400ABFF34 /* PBXTargetDependency */,
+			);
+			name = PotterPicsTests;
+			productName = PotterPicsTests;
+			productReference = 633919B21DDD2B5400ABFF34 /* PotterPicsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		633919BC1DDD2B5400ABFF34 /* PotterPicsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 633919CC1DDD2B5400ABFF34 /* Build configuration list for PBXNativeTarget "PotterPicsUITests" */;
+			buildPhases = (
+				06625B5A1F45865349162505 /* [CP] Check Pods Manifest.lock */,
+				633919B91DDD2B5400ABFF34 /* Sources */,
+				633919BA1DDD2B5400ABFF34 /* Frameworks */,
+				633919BB1DDD2B5400ABFF34 /* Resources */,
+				EBA8B0E9D067AA46D409A86E /* [CP] Embed Pods Frameworks */,
+				FD564F2D9ED2925E21600C2B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				633919BF1DDD2B5400ABFF34 /* PBXTargetDependency */,
+			);
+			name = PotterPicsUITests;
+			productName = PotterPicsUITests;
+			productReference = 633919BD1DDD2B5400ABFF34 /* PotterPicsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		633919961DDD2B5400ABFF34 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Suraya Shivji";
+				TargetAttributes = {
+					6339199D1DDD2B5400ABFF34 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 97Q63CPWP2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+					633919B11DDD2B5400ABFF34 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 97Q63CPWP2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6339199D1DDD2B5400ABFF34;
+					};
+					633919BC1DDD2B5400ABFF34 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 97Q63CPWP2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6339199D1DDD2B5400ABFF34;
+					};
+				};
+			};
+			buildConfigurationList = 633919991DDD2B5400ABFF34 /* Build configuration list for PBXProject "PotterPics" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 633919951DDD2B5400ABFF34;
+			productRefGroup = 6339199F1DDD2B5400ABFF34 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6339199D1DDD2B5400ABFF34 /* PotterPics */,
+				633919B11DDD2B5400ABFF34 /* PotterPicsTests */,
+				633919BC1DDD2B5400ABFF34 /* PotterPicsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6339199C1DDD2B5400ABFF34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				633919AC1DDD2B5400ABFF34 /* LaunchScreen.storyboard in Resources */,
+				633919A91DDD2B5400ABFF34 /* Assets.xcassets in Resources */,
+				63F4EB3C1DE689E5001832F4 /* GoogleService-Info.plist in Resources */,
+				633919D11DDD2F1000ABFF34 /* IntroMusic.mp4 in Resources */,
+				633919A71DDD2B5400ABFF34 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		633919B01DDD2B5400ABFF34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		633919BB1DDD2B5400ABFF34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06625B5A1F45865349162505 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3B05B9399D5E0AC33E264366 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PotterPics/Pods-PotterPics-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F39E5BD0AB1992C7DFD6D66 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A4680ADD17B06347890F800B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PotterPics/Pods-PotterPics-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AFA1FBE6B9DB6E6CA68F2029 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PotterPicsTests/Pods-PotterPicsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7846CC88D3048B2642C59D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EBA8B0E9D067AA46D409A86E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PotterPicsUITests/Pods-PotterPicsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE4A4055366AEA4BBE9AF956 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PotterPicsTests/Pods-PotterPicsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD564F2D9ED2925E21600C2B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PotterPicsUITests/Pods-PotterPicsUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6339199A1DDD2B5400ABFF34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				633919DB1DDD578800ABFF34 /* HomeButton.swift in Sources */,
+				633919A21DDD2B5400ABFF34 /* AppDelegate.swift in Sources */,
+				633919D81DDD352C00ABFF34 /* BackgroundVideo.swift in Sources */,
+				633919D31DDD32F200ABFF34 /* HomeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		633919AE1DDD2B5400ABFF34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				633919B71DDD2B5400ABFF34 /* PotterPicsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		633919B91DDD2B5400ABFF34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				633919C21DDD2B5400ABFF34 /* PotterPicsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		633919B41DDD2B5400ABFF34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6339199D1DDD2B5400ABFF34 /* PotterPics */;
+			targetProxy = 633919B31DDD2B5400ABFF34 /* PBXContainerItemProxy */;
+		};
+		633919BF1DDD2B5400ABFF34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6339199D1DDD2B5400ABFF34 /* PotterPics */;
+			targetProxy = 633919BE1DDD2B5400ABFF34 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		633919A51DDD2B5400ABFF34 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				633919A61DDD2B5400ABFF34 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		633919AA1DDD2B5400ABFF34 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				633919AB1DDD2B5400ABFF34 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		633919C41DDD2B5400ABFF34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		633919C51DDD2B5400ABFF34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		633919C71DDD2B5400ABFF34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F547D28AB9D74E94184E48A3 /* Pods-PotterPics.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PotterPics/PotterPics.entitlements;
+				DEVELOPMENT_TEAM = 97Q63CPWP2;
+				INFOPLIST_FILE = PotterPics/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.surayashivji.PotterPics;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		633919C81DDD2B5400ABFF34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5C6FF5FAFCD28EBA922BBC3 /* Pods-PotterPics.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PotterPics/PotterPics.entitlements;
+				DEVELOPMENT_TEAM = 97Q63CPWP2;
+				INFOPLIST_FILE = PotterPics/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.surayashivji.PotterPics;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		633919CA1DDD2B5400ABFF34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 841C1D4EB105680E38118A37 /* Pods-PotterPicsTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 97Q63CPWP2;
+				INFOPLIST_FILE = PotterPicsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.surayashivji.PotterPicsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PotterPics.app/PotterPics";
+			};
+			name = Debug;
+		};
+		633919CB1DDD2B5400ABFF34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77F924F2B63D37AFD4B263B5 /* Pods-PotterPicsTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 97Q63CPWP2;
+				INFOPLIST_FILE = PotterPicsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.surayashivji.PotterPicsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PotterPics.app/PotterPics";
+			};
+			name = Release;
+		};
+		633919CD1DDD2B5400ABFF34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3C916B7A307A51188192735 /* Pods-PotterPicsUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 97Q63CPWP2;
+				INFOPLIST_FILE = PotterPicsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.surayashivji.PotterPicsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = PotterPics;
+			};
+			name = Debug;
+		};
+		633919CE1DDD2B5400ABFF34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FD8AD91C27B308A584ACEAA /* Pods-PotterPicsUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 97Q63CPWP2;
+				INFOPLIST_FILE = PotterPicsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.surayashivji.PotterPicsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = PotterPics;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		633919991DDD2B5400ABFF34 /* Build configuration list for PBXProject "PotterPics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				633919C41DDD2B5400ABFF34 /* Debug */,
+				633919C51DDD2B5400ABFF34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		633919C61DDD2B5400ABFF34 /* Build configuration list for PBXNativeTarget "PotterPics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				633919C71DDD2B5400ABFF34 /* Debug */,
+				633919C81DDD2B5400ABFF34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		633919C91DDD2B5400ABFF34 /* Build configuration list for PBXNativeTarget "PotterPicsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				633919CA1DDD2B5400ABFF34 /* Debug */,
+				633919CB1DDD2B5400ABFF34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		633919CC1DDD2B5400ABFF34 /* Build configuration list for PBXNativeTarget "PotterPicsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				633919CD1DDD2B5400ABFF34 /* Debug */,
+				633919CE1DDD2B5400ABFF34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 633919961DDD2B5400ABFF34 /* Project object */;
+}

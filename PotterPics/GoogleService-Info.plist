@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>782492568888-eg9bccm257r168l857a445n7jd3shtvl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.782492568888-eg9bccm257r168l857a445n7jd3shtvl</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBNZ2O7ox8a7TTmz6Svh6V4XoZejAq2js4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>782492568888</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.surayashivji.PotterPics</string>
+	<key>PROJECT_ID</key>
+	<string>potterpics-2bcbc</string>
+	<key>STORAGE_BUCKET</key>
+	<string>potterpics-2bcbc.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:782492568888:ios:e8372e1215f6f60b</string>
+	<key>DATABASE_URL</key>
+	<string>https://potterpics-2bcbc.firebaseio.com</string>
+</dict>
+</plist>
