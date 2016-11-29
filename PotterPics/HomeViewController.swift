@@ -22,6 +22,14 @@ class HomeViewController: UIViewController {
         // set up background video
         self.cloudsVideo = BackgroundVideo(on: self, withVideoURL: "IntroMusic.mp4")
         self.cloudsVideo?.setUpBackground()
+        
+        for family in UIFont.familyNames {
+            print("\(family)")
+            
+            for name in UIFont.fontNames(forFamilyName: family) {
+                print("   \(name)")
+            }
+        }
     }
     
     // login user via Facebook
@@ -29,22 +37,10 @@ class HomeViewController: UIViewController {
         let loginManager: FBSDKLoginManager = FBSDKLoginManager()
         // check that the user isn't already logged in
         if FBSDKAccessToken.current() != nil {
-            // user logged in, segue to main feed
-            let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"first_name,email, picture.type(large)"])
-            
-            graphRequest.start(completionHandler: { (connection, result, error) -> Void in
-                
-                if ((error) != nil)
-                {
-                    print("Error: \(error)")
-                }
-                else
-                {
-                    let data:[String:AnyObject] = result as! [String : AnyObject]
-                    print(data)
-                    
-                }
-            })
+            // user logged in, segue to navigation controller
+            print("User already logged in")
+            self.performSegue(withIdentifier: "mainNavSegue", sender: nil)
+
         } else {
             loginManager.logIn(withReadPermissions: self.facebookPermissions, from: self, handler: { (result, error) in
                 if (error != nil) {
@@ -57,21 +53,19 @@ class HomeViewController: UIViewController {
                     // user cancelled login
                     loginManager.logOut()
                 } else {
-                    
                     let accessToken = FBSDKAccessToken.current()
                     guard let accessTokenString = accessToken?.tokenString else { return }
-                    
                     let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessTokenString)
                     
                     FIRAuth.auth()?.signIn(with: credential) { (user, error) in
                         if (error != nil) {
                             // handle error
-                            print("error")
-                            print(error)
+                            print(error ?? "Error")
                         } else {
-                            print("success")
-                            
-                            self.dismiss(animated: true, completion: nil)
+                            print("Successful Login")
+                            self.dismiss(animated: false, completion: nil)
+                            self.performSegue(withIdentifier: "mainNavSegue", sender: nil)
+
                         }
                     }
                 }
@@ -84,4 +78,3 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 }
-    

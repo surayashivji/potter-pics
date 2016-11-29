@@ -18,6 +18,15 @@
 		633919D31DDD32F200ABFF34 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633919D21DDD32F200ABFF34 /* HomeViewController.swift */; };
 		633919D81DDD352C00ABFF34 /* BackgroundVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633919D71DDD352C00ABFF34 /* BackgroundVideo.swift */; };
 		633919DB1DDD578800ABFF34 /* HomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633919DA1DDD578800ABFF34 /* HomeButton.swift */; };
+		639AB92D1DED1B4C003BEB0E /* NavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB92C1DED1B4C003BEB0E /* NavVC.swift */; };
+		639AB92F1DED1B7F003BEB0E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB92E1DED1B7F003BEB0E /* MainViewController.swift */; };
+		639AB9311DED1BCC003BEB0E /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB9301DED1BCC003BEB0E /* TabBar.swift */; };
+		639AB9331DED1BDA003BEB0E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB9321DED1BDA003BEB0E /* Extensions.swift */; };
+		639AB9351DED1BFD003BEB0E /* SettingsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB9341DED1BFD003BEB0E /* SettingsTable.swift */; };
+		639AB9371DED1C1E003BEB0E /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB9361DED1C1E003BEB0E /* GlobalVariables.swift */; };
+		639AB9391DED2007003BEB0E /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB9381DED2007003BEB0E /* ColorPalette.swift */; };
+		639AB93B1DED2AAD003BEB0E /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB93A1DED2AAD003BEB0E /* QuizViewController.swift */; };
+		639AB93E1DED3C93003BEB0E /* LUMOS.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 639AB93D1DED3C93003BEB0E /* LUMOS.TTF */; };
 		63F4EB3C1DE689E5001832F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63F4EB3B1DE689E5001832F4 /* GoogleService-Info.plist */; };
 		8CBAEACF864FDB6D0D036B54 /* Pods_PotterPics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC66CBEF6CAADAECA954EFA3 /* Pods_PotterPics.framework */; };
 		B4A68C6759D618394E395D2D /* Pods_PotterPicsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4017A70A8CAF4A8155644A8B /* Pods_PotterPicsTests.framework */; };
@@ -60,6 +69,15 @@
 		633919D71DDD352C00ABFF34 /* BackgroundVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundVideo.swift; sourceTree = "<group>"; };
 		633919DA1DDD578800ABFF34 /* HomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeButton.swift; sourceTree = "<group>"; };
 		633919E41DDF9AF600ABFF34 /* PotterPics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PotterPics.entitlements; sourceTree = "<group>"; };
+		639AB92C1DED1B4C003BEB0E /* NavVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavVC.swift; sourceTree = "<group>"; };
+		639AB92E1DED1B7F003BEB0E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		639AB9301DED1BCC003BEB0E /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		639AB9321DED1BDA003BEB0E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		639AB9341DED1BFD003BEB0E /* SettingsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTable.swift; sourceTree = "<group>"; };
+		639AB9361DED1C1E003BEB0E /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		639AB9381DED2007003BEB0E /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		639AB93A1DED2AAD003BEB0E /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		639AB93D1DED3C93003BEB0E /* LUMOS.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = LUMOS.TTF; sourceTree = "<group>"; };
 		63F4EB3B1DE689E5001832F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6FD8AD91C27B308A584ACEAA /* Pods-PotterPicsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotterPicsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PotterPicsUITests/Pods-PotterPicsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		77F924F2B63D37AFD4B263B5 /* Pods-PotterPicsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotterPicsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PotterPicsTests/Pods-PotterPicsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +151,7 @@
 		633919A01DDD2B5400ABFF34 /* PotterPics */ = {
 			isa = PBXGroup;
 			children = (
+				639AB93C1DED35AD003BEB0E /* Helpers */,
 				633919E41DDF9AF600ABFF34 /* PotterPics.entitlements */,
 				63F4EB3B1DE689E5001832F4 /* GoogleService-Info.plist */,
 				633919D91DDD352E00ABFF34 /* Helpers */,
@@ -170,6 +189,7 @@
 		633919CF1DDD2F0200ABFF34 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				639AB93D1DED3C93003BEB0E /* LUMOS.TTF */,
 				633919D01DDD2F1000ABFF34 /* IntroMusic.mp4 */,
 			);
 			name = Assets;
@@ -178,7 +198,10 @@
 		633919D41DDD32FB00ABFF34 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				639AB92C1DED1B4C003BEB0E /* NavVC.swift */,
 				633919D21DDD32F200ABFF34 /* HomeViewController.swift */,
+				639AB92E1DED1B7F003BEB0E /* MainViewController.swift */,
+				639AB93A1DED2AAD003BEB0E /* QuizViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -186,6 +209,8 @@
 		633919D51DDD330000ABFF34 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				639AB9301DED1BCC003BEB0E /* TabBar.swift */,
+				639AB9341DED1BFD003BEB0E /* SettingsTable.swift */,
 				633919DA1DDD578800ABFF34 /* HomeButton.swift */,
 			);
 			name = Views;
@@ -202,6 +227,16 @@
 			isa = PBXGroup;
 			children = (
 				633919D71DDD352C00ABFF34 /* BackgroundVideo.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		639AB93C1DED35AD003BEB0E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				639AB9381DED2007003BEB0E /* ColorPalette.swift */,
+				639AB9321DED1BDA003BEB0E /* Extensions.swift */,
+				639AB9361DED1C1E003BEB0E /* GlobalVariables.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -346,6 +381,7 @@
 				633919AC1DDD2B5400ABFF34 /* LaunchScreen.storyboard in Resources */,
 				633919A91DDD2B5400ABFF34 /* Assets.xcassets in Resources */,
 				63F4EB3C1DE689E5001832F4 /* GoogleService-Info.plist in Resources */,
+				639AB93E1DED3C93003BEB0E /* LUMOS.TTF in Resources */,
 				633919D11DDD2F1000ABFF34 /* IntroMusic.mp4 in Resources */,
 				633919A71DDD2B5400ABFF34 /* Main.storyboard in Resources */,
 			);
@@ -511,9 +547,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				633919DB1DDD578800ABFF34 /* HomeButton.swift in Sources */,
+				639AB92D1DED1B4C003BEB0E /* NavVC.swift in Sources */,
 				633919A21DDD2B5400ABFF34 /* AppDelegate.swift in Sources */,
+				639AB93B1DED2AAD003BEB0E /* QuizViewController.swift in Sources */,
+				639AB9331DED1BDA003BEB0E /* Extensions.swift in Sources */,
+				639AB9371DED1C1E003BEB0E /* GlobalVariables.swift in Sources */,
+				639AB92F1DED1B7F003BEB0E /* MainViewController.swift in Sources */,
 				633919D81DDD352C00ABFF34 /* BackgroundVideo.swift in Sources */,
+				639AB9351DED1BFD003BEB0E /* SettingsTable.swift in Sources */,
 				633919D31DDD32F200ABFF34 /* HomeViewController.swift in Sources */,
+				639AB9311DED1BCC003BEB0E /* TabBar.swift in Sources */,
+				639AB9391DED2007003BEB0E /* ColorPalette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

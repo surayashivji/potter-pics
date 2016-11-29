@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="PotterPics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeView" id="BYZ-38-t0r" customClass="HomeViewController" customModule="PotterPics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -35,10 +35,150 @@
                         </subviews>
                         <color key="tintColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="4ln-vW-Eru" kind="show" identifier="mainNavSegue" id="B4b-ZY-7Ps"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
+            <point key="canvasLocation" x="-159" y="37"/>
+        </scene>
+        <!--NavVC-->
+        <scene sceneID="XsK-i6-XOx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4ln-vW-Eru" customClass="NavVC" customModule="PotterPics" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="jSi-rk-NY4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="70H-vF-hfQ" kind="relationship" relationship="rootViewController" id="bQE-Ja-kJZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kcb-IN-9C7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="852" y="38"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="WAe-dY-JY5">
+            <objects>
+                <viewController storyboardIdentifier="MainVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="70H-vF-hfQ" customClass="MainViewController" customModule="PotterPics" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8FB-2O-sGE"/>
+                        <viewControllerLayoutGuide type="bottom" id="Alz-DM-4eW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rNH-I6-I9k">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Dsc-ab-gBz">
+                        <barButtonItem key="rightBarButtonItem" image="nav_more_icon" id="7Tb-FT-jVs">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="handleMore:" destination="70H-vF-hfQ" id="42O-Rh-x1J"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="esx-fA-NlF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1535" y="40"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Lnp-o6-qVD">
+            <objects>
+                <viewController storyboardIdentifier="Feed" id="hZS-K5-iJG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0tv-Wa-T8E"/>
+                        <viewControllerLayoutGuide type="bottom" id="BT7-rv-uSb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jdH-ur-swy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.57239403099999997" green="0.91899901939999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ESp-hR-qlD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-468" y="855"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="xgy-Bs-9o0">
+            <objects>
+                <viewController storyboardIdentifier="Search" id="Vec-A2-8mx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7sm-wz-ShM"/>
+                        <viewControllerLayoutGuide type="bottom" id="pLv-lb-0LR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tRb-4r-5LD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.69034600800000001" blue="0.93954843639999996" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zr9-Sz-fgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="896"/>
+        </scene>
+        <!--Quiz View Controller-->
+        <scene sceneID="su0-bD-k9I">
+            <objects>
+                <viewController storyboardIdentifier="houseQuiz" id="mTd-ZH-Ion" customClass="QuizViewController" customModule="PotterPics" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Md-gm-7x1"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lwn-tY-vZy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zuA-gg-Xbq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.8484356852295083" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QlO-47-CFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="118" y="1644"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="sgf-r3-IBj">
+            <objects>
+                <viewController storyboardIdentifier="Post" id="tQa-5I-o16" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Okp-Jf-B9a"/>
+                        <viewControllerLayoutGuide type="bottom" id="z93-lT-g6v"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qzu-TU-1F4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.63907568979999996" green="1" blue="0.63231489360000004" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1LM-an-taJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1103" y="896"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Zop-D2-cAN">
+            <objects>
+                <viewController storyboardIdentifier="Profile" id="ZQR-Og-P69" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aZo-CE-g57"/>
+                        <viewControllerLayoutGuide type="bottom" id="op6-FG-1Ip"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zEL-cG-TCy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.75000450399999996" green="0.67208920539999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iyy-cu-aHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1929" y="896"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="nav_more_icon" width="10" height="32"/>
+    </resources>
 </document>
