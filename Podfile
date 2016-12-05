@@ -9,6 +9,8 @@ target 'PotterPics' do
   pod 'IGListKit'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Database'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'

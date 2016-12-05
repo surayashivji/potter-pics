@@ -23,13 +23,13 @@ class HomeViewController: UIViewController {
         self.cloudsVideo = BackgroundVideo(on: self, withVideoURL: "IntroMusic.mp4")
         self.cloudsVideo?.setUpBackground()
         
-        for family in UIFont.familyNames {
-            print("\(family)")
-            
-            for name in UIFont.fontNames(forFamilyName: family) {
-                print("   \(name)")
-            }
-        }
+//        for family in UIFont.familyNames {
+//            print("\(family)")
+//            
+//            for name in UIFont.fontNames(forFamilyName: family) {
+//                print("   \(name)")
+//            }
+//        }
     }
     
     // login user via Facebook
@@ -38,8 +38,21 @@ class HomeViewController: UIViewController {
         // check that the user isn't already logged in
         if FBSDKAccessToken.current() != nil {
             // user logged in, segue to navigation controller
-            print("User already logged in")
-            self.performSegue(withIdentifier: "mainNavSegue", sender: nil)
+            
+            
+            let firebaseAuth = FIRAuth.auth()
+            do {
+                print("signing out")
+                try firebaseAuth?.signOut()
+                FBSDKLoginManager().logOut()
+                
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+  
+            
+//            print("User already logged in")
+//            self.performSegue(withIdentifier: "mainNavSegue", sender: nil)
 
         } else {
             loginManager.logIn(withReadPermissions: self.facebookPermissions, from: self, handler: { (result, error) in
@@ -62,16 +75,65 @@ class HomeViewController: UIViewController {
                             // handle error
                             print(error ?? "Error")
                         } else {
-                            print("Successful Login")
-                            self.dismiss(animated: false, completion: nil)
-                            self.performSegue(withIdentifier: "mainNavSegue", sender: nil)
+                            print("Successful Login with Firebase")
+                            let ref = FIRDatabase.database().reference(fromURL: "https://potterpics-2bcbc.firebaseio.com")
 
+                            // guard for user id
+                            guard let uid = user?.uid else {
+                                return
+                            }
+                            let usersReference = ref.child("users").child(uid)
+                            // performing the Facebook graph request to get the user data that just logged in so we can assign this stuff to our Firebase database:
+                            let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
+                            graphRequest.start(completionHandler: { (connection, result, error) -> Void in
+                                
+                                if ((error) != nil) {
+                                    // Process error
+                                    print("Error: \(error)")
+                                } else {
+                                    print("fetched user: \(result)")
+                            
+                                    let data:[String:AnyObject] = result as! [String : AnyObject]
+                                    
+                                    // Facebook users name:
+                                    let userName:NSString = data["name"] as! NSString
+                                    
+                                    print("User Name is: \(userName)")
+                                    
+                                    // Facebook users email:
+                                    let userEmail:NSString = data["email"] as! NSString
+                                    
+                                    print("User Email is: \(userEmail)")
+                                    
+                                    // Facebook users ID:
+                                    let userID:NSString = data["id"] as! NSString
+                                    
+                                    print("Users Facebook ID is: \(userID)")
+                                    
+                                    let values = ["name": userName, "email": userEmail, "facebookID": userID]
+                                    
+                                
+                                    // update our databse by using the child database reference above called usersReference
+                                    usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                                        // if there's an error in saving to our firebase database
+                                        if err != nil {
+                                            print(err ?? "Error saving user to database")
+                                            return
+                                        }
+                                        // no error, so it means we've saved the user into our firebase database successfully
+                                        print("Save the user successfully into Firebase database")
+                                    })
+                                }
+                            })
+                        self.dismiss(animated: false, completion: nil)
+                        self.performSegue(withIdentifier: "mainNavSegue", sender: nil)
                         }
                     }
                 }
             })
         }
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
