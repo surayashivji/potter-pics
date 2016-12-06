@@ -14,6 +14,7 @@ target 'PotterPics' do
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
+  pod 'SwiftyJSON'
 
   target 'PotterPicsTests' do
     inherit! :search_paths

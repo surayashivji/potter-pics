@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 let DB = FIRDatabase.database().reference()
-let STORAGE = FIRStorage.storage().reference()
+//let STORAGE = FIRStorage.storage().reference()
 
 class DataService: NSObject {
     
@@ -22,8 +22,8 @@ class DataService: NSObject {
     var REF_USERS : FIRDatabaseReference = DB.child("users")
     
     // Storage references
-    var REF_POST_IMAGES : FIRStorageReference = STORAGE.child("post-pics")
-    
+//    var REF_POST_IMAGES : FIRStorageReference = STORAGE.child("post-pics")
+
     
     
 }

@@ -49,6 +49,7 @@ PODS:
   - GoogleUtilities (1.3.2):
     - GoogleSymbolUtilities (~> 1.1)
   - IGListKit (1.0.0)
+  - SwiftyJSON (3.1.1)
 
 DEPENDENCIES:
   - FBSDKCoreKit
@@ -59,6 +60,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - IGListKit
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -77,7 +79,8 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
   IGListKit: 3242c475fa77e2abf2d4de319703088008fbe9b9
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
 
-PODFILE CHECKSUM: d41f7808a69ff82a4ce29ac02bf88fd5780128d8
+PODFILE CHECKSUM: 4939224c0cb721e209e26d42ee93b0193408138e
 
 COCOAPODS: 1.1.0.beta.1

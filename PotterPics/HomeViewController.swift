@@ -39,20 +39,17 @@ class HomeViewController: UIViewController {
         if FBSDKAccessToken.current() != nil {
             // user logged in, segue to navigation controller
             
-            
-            let firebaseAuth = FIRAuth.auth()
-            do {
-                print("signing out")
-                try firebaseAuth?.signOut()
-                FBSDKLoginManager().logOut()
-                
-            } catch let signOutError as NSError {
-                print ("Error signing out: %@", signOutError)
-            }
-  
-            
-//            print("User already logged in")
-//            self.performSegue(withIdentifier: "mainNavSegue", sender: nil)
+//            let firebaseAuth = FIRAuth.auth()
+//            do {
+//                print("signing out")
+//                try firebaseAuth?.signOut()
+//                FBSDKLoginManager().logOut()
+//                
+//            } catch let signOutError as NSError {
+//                print ("Error signing out: %@", signOutError)
+//            }
+            print("User already logged in")
+            self.performSegue(withIdentifier: "mainNavSegue", sender: nil)
 
         } else {
             loginManager.logIn(withReadPermissions: self.facebookPermissions, from: self, handler: { (result, error) in
@@ -83,6 +80,7 @@ class HomeViewController: UIViewController {
                                 return
                             }
                             let usersReference = ref.child("users").child(uid)
+                            
                             // performing the Facebook graph request to get the user data that just logged in so we can assign this stuff to our Firebase database:
                             let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
                             graphRequest.start(completionHandler: { (connection, result, error) -> Void in
@@ -95,17 +93,8 @@ class HomeViewController: UIViewController {
                             
                                     let data:[String:AnyObject] = result as! [String : AnyObject]
                                     
-                                    // Facebook users name:
                                     let userName:NSString = data["name"] as! NSString
-                                    
-                                    print("User Name is: \(userName)")
-                                    
-                                    // Facebook users email:
                                     let userEmail:NSString = data["email"] as! NSString
-                                    
-                                    print("User Email is: \(userEmail)")
-                                    
-                                    // Facebook users ID:
                                     let userID:NSString = data["id"] as! NSString
                                     
                                     print("Users Facebook ID is: \(userID)")
