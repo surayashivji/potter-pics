@@ -7,25 +7,28 @@
 //
 
 import UIKit
+import Firebase
+import FBSDKLoginKit
+import FBSDKCoreKit
 
 protocol SettingsDelegate {
     func hideSettingsView(status : Bool)
 }
 
 class Settings: UIView,  UITableViewDelegate, UITableViewDataSource {
-
+    
     // MARK: Properties
-    let items = ["Settings", "Invite Facebook Friends", "Logout", "Cancel"]
-    let imageNames = ["settings", "settings", "settings", "settings"]
+    let items = ["Settings", "Invite Facebook Friends", "Cancel"]
+    let imageNames = ["settings", "facebook", "cancel"]
     lazy var tableView: UITableView = {
-        let tb = UITableView.init(frame: CGRect.init(x: 0, y: self.bounds.height, width: self.bounds.width, height: 288))
+        let tb = UITableView.init(frame: CGRect.init(x: 0, y: self.bounds.height + 140, width: self.bounds.width, height: 144))
         tb.isScrollEnabled = false
         return tb
     }()
     
     lazy var backgroundView: UIView = {
-       let bv = UIView.init(frame: self.frame)
-       bv.backgroundColor = UIColor.black
+        let bv = UIView.init(frame: self.frame)
+        bv.backgroundColor = UIColor.black
         bv.alpha = 0
         return bv
     }()
@@ -35,8 +38,8 @@ class Settings: UIView,  UITableViewDelegate, UITableViewDataSource {
     // MARK: Methods
     func animate()  {
         UIView.animate(withDuration: 0.3, animations: {
-        self.tableView.frame.origin.y -= 288
-        self.backgroundView.alpha = 0.5
+            self.tableView.frame.origin.y -= 288
+            self.backgroundView.alpha = 0.5
         })
     }
     
@@ -44,8 +47,8 @@ class Settings: UIView,  UITableViewDelegate, UITableViewDataSource {
         UIView.animate(withDuration: 0.3, animations: {
             self.backgroundView.alpha = 0
             self.tableView.frame.origin.y += 288
-            }, completion: {(Bool) in
-                self.delegate?.hideSettingsView(status: true)
+        }, completion: {(Bool) in
+            self.delegate?.hideSettingsView(status: true)
         })
     }
     
@@ -71,9 +74,20 @@ class Settings: UIView,  UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        dismiss()
+        switch(indexPath.row) {
+        case 0: // settings
+            break
+        case 1: // invite friends
+            break
+        case 2: // cancel
+            dismiss()
+            break
+        default:
+            dismiss()
+            break
+        }
     }
-  
+    
     // Inits
     override init(frame: CGRect) {
         super.init(frame: frame)

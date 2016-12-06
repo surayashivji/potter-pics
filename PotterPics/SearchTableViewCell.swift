@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class SearchTableViewCell: UITableViewCell {
 
     @IBOutlet weak var searchCountPosts: UILabel!

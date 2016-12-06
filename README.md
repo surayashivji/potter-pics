@@ -9,5 +9,5 @@
 
 ## Credits
 - [Facebook SDK](https://developers.facebook.com/docs/ios/)
-- [IGListKit](https://github.com/Instagram/IGListKit)
 - [Firebase] (https://firebase.google.com/)
+- [SwiftyJSON] (https://github.com/SwiftyJSON/SwiftyJSON)
