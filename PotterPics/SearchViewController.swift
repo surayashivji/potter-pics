@@ -80,7 +80,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         DispatchQueue.global().async {
             let data = try? Data(contentsOf: url!)
             DispatchQueue.main.async {
-                cell.searchImageView.image = UIImage(data: data!)
+                var image = UIImage(data: data!)
+                image = image?.circle
+                cell.searchImageView.contentMode = UIViewContentMode.scaleAspectFill
+                cell.searchImageView.image = image
             }
         }
         cell.searchName.text = name
@@ -122,5 +125,22 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
+    }
+}
+
+extension UIImage {
+    var circle: UIImage? {
+        let square = CGSize(width: min(size.width, size.height), height: min(size.width, size.height))
+        let imageView = UIImageView(frame: CGRect(origin: .zero, size: square))
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = self
+        imageView.layer.cornerRadius = square.width/2
+        imageView.layer.masksToBounds = true
+        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, scale)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        imageView.layer.render(in: context)
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
     }
 }
