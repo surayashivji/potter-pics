@@ -11,16 +11,16 @@ import UIKit
 class User {
     var name: String
     var email: String
-//    var profPic: String // filename string
     var facebookID: String
     var userID: String  // firebase ID
+     var profPic: String // fb profile picture
     
     
-    init(name: String, email: String, facebookID: String, userID: String){
+    init(name: String, email: String, facebookID: String, userID: String, profPic: String){
         self.name = name
         self.email = email
-//        self.profPic = profPic
         self.facebookID = facebookID
         self.userID = userID
-    }   
+        self.profPic = profPic
+    }
 }

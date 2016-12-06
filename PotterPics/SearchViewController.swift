@@ -44,8 +44,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let email: String = json["email"].stringValue
                     let fbID: String = json["facebookID"].stringValue
                     let firebaseID: String = item.key as! String
+                    let profPicURL: String = json["profPicString"].stringValue
                     // create User, add to users array
-                    let user = User(name: name, email: email, facebookID: fbID, userID: firebaseID)
+                    let user = User(name: name, email: email, facebookID: fbID, userID: firebaseID, profPic: profPicURL)
                     self.users.append(user)
                     self.filteredUsers = self.users
                 }
@@ -73,10 +74,20 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.searchImageView.image = UIImage()
         let user = filteredUsers[indexPath.row]
         let name = user.name
+        
+        let profPicURL = user.profPic
+        let url = URL(string: profPicURL)
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!)
+            DispatchQueue.main.async {
+                cell.searchImageView.image = UIImage(data: data!)
+            }
+        }
         cell.searchName.text = name
         cell.searchCountPosts.text = "\(indexPath.row)" // change to number of posts after
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.selectionStyle = UITableViewCellSelectionStyle.none

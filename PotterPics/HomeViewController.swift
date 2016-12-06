@@ -32,6 +32,17 @@ class HomeViewController: UIViewController {
 //        }
     }
     
+//    func getProfilePicture(fbID: NSString) -> UIImage? {
+//        // use userID to get facebook profile picture
+//        let imgURLString = "http://graph.facebook.com/" + (fbID as String) + "/picture?type=large" //type=normal
+//        if let imgURL = URL(string: imgURLString) {
+//            do {
+//                let imageData = try Data(contentsOf: imgURL)
+//                var image = UIImage(data: imageData)
+//            }
+//        }
+//    }
+    
     // login user via Facebook
     @IBAction func loginTapped(_ sender: HomeButton) {
         let loginManager: FBSDKLoginManager = FBSDKLoginManager()
@@ -39,15 +50,15 @@ class HomeViewController: UIViewController {
         if FBSDKAccessToken.current() != nil {
             // user logged in, segue to navigation controller
             
-//            let firebaseAuth = FIRAuth.auth()
-//            do {
-//                print("signing out")
-//                try firebaseAuth?.signOut()
-//                FBSDKLoginManager().logOut()
-//                
-//            } catch let signOutError as NSError {
-//                print ("Error signing out: %@", signOutError)
-//            }
+            let firebaseAuth = FIRAuth.auth()
+            do {
+                print("signing out")
+                try firebaseAuth?.signOut()
+                FBSDKLoginManager().logOut()
+                
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
             print("User already logged in")
             self.performSegue(withIdentifier: "mainNavSegue", sender: nil)
 
@@ -89,17 +100,27 @@ class HomeViewController: UIViewController {
                                     // Process error
                                     print("Error: \(error)")
                                 } else {
-                                    print("fetched user: \(result)")
                             
                                     let data:[String:AnyObject] = result as! [String : AnyObject]
                                     
                                     let userName:NSString = data["name"] as! NSString
                                     let userEmail:NSString = data["email"] as! NSString
                                     let userID:NSString = data["id"] as! NSString
+                                    let imgURLString = "http://graph.facebook.com/\(userID)/picture?type=large" as NSString
+
+                                    
+//                                    if let profPic: UIImage = self.getProfilePicture(fbID: userID) {
+//                                        var data = UIImageJPEGRepresentation(profPic, 1.0)
+//                                        let filePath = "\(FIRAuth.auth()!.currentUser!.uid)/\("userPhoto")"
+//                                        let metaData = FIRStorageMetadata()
+//                                        metaData.contentType = "image/jpg"
+//                                    }
                                     
                                     print("Users Facebook ID is: \(userID)")
                                     
-                                    let values = ["name": userName, "email": userEmail, "facebookID": userID]
+                                    print("URLLLL \(imgURLString)")
+                                    
+                                    let values = ["name": userName, "email": userEmail, "facebookID": userID, "profPicString": imgURLString]
                                     
                                 
                                     // update our databse by using the child database reference above called usersReference
