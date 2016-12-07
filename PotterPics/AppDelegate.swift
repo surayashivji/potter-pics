@@ -25,12 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var initialViewController = UIViewController()
         let defaults = UserDefaults.standard
-        defaults.set("Gryffindor", forKey: "userHouse")
         if launchedBefore  {
             // app has been launched before, segue to login
             let houseValue = defaults.string(forKey: "userHouse")
-            print("CHECK: \(houseValue)")
-            
                 var navCol = UIColor()
                 switch houseValue! {
                 case "Gryffindor":

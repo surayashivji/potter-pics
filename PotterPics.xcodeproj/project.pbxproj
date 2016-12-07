@@ -42,6 +42,9 @@
 		63FE0ABD1DF6F0F000BF7113 /* Hufflepuff.png in Resources */ = {isa = PBXBuildFile; fileRef = 63FE0AB91DF6F0F000BF7113 /* Hufflepuff.png */; };
 		63FE0ABF1DF6F37200BF7113 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63FE0ABE1DF6F37200BF7113 /* background.jpg */; };
 		63FE0AC11DF6FF9A00BF7113 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE0AC01DF6FF9A00BF7113 /* PostViewController.swift */; };
+		63FE0AC31DF78E5B00BF7113 /* filterPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 63FE0AC21DF78E5B00BF7113 /* filterPlaceholder.png */; };
+		63FE0AC51DF78E9900BF7113 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE0AC41DF78E9900BF7113 /* CameraViewController.swift */; };
+		63FE0AC71DF79A7800BF7113 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE0AC61DF79A7800BF7113 /* FilterCollectionViewCell.swift */; };
 		8CBAEACF864FDB6D0D036B54 /* Pods_PotterPics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC66CBEF6CAADAECA954EFA3 /* Pods_PotterPics.framework */; };
 		B4A68C6759D618394E395D2D /* Pods_PotterPicsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4017A70A8CAF4A8155644A8B /* Pods_PotterPicsTests.framework */; };
 /* End PBXBuildFile section */
@@ -107,6 +110,9 @@
 		63FE0AB91DF6F0F000BF7113 /* Hufflepuff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hufflepuff.png; sourceTree = "<group>"; };
 		63FE0ABE1DF6F37200BF7113 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		63FE0AC01DF6FF9A00BF7113 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		63FE0AC21DF78E5B00BF7113 /* filterPlaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filterPlaceholder.png; sourceTree = "<group>"; };
+		63FE0AC41DF78E9900BF7113 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		63FE0AC61DF79A7800BF7113 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		6FD8AD91C27B308A584ACEAA /* Pods-PotterPicsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotterPicsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PotterPicsUITests/Pods-PotterPicsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		77F924F2B63D37AFD4B263B5 /* Pods-PotterPicsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotterPicsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PotterPicsTests/Pods-PotterPicsTests.release.xcconfig"; sourceTree = "<group>"; };
 		841C1D4EB105680E38118A37 /* Pods-PotterPicsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotterPicsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PotterPicsTests/Pods-PotterPicsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -221,6 +227,7 @@
 				63FE0AB11DF6D93E00BF7113 /* default.png */,
 				633919D01DDD2F1000ABFF34 /* IntroMusic.mp4 */,
 				63FE0AB31DF6E1B300BF7113 /* sortinghat.gif */,
+				63FE0AC21DF78E5B00BF7113 /* filterPlaceholder.png */,
 				63FE0AB61DF6F0F000BF7113 /* Gryffindor.png */,
 				63FE0AB71DF6F0F000BF7113 /* Slytherin.png */,
 				63FE0AB81DF6F0F000BF7113 /* Ravenclaw.png */,
@@ -234,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				639AB92C1DED1B4C003BEB0E /* NavVC.swift */,
+				63FE0AC41DF78E9900BF7113 /* CameraViewController.swift */,
 				633919D21DDD32F200ABFF34 /* HomeViewController.swift */,
 				639AB92E1DED1B7F003BEB0E /* MainViewController.swift */,
 				639AB93A1DED2AAD003BEB0E /* QuizViewController.swift */,
@@ -247,6 +255,7 @@
 		633919D51DDD330000ABFF34 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				63FE0AC61DF79A7800BF7113 /* FilterCollectionViewCell.swift */,
 				639AB9301DED1BCC003BEB0E /* TabBar.swift */,
 				639AB9341DED1BFD003BEB0E /* SettingsTable.swift */,
 				633919DA1DDD578800ABFF34 /* HomeButton.swift */,
@@ -423,6 +432,7 @@
 				63FE0ABB1DF6F0F000BF7113 /* Slytherin.png in Resources */,
 				63FE0ABF1DF6F37200BF7113 /* background.jpg in Resources */,
 				633919AC1DDD2B5400ABFF34 /* LaunchScreen.storyboard in Resources */,
+				63FE0AC31DF78E5B00BF7113 /* filterPlaceholder.png in Resources */,
 				633919A91DDD2B5400ABFF34 /* Assets.xcassets in Resources */,
 				63FE0AB21DF6D93E00BF7113 /* default.png in Resources */,
 				63FE0ABA1DF6F0F000BF7113 /* Gryffindor.png in Resources */,
@@ -596,6 +606,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63FE0A661DF55F2C00BF7113 /* SearchViewController.swift in Sources */,
+				63FE0AC51DF78E9900BF7113 /* CameraViewController.swift in Sources */,
 				633919DB1DDD578800ABFF34 /* HomeButton.swift in Sources */,
 				633CFF881DEE3CA8002D820E /* DataService.swift in Sources */,
 				639AB92D1DED1B4C003BEB0E /* NavVC.swift in Sources */,
@@ -607,6 +618,7 @@
 				639AB9371DED1C1E003BEB0E /* GlobalVariables.swift in Sources */,
 				639AB92F1DED1B7F003BEB0E /* MainViewController.swift in Sources */,
 				633919D81DDD352C00ABFF34 /* BackgroundVideo.swift in Sources */,
+				63FE0AC71DF79A7800BF7113 /* FilterCollectionViewCell.swift in Sources */,
 				63FE0AC11DF6FF9A00BF7113 /* PostViewController.swift in Sources */,
 				63FE0A591DF51BE300BF7113 /* FacebookService.swift in Sources */,
 				639AB9351DED1BFD003BEB0E /* SettingsTable.swift in Sources */,

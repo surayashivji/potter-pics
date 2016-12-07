@@ -8,6 +8,8 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>Required to take a picture and post to PotterPics.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Upload pictures to PotterPics</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
