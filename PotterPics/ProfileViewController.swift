@@ -9,12 +9,13 @@
 import UIKit
 import Firebase
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var user: FIRUser?
     var uid: String?
     var ref: FIRDatabaseReference! = FIRDatabase.database().reference()
     @IBOutlet weak var numPostsLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var proileImageView: UIImageView!
     
@@ -84,5 +85,20 @@ class ProfileViewController: UIViewController {
         }
         return image
     }
+    
+    // MARK: Table View Methods
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
 
 }

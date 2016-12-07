@@ -50,7 +50,6 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
         }
         let photosRef = storage.reference().child("posts")
         let imageName = NSUUID().uuidString
-//        let photoRef = photosRef.child("\(imageName)")
         let photoRef = photosRef.child("\(uid)")
         
         photoRef.child("\(imageName)").put(data!, metadata: nil){(metaData,error) in
@@ -61,18 +60,23 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
             }else{
                 // store downloadURL
                 let downloadURL = metaData!.downloadURL()!.absoluteString
-                print("DOWNLOD URL SUCCESS \(downloadURL)")
-                //store downloadURL at database
-                self.databaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).updateChildValues(["userPhoto": downloadURL])
+                print("DOWNLOAD URL SUCCESS \(downloadURL)")
+                
+                let values: Dictionary<String, Any> = ["uid": uid, "caption": caption, "download_url": downloadURL]
+                
+                // store downloadURL at database
+                let databaseRef = FIRDatabase.database().reference()
+                let path = databaseRef.child("posts").childByAutoId()
+                path.setValue(values) { (error, ref) -> Void in
+                    if error != nil {
+                        print("error saving post in db")
+                    }
+                }
+                
             }
 
         }
-        
-
-        
-//        let uploadTask =
-        
-        // store image post with caption in the posts database
+        // reset caption field
         self.captionTextField.text = ""
     }
     
