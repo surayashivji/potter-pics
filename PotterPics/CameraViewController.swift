@@ -90,7 +90,7 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func takePhoto(_ sender: UIButton) {
+    @IBAction func takePicture(_ sender: UIButton) {
         photoTaken = true
         if let videoConnection = stillImageOutput!.connection(withMediaType: AVMediaTypeVideo) {
             stillImageOutput?.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (sampleBuffer, error) in
@@ -108,6 +108,7 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
             })
         }
     }
+   
     
     // MARK: Collection View Methods
     func setupFlow() {
@@ -175,7 +176,7 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
         return filteredImage
     }
     
-    @IBAction func uploadPhoto(_ sender: AnyObject) {
+    @IBAction func uploadPicture(_ sender: AnyObject) {
         delegate?.sendValue(value: self.captureImageView.image!)
         self.dismiss(animated: true, completion: nil)
     }
