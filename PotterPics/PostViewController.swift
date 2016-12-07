@@ -38,11 +38,8 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
     
     @IBAction func postToFeed(_ sender: UIButton) {
         print("posted!")
+        self.captionTextField.text = ""
     }
-    
-//    func sendValue(value: UIImage) {
-//        self.imagetoUpload.image = value
-//    }
     
     @IBAction func chooseFromRoll(_ sender: AnyObject) {
         imagePicker.allowsEditing = false

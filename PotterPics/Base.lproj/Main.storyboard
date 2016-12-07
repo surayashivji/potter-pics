@@ -49,7 +49,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4ln-vW-Eru" customClass="NavVC" customModule="PotterPics" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="jSi-rk-NY4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="jSi-rk-NY4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -221,7 +221,7 @@
                         <outlet property="bg" destination="5qD-rw-pnQ" id="wDD-hv-OWC"/>
                         <outlet property="houseCrest" destination="Cn3-bW-BxG" id="qss-Qq-cTc"/>
                         <outlet property="pickButton" destination="FDx-iT-sqc" id="UE5-RY-n5g"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="backFromHouse" id="eae-cJ-tKm"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="tempSegue" id="ouG-EU-cLD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QlO-47-CFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -241,7 +241,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jx4-mm-TqM" customClass="HomeButton" customModule="PotterPics" customModuleProvider="target">
-                                <rect key="frame" x="43" y="148" width="135" height="33"/>
+                                <rect key="frame" x="33" y="63" width="135" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Take Photo">
@@ -252,7 +252,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfb-gJ-aS9" customClass="HomeButton" customModule="PotterPics" customModuleProvider="target">
-                                <rect key="frame" x="205" y="148" width="135" height="33"/>
+                                <rect key="frame" x="203" y="63" width="135" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Camera Roll">
@@ -263,7 +263,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" borderStyle="line" placeholder="Enter Caption" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9tH-Yh-N6k">
-                                <rect key="frame" x="67" y="212" width="240" height="30"/>
+                                <rect key="frame" x="67" y="126" width="240" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
@@ -273,13 +273,13 @@
                                 </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="filterPlaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="vfq-M9-GGj">
-                                <rect key="frame" x="67" y="261" width="240" height="240"/>
+                                <rect key="frame" x="67" y="183" width="240" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRk-3a-IOj" customClass="HomeButton" customModule="PotterPics" customModuleProvider="target">
-                                <rect key="frame" x="105" y="519" width="164" height="43"/>
+                                <rect key="frame" x="84" y="460" width="207" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="32"/>
                                 <state key="normal" title="Post">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -297,7 +297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1LM-an-taJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042" y="853"/>
+            <point key="canvasLocation" x="1040.8" y="852.3238380809596"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="JMs-q9-D2K">
@@ -311,37 +311,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gK8-UA-K7y">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gK8-UA-K7y">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="filterPlaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="4IE-vG-LjV">
-                                <rect key="frame" x="214" y="517" width="130" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMz-yc-FgF" customClass="HomeButton" customModule="PotterPics" customModuleProvider="target">
-                                <rect key="frame" x="30" y="551" width="152" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
-                                <state key="normal" title="Use Photo">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jur-tb-lr2">
-                                <rect key="frame" x="235" y="479" width="89" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Take Photo">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sjy-qH-xIx">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sjy-qH-xIx">
                                 <rect key="frame" x="0.0" y="374" width="375" height="117"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="117" id="8NB-Ki-o3k"/>
-                                    <constraint firstAttribute="width" constant="375" id="H63-UW-Bde"/>
+                                    <constraint firstAttribute="height" constant="117" id="ZRe-GN-JLz"/>
+                                    <constraint firstAttribute="width" constant="375" id="cOR-3l-uEL"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iQA-mm-whg">
                                     <size key="itemSize" width="112" height="112"/>
@@ -372,13 +351,13 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="Bwt-rJ-yLP" firstAttribute="leading" secondItem="QeW-ON-4Lk" secondAttribute="leading" constant="5" id="2LC-s0-6BU"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="Zco-l4-BEr" secondAttribute="trailing" constant="10" id="2kL-i6-DQo"/>
-                                            <constraint firstItem="Zco-l4-BEr" firstAttribute="top" secondItem="QeW-ON-4Lk" secondAttribute="topMargin" id="80O-kO-3Bj"/>
-                                            <constraint firstItem="Zco-l4-BEr" firstAttribute="leading" secondItem="QeW-ON-4Lk" secondAttribute="leadingMargin" constant="10" id="Ds4-gl-GGf"/>
-                                            <constraint firstItem="Bwt-rJ-yLP" firstAttribute="top" secondItem="Zco-l4-BEr" secondAttribute="bottom" constant="2" id="XeQ-Nb-s3e"/>
-                                            <constraint firstAttribute="bottom" secondItem="Bwt-rJ-yLP" secondAttribute="bottom" constant="7" id="ire-9L-J0a"/>
-                                            <constraint firstAttribute="trailing" secondItem="Bwt-rJ-yLP" secondAttribute="trailing" constant="5" id="wMd-yT-dDk"/>
+                                            <constraint firstItem="Bwt-rJ-yLP" firstAttribute="leading" secondItem="QeW-ON-4Lk" secondAttribute="leading" constant="5" id="9GB-5e-iiu"/>
+                                            <constraint firstItem="Zco-l4-BEr" firstAttribute="leading" secondItem="QeW-ON-4Lk" secondAttribute="leadingMargin" constant="10" id="KgA-lH-L3a"/>
+                                            <constraint firstItem="Zco-l4-BEr" firstAttribute="top" secondItem="QeW-ON-4Lk" secondAttribute="topMargin" id="V6N-c5-ceX"/>
+                                            <constraint firstItem="Bwt-rJ-yLP" firstAttribute="top" secondItem="Zco-l4-BEr" secondAttribute="bottom" constant="2" id="aGk-hz-em3"/>
+                                            <constraint firstAttribute="trailing" secondItem="Bwt-rJ-yLP" secondAttribute="trailing" constant="5" id="bFf-hT-jt8"/>
+                                            <constraint firstAttribute="bottom" secondItem="Bwt-rJ-yLP" secondAttribute="bottom" constant="7" id="dSm-at-p8Y"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Zco-l4-BEr" secondAttribute="trailing" constant="10" id="g6Z-9G-u7n"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="filteredImg" destination="Zco-l4-BEr" id="heQ-Qc-mnM"/>
@@ -387,8 +366,46 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filterPlaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="4IE-vG-LjV">
+                                <rect key="frame" x="214" y="517" width="130" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="Rgz-H3-6H0"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3c-2V-llT" customClass="HomeButton" customModule="PotterPics" customModuleProvider="target">
+                                <rect key="frame" x="36" y="521" width="141" height="43"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
+                                <state key="normal" title="Take Photo">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMz-yc-FgF" customClass="HomeButton" customModule="PotterPics" customModuleProvider="target">
+                                <rect key="frame" x="36" y="589" width="141" height="38"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
+                                <state key="normal" title="Use Photo">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="sjy-qH-xIx" firstAttribute="leading" secondItem="4mo-Pf-dZX" secondAttribute="leading" id="3po-jX-DOZ"/>
+                            <constraint firstItem="v3c-2V-llT" firstAttribute="top" secondItem="sjy-qH-xIx" secondAttribute="bottom" constant="30" id="59q-fY-yNc"/>
+                            <constraint firstItem="v3c-2V-llT" firstAttribute="leading" secondItem="4mo-Pf-dZX" secondAttribute="leadingMargin" constant="20" id="8dR-vS-PzK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4IE-vG-LjV" secondAttribute="trailing" constant="15" id="BaU-d7-lf4"/>
+                            <constraint firstItem="4IE-vG-LjV" firstAttribute="top" secondItem="sjy-qH-xIx" secondAttribute="bottom" constant="26" id="EO9-g1-fJc"/>
+                            <constraint firstItem="4IE-vG-LjV" firstAttribute="leading" secondItem="wMz-yc-FgF" secondAttribute="trailing" constant="37" id="Fqb-Il-AUm"/>
+                            <constraint firstItem="sjy-qH-xIx" firstAttribute="trailing" secondItem="gK8-UA-K7y" secondAttribute="trailing" id="GmH-D4-STD"/>
+                            <constraint firstItem="wMz-yc-FgF" firstAttribute="top" secondItem="v3c-2V-llT" secondAttribute="bottom" constant="25" id="NzN-l5-xj7"/>
+                            <constraint firstItem="4IE-vG-LjV" firstAttribute="leading" secondItem="v3c-2V-llT" secondAttribute="trailing" constant="37" id="ReI-Ta-MuA"/>
+                            <constraint firstItem="2So-Fw-bE0" firstAttribute="top" secondItem="wMz-yc-FgF" secondAttribute="bottom" constant="40" id="SNT-Ti-RPo"/>
+                            <constraint firstAttribute="bottom" secondItem="gK8-UA-K7y" secondAttribute="bottom" constant="292" id="Zff-0u-f4B"/>
+                            <constraint firstItem="gK8-UA-K7y" firstAttribute="top" secondItem="4mo-Pf-dZX" secondAttribute="top" id="jLL-et-aw8"/>
+                            <constraint firstItem="wMz-yc-FgF" firstAttribute="leading" secondItem="4mo-Pf-dZX" secondAttribute="leadingMargin" constant="20" id="k4w-cv-dk9"/>
+                            <constraint firstAttribute="bottom" secondItem="4IE-vG-LjV" secondAttribute="bottom" constant="20" symbolic="YES" id="nnb-cO-Tjd"/>
+                            <constraint firstItem="sjy-qH-xIx" firstAttribute="top" secondItem="fZf-4y-Dx5" secondAttribute="bottom" constant="354" id="prC-2N-3VA"/>
+                            <constraint firstItem="sjy-qH-xIx" firstAttribute="leading" secondItem="gK8-UA-K7y" secondAttribute="leading" id="suj-xE-EJq"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="captureImageView" destination="4IE-vG-LjV" id="4X8-FA-Nxo"/>
