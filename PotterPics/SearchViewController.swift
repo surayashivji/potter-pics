@@ -87,7 +87,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
         cell.searchName.text = name
-        cell.searchCountPosts.text = "\(indexPath.row)" // change to number of posts after
+        cell.searchCountPosts.text = "\(indexPath.row) Posts" // change to number of posts after
         return cell
     }
     
@@ -122,8 +122,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
         searchBar.text = ""
+        searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
     }
 }

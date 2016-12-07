@@ -20,6 +20,9 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let defaults = UserDefaults.standard
+        let stripCol = defaults.colorForKey(key: "navCol")
+        self.view.backgroundColor = stripCol
         user = FIRAuth.auth()?.currentUser
         uid = user?.uid
         configureHeader()

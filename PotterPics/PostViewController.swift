@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PostViewController: UIViewController, ModalViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -37,7 +38,41 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
     }
     
     @IBAction func postToFeed(_ sender: UIButton) {
-        print("posted!")
+        // post image to firebase storage
+        let postImage = self.imagetoUpload.image
+        let caption = self.captionTextField.text
+        
+        let storage = FIRStorage.storage()
+        let data = UIImagePNGRepresentation(postImage!)
+        // guard for user id
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+            return
+        }
+        let photosRef = storage.reference().child("posts")
+        let imageName = NSUUID().uuidString
+//        let photoRef = photosRef.child("\(imageName)")
+        let photoRef = photosRef.child("\(uid)")
+        
+        photoRef.child("\(imageName)").put(data!, metadata: nil){(metaData,error) in
+            if let error = error {
+                print("there was an error")
+                print(error.localizedDescription)
+                return
+            }else{
+                // store downloadURL
+                let downloadURL = metaData!.downloadURL()!.absoluteString
+                print("DOWNLOD URL SUCCESS \(downloadURL)")
+                //store downloadURL at database
+                self.databaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).updateChildValues(["userPhoto": downloadURL])
+            }
+
+        }
+        
+
+        
+//        let uploadTask =
+        
+        // store image post with caption in the posts database
         self.captionTextField.text = ""
     }
     
