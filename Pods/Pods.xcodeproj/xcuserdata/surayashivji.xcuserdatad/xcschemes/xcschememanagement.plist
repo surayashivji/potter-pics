@@ -24,11 +24,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>IGListKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-PotterPics.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,11 +57,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>26932F09684B706888A7BF05E69D387C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>2E303C3CE7513908EE880D9CA833AFAE</key>
 		<dict>
 			<key>primary</key>
@@ -77,27 +67,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4A6AF7BEB40C778606F026E2A602AE4F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5CFA6B15C51F6A7570CE9065526BC780</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>6EDC37F3FA92533C6AC3562458AA91F1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>756D8C92521A9E05DC9A65545AAA40AB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>79A6FA6B7533AA16988B281B586EE397</key>
+		<key>98610B395D5B961699BD8584D1CEF458</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,12 +82,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9E7DB3D3FE8A355776D70BDC15E66AD4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A8EA4D547DD69D495D200A703548D5F1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>AD318B5F68BB71E9506B3412D1E0B836</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D30773D0BBD4340DB037F15A69FD567F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E2FE7C8B8C65700EE2E753017F049F6A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

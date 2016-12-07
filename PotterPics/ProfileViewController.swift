@@ -45,6 +45,19 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.tableView.reloadData()
     }
     
+    @IBAction func logoutUser(_ sender: UIButton) {
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            print("signing out")
+            try firebaseAuth?.signOut()
+            FBSDKLoginManager().logOut()
+            self.dismiss(animated: true, completion: nil)
+            
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
+    
     func configureHeader() {
         let uid = self.uid
         var profPicURL: String = ""
@@ -106,7 +119,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("count: \(self.posts.count)")
         return self.posts.count
     }
     
@@ -127,7 +139,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // profile image
             let url = URL(string: profPic)
-            print("look \(url)")
             DispatchQueue.global().async {
                 let data = try? Data(contentsOf: url!)
                 DispatchQueue.main.async {
@@ -158,7 +169,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         let uid = FIRAuth.auth()?.currentUser?.uid
         let ref = FIRDatabase.database().reference(withPath: "posts").queryOrdered(byChild: "uid").queryEqual(toValue: uid)
         ref.observeSingleEvent(of: .value, with: { snapshot in
-            print(snapshot.childrenCount)
+//            print(snapshot.childrenCount)
             self.updatePostCount(numPosts: String(snapshot.childrenCount))
             if let dict = snapshot.value as? NSDictionary {
                 for item in dict {

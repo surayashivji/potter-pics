@@ -6,7 +6,6 @@ target 'PotterPics' do
   use_frameworks!
 
   # Pods for PotterPics
-  pod 'IGListKit'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
