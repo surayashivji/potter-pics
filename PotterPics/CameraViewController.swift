@@ -179,5 +179,4 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBAction func uploadPicture(_ sender: AnyObject) {
         delegate?.sendValue(value: self.captureImageView.image!)
         self.dismiss(animated: true, completion: nil)
-    }
-}
+    }}

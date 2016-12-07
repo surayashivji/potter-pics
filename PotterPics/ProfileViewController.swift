@@ -8,12 +8,18 @@
 
 import UIKit
 import Firebase
+import SwiftyJSON
+import FBSDKLoginKit
+import FBSDKCoreKit
 
 class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var user: FIRUser?
     var uid: String?
     var ref: FIRDatabaseReference! = FIRDatabase.database().reference()
+    var posts = [Post]()
+    var userName: String!
+    var picURL: String!
     @IBOutlet weak var numPostsLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -27,11 +33,16 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         user = FIRAuth.auth()?.currentUser
         uid = user?.uid
         configureHeader()
+        getUserPosts()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
     }
     
     func configureHeader() {
@@ -43,9 +54,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             
             // set name label
             name = value?["name"] as! String
-            self.nameLabel.text = name
+            self.userName = name
+            self.nameLabel.text = self.userName
             
             profPicURL = value?["profPicString"] as! String
+            self.picURL = profPicURL
             // set image
             if profPicURL.characters.count > 0 {
                 let url = URL(string: profPicURL)
@@ -63,14 +76,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.proileImageView.image = image
             }
             
-            // set num posts label
-            
         }) { (error) in
             print(error.localizedDescription)
         }
-        
         // set num posts
-        self.numPostsLabel.text = "17 Posts"
+        if posts.count == 1 {
+            self.numPostsLabel.text = "\(self.posts.count) Post"
+        } else {
+            self.numPostsLabel.text = "\(self.posts.count) Posts"
+        }
     }
     
     
@@ -92,13 +106,83 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-        
+        print("count: \(self.posts.count)")
+        return self.posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as! ProfileTableViewCell
+        let post = self.posts[indexPath.row]
+        let caption = post.caption
+        let uid = post.uid
+        let downloadURL = post.downloadURL
+        let profPic = post.profPic
+        let name = self.userName
+        
+        // user's name
+        cell.nameLabel.text = name
+        
+        // caption
+        cell.captionLabel.text = caption
+        
+        // profile image
+            let url = URL(string: profPic)
+            print("look \(url)")
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url!)
+                DispatchQueue.main.async {
+                    let image = UIImage(data: data!)?.circle
+                    cell.smallProfileImg.contentMode = UIViewContentMode.scaleAspectFill
+                    cell.smallProfileImg.image = image
+                }
+            }
+        
+        // post image
+        let postURL = URL(string: downloadURL)
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: postURL!)
+            DispatchQueue.main.async {
+                let image = UIImage(data: data!)
+                cell.postImage.contentMode = UIViewContentMode.scaleAspectFill
+                cell.postImage.image = image
+            }
+        }
+        
+        return cell
     }
     
+    // MARK: Firebase Query Methods
+    
+    // get current user's posts
+    func getUserPosts() {
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        let ref = FIRDatabase.database().reference(withPath: "posts").queryOrdered(byChild: "uid").queryEqual(toValue: uid)
+        ref.observeSingleEvent(of: .value, with: { snapshot in
+            print(snapshot.childrenCount)
+            self.updatePostCount(numPosts: String(snapshot.childrenCount))
+            if let dict = snapshot.value as? NSDictionary {
+                for item in dict {
+                    
+                    let json = JSON(item.value)
+                    let caption: String = json["caption"].stringValue
+                    let downloadURL: String = json["download_url"].stringValue
+                    let name = self.userName
+                    let profPic = self.picURL
+                    let post = Post(uid: uid!, caption: caption, downloadURL: downloadURL, name: name!, profPic: profPic!)
+                    self.posts.append(post)
+                    self.tableView.reloadData()
+                }
+            }
+
+        })
+    }
+
+    func updatePostCount(numPosts: String) {
+        if(Int(numPosts) == 1) {
+            self.numPostsLabel.text = "\(numPosts) Post"
+        } else {
+            self.numPostsLabel.text = "\(numPosts) Posts"
+        }
+    }
 
 }
