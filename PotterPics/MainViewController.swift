@@ -12,6 +12,7 @@ import UIKit
 class MainViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SettingsDelegate, TabBarDelegate   {
     
     //MARK: Properties
+    var navColor: UIColor!
     var views = [UIView]()
     let items = ["Feed", "Search", "Post", "Profile"]
     var viewsAreInitialized = false
@@ -45,39 +46,42 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     let titleLabel: UILabel = {
         let tl = UILabel.init(frame: CGRect.init(x: 30, y: 17, width: 200, height: 30))
-        tl.font = UIFont(name: "New", size: 30)! // Lumos Font
+        tl.font = UIFont(name: "Avenir-Medium", size: 25)!
         tl.textColor = UIColor.white
         tl.text = ""
         return tl
     }()
     
-    
     // MARK: Methods
     func customization()  {
         
-        // CollectionView Customization
+        // Collection View Customization
         self.collectionView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0)
         self.view.addSubview(self.collectionView)
         
-        // NavigationController Customization
+        // Navigation Controller Customization
         // house background color
-        self.navigationController?.view.backgroundColor = UIColor.rbg(r: 228, g: 34, b: 24)
+        let defaults = UserDefaults.standard
+        let navigationColor = defaults.colorForKey(key: "navCol")
+
+//        self.navigationController?.view.backgroundColor = UIColor.rbg(r: 228, g: 34, b: 24)
+         self.navigationController?.view.backgroundColor = navigationColor
         self.navigationController?.navigationItem.hidesBackButton = true
         self.navigationItem.hidesBackButton = true
         
-        // NavigationBar color and shadow
+        // Navigation Bar color and shadow
         // house background color
-        self.navigationController?.navigationBar.barTintColor = UIColor.rbg(r: 228, g: 34, b: 24)
+        self.navigationController?.navigationBar.barTintColor = navigationColor
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        // TitleLabel
+        // Title Label
         self.navigationController?.navigationBar.addSubview(self.titleLabel)
         
-        // TabBar
+        // Tab Bar
         self.view.addSubview(self.tabBar)
         
-        // ViewControllers init
+        // View Controllers init
         for title in self.items {
             let storyBoard = self.storyboard!
             let vc = storyBoard.instantiateViewController(withIdentifier: title)
@@ -89,7 +93,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.viewsAreInitialized = true
     }
     
-    //MARK: Settings
+    // MARK: Settings
     @IBAction func handleMore(_ sender: AnyObject) {
         if let window = UIApplication.shared.keyWindow {
             window.addSubview(self.settings)
@@ -102,7 +106,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.navigationController?.setNavigationBarHidden(state, animated: true)
     }
     
-    //MARK: Delegates implementation
+    // MARK: Delegates implementation
     func didSelectItem(atIndex: Int) {
         self.collectionView.scrollRectToVisible(CGRect.init(origin: CGPoint.init(x: (self.view.bounds.width * CGFloat(atIndex)), y: 0), size: self.view.bounds.size), animated: true)
     }
@@ -112,8 +116,6 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
             self.settings.removeFromSuperview()
         }
     }
-   
-    //MARK: VieController lifecyle
     override func viewDidLoad() {
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         super.viewDidLoad()
@@ -122,7 +124,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.hideBar(notification:)), name: NSNotification.Name("hide"), object: nil)
     }
     
-    //MARK: CollectionView DataSources
+    // MARK: CollectionView DataSources
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.views.count
     }
@@ -133,7 +135,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         return cell
     }
     
-    //MARK: CollectionView Delegates
+    // MARK: Collection View Delegates
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
                return CGSize.init(width: self.view.bounds.width, height: (self.view.bounds.height + 22))
     }
@@ -146,4 +148,24 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
             self.tabBar.highlightItem(atIndex: scrollIndex)
         }
     }
+}
+
+extension UserDefaults {
+    
+    func colorForKey(key: String) -> UIColor? {
+        var color: UIColor?
+        if let colorData = data(forKey: key) {
+            color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
+        }
+        return color
+    }
+    
+    func setColor(color: UIColor?, forKey key: String) {
+        var colorData: NSData?
+        if let color = color {
+            colorData = NSKeyedArchiver.archivedData(withRootObject: color) as NSData?
+        }
+        set(colorData, forKey: key)
+    }
+    
 }

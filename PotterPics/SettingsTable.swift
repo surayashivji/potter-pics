@@ -18,7 +18,7 @@ protocol SettingsDelegate {
 class Settings: UIView,  UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Properties
-    let items = ["Settings", "Invite Facebook Friends", "Cancel"]
+    let items = ["Change House", "Invite Facebook Friends", "Cancel"]
     let imageNames = ["settings", "facebook", "cancel"]
     lazy var tableView: UITableView = {
         let tb = UITableView.init(frame: CGRect.init(x: 0, y: self.bounds.height + 140, width: self.bounds.width, height: 144))

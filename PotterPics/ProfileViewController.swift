@@ -22,6 +22,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         user = FIRAuth.auth()?.currentUser
         uid = user?.uid
+        configureHeader()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,21 +30,20 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func configureHeader() {
+    func configureHeader() {
         let uid = self.uid
         var profPicURL: String = ""
         var name: String = "Name"
         ref.child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             
-            // set name
+            // set name label
             name = value?["name"] as! String
             self.nameLabel.text = name
             
             profPicURL = value?["profPicString"] as! String
             // set image
             if profPicURL.characters.count > 0 {
-                print("true")
                 let url = URL(string: profPicURL)
                 DispatchQueue.global().async {
                     let data = try? Data(contentsOf: url!)
@@ -58,6 +58,8 @@ class ProfileViewController: UIViewController {
                 self.proileImageView.contentMode = UIViewContentMode.scaleAspectFill
                 self.proileImageView.image = image
             }
+            
+            // set num posts label
             
         }) { (error) in
             print(error.localizedDescription)

@@ -35,6 +35,13 @@
 		63FE0A6A1DF5F08A00BF7113 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE0A691DF5F08A00BF7113 /* User.swift */; };
 		63FE0AB01DF6D03800BF7113 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE0AAF1DF6D03800BF7113 /* ProfileViewController.swift */; };
 		63FE0AB21DF6D93E00BF7113 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 63FE0AB11DF6D93E00BF7113 /* default.png */; };
+		63FE0AB41DF6E1B300BF7113 /* sortinghat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 63FE0AB31DF6E1B300BF7113 /* sortinghat.gif */; };
+		63FE0ABA1DF6F0F000BF7113 /* Gryffindor.png in Resources */ = {isa = PBXBuildFile; fileRef = 63FE0AB61DF6F0F000BF7113 /* Gryffindor.png */; };
+		63FE0ABB1DF6F0F000BF7113 /* Slytherin.png in Resources */ = {isa = PBXBuildFile; fileRef = 63FE0AB71DF6F0F000BF7113 /* Slytherin.png */; };
+		63FE0ABC1DF6F0F000BF7113 /* Ravenclaw.png in Resources */ = {isa = PBXBuildFile; fileRef = 63FE0AB81DF6F0F000BF7113 /* Ravenclaw.png */; };
+		63FE0ABD1DF6F0F000BF7113 /* Hufflepuff.png in Resources */ = {isa = PBXBuildFile; fileRef = 63FE0AB91DF6F0F000BF7113 /* Hufflepuff.png */; };
+		63FE0ABF1DF6F37200BF7113 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63FE0ABE1DF6F37200BF7113 /* background.jpg */; };
+		63FE0AC11DF6FF9A00BF7113 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE0AC01DF6FF9A00BF7113 /* PostViewController.swift */; };
 		8CBAEACF864FDB6D0D036B54 /* Pods_PotterPics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC66CBEF6CAADAECA954EFA3 /* Pods_PotterPics.framework */; };
 		B4A68C6759D618394E395D2D /* Pods_PotterPicsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4017A70A8CAF4A8155644A8B /* Pods_PotterPicsTests.framework */; };
 /* End PBXBuildFile section */
@@ -93,6 +100,13 @@
 		63FE0A691DF5F08A00BF7113 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		63FE0AAF1DF6D03800BF7113 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		63FE0AB11DF6D93E00BF7113 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
+		63FE0AB31DF6E1B300BF7113 /* sortinghat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sortinghat.gif; sourceTree = "<group>"; };
+		63FE0AB61DF6F0F000BF7113 /* Gryffindor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gryffindor.png; sourceTree = "<group>"; };
+		63FE0AB71DF6F0F000BF7113 /* Slytherin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slytherin.png; sourceTree = "<group>"; };
+		63FE0AB81DF6F0F000BF7113 /* Ravenclaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ravenclaw.png; sourceTree = "<group>"; };
+		63FE0AB91DF6F0F000BF7113 /* Hufflepuff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hufflepuff.png; sourceTree = "<group>"; };
+		63FE0ABE1DF6F37200BF7113 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
+		63FE0AC01DF6FF9A00BF7113 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		6FD8AD91C27B308A584ACEAA /* Pods-PotterPicsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotterPicsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PotterPicsUITests/Pods-PotterPicsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		77F924F2B63D37AFD4B263B5 /* Pods-PotterPicsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotterPicsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PotterPicsTests/Pods-PotterPicsTests.release.xcconfig"; sourceTree = "<group>"; };
 		841C1D4EB105680E38118A37 /* Pods-PotterPicsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotterPicsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PotterPicsTests/Pods-PotterPicsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -206,6 +220,12 @@
 				639AB93D1DED3C93003BEB0E /* LUMOS.TTF */,
 				63FE0AB11DF6D93E00BF7113 /* default.png */,
 				633919D01DDD2F1000ABFF34 /* IntroMusic.mp4 */,
+				63FE0AB31DF6E1B300BF7113 /* sortinghat.gif */,
+				63FE0AB61DF6F0F000BF7113 /* Gryffindor.png */,
+				63FE0AB71DF6F0F000BF7113 /* Slytherin.png */,
+				63FE0AB81DF6F0F000BF7113 /* Ravenclaw.png */,
+				63FE0ABE1DF6F37200BF7113 /* background.jpg */,
+				63FE0AB91DF6F0F000BF7113 /* Hufflepuff.png */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -219,6 +239,7 @@
 				639AB93A1DED2AAD003BEB0E /* QuizViewController.swift */,
 				63FE0A651DF55F2C00BF7113 /* SearchViewController.swift */,
 				63FE0AAF1DF6D03800BF7113 /* ProfileViewController.swift */,
+				63FE0AC01DF6FF9A00BF7113 /* PostViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -399,11 +420,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63FE0ABB1DF6F0F000BF7113 /* Slytherin.png in Resources */,
+				63FE0ABF1DF6F37200BF7113 /* background.jpg in Resources */,
 				633919AC1DDD2B5400ABFF34 /* LaunchScreen.storyboard in Resources */,
 				633919A91DDD2B5400ABFF34 /* Assets.xcassets in Resources */,
 				63FE0AB21DF6D93E00BF7113 /* default.png in Resources */,
+				63FE0ABA1DF6F0F000BF7113 /* Gryffindor.png in Resources */,
 				63F4EB3C1DE689E5001832F4 /* GoogleService-Info.plist in Resources */,
 				639AB93E1DED3C93003BEB0E /* LUMOS.TTF in Resources */,
+				63FE0AB41DF6E1B300BF7113 /* sortinghat.gif in Resources */,
+				63FE0ABD1DF6F0F000BF7113 /* Hufflepuff.png in Resources */,
+				63FE0ABC1DF6F0F000BF7113 /* Ravenclaw.png in Resources */,
 				633919D11DDD2F1000ABFF34 /* IntroMusic.mp4 in Resources */,
 				633919A71DDD2B5400ABFF34 /* Main.storyboard in Resources */,
 			);
@@ -580,6 +607,7 @@
 				639AB9371DED1C1E003BEB0E /* GlobalVariables.swift in Sources */,
 				639AB92F1DED1B7F003BEB0E /* MainViewController.swift in Sources */,
 				633919D81DDD352C00ABFF34 /* BackgroundVideo.swift in Sources */,
+				63FE0AC11DF6FF9A00BF7113 /* PostViewController.swift in Sources */,
 				63FE0A591DF51BE300BF7113 /* FacebookService.swift in Sources */,
 				639AB9351DED1BFD003BEB0E /* SettingsTable.swift in Sources */,
 				633919D31DDD32F200ABFF34 /* HomeViewController.swift in Sources */,

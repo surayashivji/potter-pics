@@ -18,17 +18,9 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // set up background video
         self.cloudsVideo = BackgroundVideo(on: self, withVideoURL: "IntroMusic.mp4")
         self.cloudsVideo?.setUpBackground()
-        
-//        for family in UIFont.familyNames {
-//            print("\(family)")
-//            for name in UIFont.fontNames(forFamilyName: family) {
-//                print("   \(name)")
-//            }
-//        }
     }
     
     

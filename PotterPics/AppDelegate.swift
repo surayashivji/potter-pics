@@ -24,14 +24,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var initialViewController = UIViewController()
+        let defaults = UserDefaults.standard
+        defaults.set("Gryffindor", forKey: "userHouse")
         if launchedBefore  {
             // app has been launched before, segue to login
-            print("Not first launch.")
+            let houseValue = defaults.string(forKey: "userHouse")
+            print("CHECK: \(houseValue)")
+            
+                var navCol = UIColor()
+                switch houseValue! {
+                case "Gryffindor":
+                    navCol = Gryffindor.navigation
+                    break
+                case "Slytherin":
+                    navCol = Slytherin.navigation
+                    break
+                case "Hufflepuff":
+                    navCol = Hufflepuff.navigation
+                    break
+                case "Ravenclaw":
+                    navCol = Ravenclaw.navigation
+                    break
+                default:
+                    break
+                }
+            defaults.setColor(color: navCol, forKey: "navCol")
+            
+            
             initialViewController = storyboard.instantiateViewController(withIdentifier: "homeView") as! HomeViewController
 
         } else {
             // app has not been launched before, segue to house quiz to set defaults
-            print("First launch, setting the UserDefault.")
             UserDefaults.standard.set(true, forKey: "launchedBefore")
             initialViewController = storyboard.instantiateViewController(withIdentifier: "houseQuiz") as! QuizViewController
         }

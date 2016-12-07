@@ -1,9 +1,7 @@
 //
 //  NavVC.swift
 //  PotterPics
-//
-//  Navigation adapted from https://github.com/aslanyanhaik/youtube-iOS
-//
+// 
 //  Created by Suraya Shivji on 11/27/16.
 //  Copyright © 2016 Suraya Shivji. All rights reserved.
 //
