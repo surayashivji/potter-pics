@@ -17,13 +17,10 @@ class DataService: NSObject {
     static let dataService = DataService()
     
     // Database references
-    var REF_BASE : FIRDatabaseReference = DB
-    var REF_POSTS : FIRDatabaseReference = DB.child("posts")
-    var REF_USERS : FIRDatabaseReference = DB.child("users")
+    var ref : FIRDatabaseReference = DB
+    var refPosts : FIRDatabaseReference = DB.child("posts")
+    var refUsers : FIRDatabaseReference = DB.child("users")
     
     // Storage references
-//    var REF_POST_IMAGES : FIRStorageReference = STORAGE.child("post-pics")
-
-    
-    
+    // var REF_POST_IMAGES : FIRStorageReference = STORAGE.child("post-pics")
 }

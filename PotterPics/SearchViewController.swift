@@ -18,18 +18,18 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var users : [User] = []
     
     override func viewDidLoad() {
+        print("SEARCH VIEW DID LOAD")
         super.viewDidLoad()
         self.searchBar.delegate = self
         getUsers()
         filteredUsers = users
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
     }
     
     func getUsers() {
@@ -38,7 +38,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         usersRef.observe(.value, with: { (snapshot) in
             if let dict = snapshot.value as? NSDictionary {
                 for item in dict {
-                    
                     let json = JSON(item.value)
                     let name: String = json["name"].stringValue
                     let email: String = json["email"].stringValue
@@ -60,34 +59,35 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.filteredUsers != nil { // check for nil
-            return self.filteredUsers!.count
-        }
-        else {
-            return 0
-        }
-        
+        // check for nil
+//        if self.filteredUsers != nil {
+//            return self.filteredUsers!.count
+//        }
+//        else {
+//            return 0
+//        }
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as! SearchTableViewCell
-        cell.searchImageView.image = UIImage()
-        let user = filteredUsers[indexPath.row]
-        let name = user.name
-        
-        let profPicURL = user.profPic
-        let url = URL(string: profPicURL)
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: url!)
-            DispatchQueue.main.async {
-                var image = UIImage(data: data!)
-                image = image?.circle
-                cell.searchImageView.contentMode = UIViewContentMode.scaleAspectFill
-                cell.searchImageView.image = image
-            }
-        }
-        cell.searchName.text = name
-        cell.searchCountPosts.text = "\(indexPath.row) Posts" // change to number of posts after
+        cell.searchName.text = "hey"
+//        cell.searchImageView.image = UIImage()
+//        let user = filteredUsers[indexPath.row]
+//        let name = user.name
+//        
+//        let profPicURL = user.profPic
+//        let url = URL(string: profPicURL)
+//        DispatchQueue.global().async {
+//            let data = try? Data(contentsOf: url!)
+//            DispatchQueue.main.async {
+//                var image = UIImage(data: data!)
+//                image = image?.circle
+//                cell.searchImageView.contentMode = UIViewContentMode.scaleAspectFill
+//                cell.searchImageView.image = image
+//            }
+//        }
+//        cell.searchName.text = name
         return cell
     }
     
@@ -96,9 +96,26 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.selectionStyle = UITableViewCellSelectionStyle.none
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("item selected: \(indexPath.row)")
+        
+        
+       hello()
+
+//        let vc = MainViewController()
+//        vc.viewsAreInitialized = true
+//        vc.didSelectItem(atIndex: 2)
+    }
+    
+    func hello() {
+        let notificationName = Notification.Name("switchT")
+        
+        NotificationCenter.default.post(name: notificationName, object: nil)
+    }
+    
+    
     // MARK: - Search Bar Methods
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         // search bar text changed
         if(searchText.isEmpty) {
             filteredUsers = users
@@ -126,21 +143,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
     }
-}
-
-extension UIImage {
-    var circle: UIImage? {
-        let square = CGSize(width: min(size.width, size.height), height: min(size.width, size.height))
-        let imageView = UIImageView(frame: CGRect(origin: .zero, size: square))
-        imageView.contentMode = .scaleAspectFill
-        imageView.image = self
-        imageView.layer.cornerRadius = square.width/2
-        imageView.layer.masksToBounds = true
-        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, scale)
-        guard let context = UIGraphicsGetCurrentContext() else { return nil }
-        imageView.layer.render(in: context)
-        let result = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return result
-    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let destinationVC = segue.destination as! ProfileViewController
+//        let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
+//        let user = filteredUsers[(indexPath?.row)!]
+//        destinationVC.searchUID = user.userID
+//    }
 }

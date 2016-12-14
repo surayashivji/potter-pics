@@ -20,12 +20,9 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     @IBOutlet weak var collecFlow: UICollectionViewFlowLayout!
     @IBOutlet weak var filterCollectionView: UICollectionView!
-    
     @IBOutlet weak var captureImageView: UIImageView!
-    
     @IBOutlet weak var previewImgView: UIView!
 
-    
     var photoTaken: Bool = false
     var imagePicker: UIImagePickerController!
     var session: AVCaptureSession?
@@ -99,9 +96,8 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
                     let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
                     let dataProvider = CGDataProvider(data: imageData as! CFData)
                     let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
-                    
                     let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
-                    //                    let image = UIImage(cgImage: cgImageRef!)
+                    // let image = UIImage(cgImage: cgImageRef!)
                     self.unfilteredImage = image
                     self.captureImageView.image = image
                 }
@@ -133,7 +129,6 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
         let filterName = filters[indexPath.row]
         cell.filteredImg.image = generateFilteredImage(name: filterName, image: inputImage!, placeholder: true)
         cell.filteredLbl.text = filterName
-        
         return cell
     }
     

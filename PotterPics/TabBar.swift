@@ -62,7 +62,7 @@ class TabBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICo
         delegate?.didSelectItem(atIndex: indexPath.row)
     }
     
-    //MARK: Methods
+    // MARK: Methods
     func highlightItem(atIndex: Int)  {
         for index in  0...3 {
             let cell = collectionView.cellForItem(at: IndexPath.init(row: index, section: 0)) as! TabBarCellCollectionViewCell

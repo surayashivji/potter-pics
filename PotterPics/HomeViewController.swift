@@ -19,11 +19,13 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let defaults = UserDefaults.standard
+        
+        
         // set up background video
         self.cloudsVideo = BackgroundVideo(on: self, withVideoURL: "IntroMusic.mp4")
         self.cloudsVideo?.setUpBackground()
     }
-    
     
     // login user via Facebook
     @IBAction func loginTapped(_ sender: HomeButton) {
@@ -31,17 +33,8 @@ class HomeViewController: UIViewController {
         // check that the user isn't already logged in
         if FBSDKAccessToken.current() != nil {
             // user logged in, segue to navigation controller
-            
-//            let firebaseAuth = FIRAuth.auth()
-//            do {
-//                print("signing out")
-//                try firebaseAuth?.signOut()
-//                FBSDKLoginManager().logOut()
-//                
-//            } catch let signOutError as NSError {
-//                print ("Error signing out: %@", signOutError)
-//            }
             print("User already logged in")
+            self.cloudsVideo?.pause()
             self.performSegue(withIdentifier: "mainNavSegue", sender: nil)
 
         } else {
@@ -90,9 +83,13 @@ class HomeViewController: UIViewController {
                                     let userID:NSString = data["id"] as! NSString
                                     let imgURLString = "http://graph.facebook.com/\(userID)/picture?type=large" as NSString
                                     
+                                    // save name and pic in defaults
+                                    let defaults = UserDefaults.standard
+                                    defaults.set(String(imgURLString), forKey: "fbImgURL")
+                                    defaults.set(String(userName), forKey: "userName")
+                                    
                                     let values = ["name": userName, "email": userEmail, "facebookID": userID, "profPicString": imgURLString]
                                     
-                                
                                     // update database with new user
                                     usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
                                         // error in database save

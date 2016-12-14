@@ -72,9 +72,7 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
                         print("error saving post in db")
                     }
                 }
-                
             }
-
         }
         // reset caption field
         self.captionTextField.text = ""
@@ -100,16 +98,5 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
             self.imagetoUpload.image = pickedImage
         }
         dismiss(animated: true, completion: nil)
-    }
-}
-
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    
-    func dismissKeyboard() {
-        view.endEditing(true)
     }
 }

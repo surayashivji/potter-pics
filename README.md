@@ -7,6 +7,10 @@
 ## Walkthrough
 
 
+## Design Assets
+- [After Effects Cloud Animation](https://drive.google.com/open?id=0B6aOEAXdWnEGanFLS3JORmNDWDA)
+- [Photoshop Title Text] (https://drive.google.com/open?id=0B6aOEAXdWnEGUnI3N1FQZ0JDOFk)
+
 ## Credits
 - [Facebook SDK](https://developers.facebook.com/docs/ios/)
 - [Firebase] (https://firebase.google.com/)

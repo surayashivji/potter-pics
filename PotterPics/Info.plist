@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>LUMOS.TTF</string>
-	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>Required to take a picture and post to PotterPics.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

@@ -18,7 +18,6 @@ class BackgroundVideo {
     var viewController: UIViewController?
     var hasBeenUsed: Bool = false
     
-    
     init (on viewController: UIViewController, withVideoURL URL: String) {
         self.viewController = viewController
         
@@ -39,7 +38,6 @@ class BackgroundVideo {
         }
     }
     
-    
     deinit{
         if self.hasBeenUsed {
             NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: nil)
@@ -48,21 +46,20 @@ class BackgroundVideo {
     }
     
     /*
-     setUpBackground is a function that should be called in viewDidLoad to load a local background video to play as your background
+     setUpBackground called in viewDidLoad to load a local video to play as the background
      */
     func setUpBackground(){
         self.backGroundPlayer?.actionAtItemEnd = .none
         
-        //add the video to your view ..
+        // add the video to your view
         let loginView: UIView = self.viewController!.view //get our view controllers view
         let playerLayer = AVPlayerLayer(player: self.backGroundPlayer)
         playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill // preserve aspect ratio and resize to fill screen
-        playerLayer.zPosition = -1 // set it's possition behined anything in our view
+        playerLayer.zPosition = -1 // set it's position behined anything in our view
         playerLayer.frame = loginView.frame // set our player frame to our view's frame
         loginView.layer.addSublayer(playerLayer)
         
         self.backGroundPlayer?.play() // start the video
-        
         self.hasBeenUsed = true
     
     }
@@ -76,12 +73,9 @@ class BackgroundVideo {
     // incase you want to pause or play the video at any moment
     func pause() {
         self.backGroundPlayer?.pause()
-
     }
     func play() {
         self.backGroundPlayer?.play()
         
     }
-    
-
 }

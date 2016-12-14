@@ -64,13 +64,11 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         let defaults = UserDefaults.standard
         let navigationColor = defaults.colorForKey(key: "navCol")
 
-//        self.navigationController?.view.backgroundColor = UIColor.rbg(r: 228, g: 34, b: 24)
          self.navigationController?.view.backgroundColor = navigationColor
         self.navigationController?.navigationItem.hidesBackButton = true
         self.navigationItem.hidesBackButton = true
         
         // Navigation Bar color and shadow
-        // house background color
         self.navigationController?.navigationBar.barTintColor = navigationColor
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -80,6 +78,8 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         // Tab Bar
         self.view.addSubview(self.tabBar)
+        
+        print("views initialized? \(self.viewsAreInitialized))")
         
         // View Controllers init
         for title in self.items {
@@ -109,7 +109,8 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK: Delegates implementation
     func didSelectItem(atIndex: Int) {
         self.collectionView.scrollRectToVisible(CGRect.init(origin: CGPoint.init(x: (self.view.bounds.width * CGFloat(atIndex)), y: 0), size: self.view.bounds.size), animated: true)
-    }
+        
+        }
     
     func hideSettingsView(status: Bool) {
         if status == true {
@@ -119,9 +120,42 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         super.viewDidLoad()
+        print("mainv iew controller loading in")
         customization()
         didSelectItem(atIndex: 0)
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.hideBar(notification:)), name: NSNotification.Name("hide"), object: nil)
+        
+        // add notification center to switch tab
+        let notificationName = Notification.Name("switchT")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.switchT(notification:)), name: notificationName, object: nil)
+        print("hi")
+    }
+    
+    func switchT(notification: Notification) {
+        print("switchT successfully called")
+//        print(notification.userInfo?["index"] as! String)
+        print(type(of:notification.userInfo))
+        
+        
+        
+//        if let info = notification.userInfo as NSDictionary as! [String : String] {
+//            //call method to change tab with index (I guess didSelectItem(atIndex: index) method)
+//            print("here index")
+//            print(info["index"])
+////            didSelectItem(atIndex: index)
+//        }
+        guard let userInfo = notification.userInfo else {
+            print("noo")
+            return
+        }
+        print("hi")
+        if let index = userInfo["index"] as? Int {
+            print("here!")
+            didSelectItem(atIndex: index)
+        }
+        
+        
     }
     
     // MARK: CollectionView DataSources
@@ -150,22 +184,3 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 }
 
-extension UserDefaults {
-    
-    func colorForKey(key: String) -> UIColor? {
-        var color: UIColor?
-        if let colorData = data(forKey: key) {
-            color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
-        }
-        return color
-    }
-    
-    func setColor(color: UIColor?, forKey key: String) {
-        var colorData: NSData?
-        if let color = color {
-            colorData = NSKeyedArchiver.archivedData(withRootObject: color) as NSData?
-        }
-        set(colorData, forKey: key)
-    }
-    
-}

@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if launchedBefore  {
             // app has been launched before, segue to login
             let houseValue = defaults.string(forKey: "userHouse")
+//            let houseValue = "Gryffindor"
                 var navCol = UIColor()
                 switch houseValue! {
                 case "Gryffindor":
@@ -44,16 +45,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     break
                 default:
                     break
-                }
+            }
             defaults.setColor(color: navCol, forKey: "navCol")
-            
-            
+            print("HERE")
             initialViewController = storyboard.instantiateViewController(withIdentifier: "homeView") as! HomeViewController
 
         } else {
+            print("OKK")
+            
             // app has not been launched before, segue to house quiz to set defaults
             UserDefaults.standard.set(true, forKey: "launchedBefore")
-            initialViewController = storyboard.instantiateViewController(withIdentifier: "houseQuiz") as! QuizViewController
+            UserDefaults.standard.set(true, forKey: "pickHouse")
+            
+            let randomNum:UInt32 = arc4random_uniform(4)
+            let houses = ["Slytherin", "Gryffindor", "Hufflepuff", "Ravenclaw"]
+            let defaults = UserDefaults.standard
+            let randomHouse = houses[Int(randomNum)]
+            defaults.set(randomHouse, forKey: "userHouse")
+            defaults.synchronize()
+            
+            let houseValue = "Gryffindor"
+            var navCol = UIColor()
+            switch houseValue {
+            case "Gryffindor":
+                navCol = Gryffindor.navigation
+                break
+            case "Slytherin":
+                navCol = Slytherin.navigation
+                break
+            case "Hufflepuff":
+                navCol = Hufflepuff.navigation
+                break
+            case "Ravenclaw":
+                navCol = Ravenclaw.navigation
+                break
+            default:
+                break
+            }
+            defaults.setColor(color: navCol, forKey: "navCol")
+
+            initialViewController = storyboard.instantiateViewController(withIdentifier: "homeView") as! HomeViewController
         }
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()

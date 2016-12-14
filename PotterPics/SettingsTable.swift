@@ -75,7 +75,34 @@ class Settings: UIView,  UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch(indexPath.row) {
-        case 0: // settings
+        case 0: // house
+            let randomNum:UInt32 = arc4random_uniform(4)
+            let houses = ["Slytherin", "Gryffindor", "Hufflepuff", "Ravenclaw"]
+            let defaults = UserDefaults.standard
+            let randomHouse = houses[Int(randomNum)]
+            defaults.set(randomHouse, forKey: "userHouse")
+            defaults.synchronize()
+            let houseValue = defaults.string(forKey: "userHouse")
+            var navCol = UIColor()
+            
+            switch houseValue! {
+            case "Gryffindor":
+                navCol = Gryffindor.navigation
+                break
+            case "Slytherin":
+                navCol = Slytherin.navigation
+                break
+            case "Hufflepuff":
+                navCol = Hufflepuff.navigation
+                break
+            case "Ravenclaw":
+                navCol = Ravenclaw.navigation
+                break
+            default:
+                break
+            }
+            defaults.setColor(color: navCol, forKey: "navCol")
+            
             break
         case 1: // invite friends
             break
