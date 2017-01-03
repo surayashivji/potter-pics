@@ -23,8 +23,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.searchBar.delegate = self
         getUsers()
         filteredUsers = users
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,34 +58,32 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // check for nil
-//        if self.filteredUsers != nil {
-//            return self.filteredUsers!.count
-//        }
-//        else {
-//            return 0
-//        }
-        return 4
+        if self.filteredUsers != nil {
+            return self.filteredUsers!.count
+        }
+        else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as! SearchTableViewCell
-        cell.searchName.text = "hey"
-//        cell.searchImageView.image = UIImage()
-//        let user = filteredUsers[indexPath.row]
-//        let name = user.name
-//        
-//        let profPicURL = user.profPic
-//        let url = URL(string: profPicURL)
-//        DispatchQueue.global().async {
-//            let data = try? Data(contentsOf: url!)
-//            DispatchQueue.main.async {
-//                var image = UIImage(data: data!)
-//                image = image?.circle
-//                cell.searchImageView.contentMode = UIViewContentMode.scaleAspectFill
-//                cell.searchImageView.image = image
-//            }
-//        }
-//        cell.searchName.text = name
+        cell.searchImageView.image = UIImage()
+        let user = filteredUsers[indexPath.row]
+        let name = user.name
+        
+        let profPicURL = user.profPic
+        let url = URL(string: profPicURL)
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!)
+            DispatchQueue.main.async {
+                var image = UIImage(data: data!)
+                image = image?.circle
+                cell.searchImageView.contentMode = UIViewContentMode.scaleAspectFill
+                cell.searchImageView.image = image
+            }
+        }
+        cell.searchName.text = name
         return cell
     }
     
@@ -97,22 +93,16 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("item selected: \(indexPath.row)")
+        // let destinationVC = segue.destination as! ProfileViewController
+        // let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
+        // let user = filteredUsers[(indexPath?.row)!]
+        // destinationVC.searchUID = user.userID
         
-        
-       hello()
-
-//        let vc = MainViewController()
-//        vc.viewsAreInitialized = true
-//        vc.didSelectItem(atIndex: 2)
+        // go to profile tab
+        let data:[String: Int] = ["index": 3]
+        let notificationName = Notification.Name("switchTab")
+        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: data)
     }
-    
-    func hello() {
-        let notificationName = Notification.Name("switchT")
-        
-        NotificationCenter.default.post(name: notificationName, object: nil)
-    }
-    
     
     // MARK: - Search Bar Methods
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -143,11 +133,4 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let destinationVC = segue.destination as! ProfileViewController
-//        let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
-//        let user = filteredUsers[(indexPath?.row)!]
-//        destinationVC.searchUID = user.userID
-//    }
 }

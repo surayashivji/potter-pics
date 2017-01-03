@@ -126,36 +126,19 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.hideBar(notification:)), name: NSNotification.Name("hide"), object: nil)
         
         // add notification center to switch tab
-        let notificationName = Notification.Name("switchT")
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.switchT(notification:)), name: notificationName, object: nil)
-        print("hi")
+        let notificationName = Notification.Name("switchTab")
+                NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.switchTab(notification:)), name: notificationName, object: nil)
     }
     
-    func switchT(notification: Notification) {
-        print("switchT successfully called")
-//        print(notification.userInfo?["index"] as! String)
-        print(type(of:notification.userInfo))
-        
-        
-        
-//        if let info = notification.userInfo as NSDictionary as! [String : String] {
-//            //call method to change tab with index (I guess didSelectItem(atIndex: index) method)
-//            print("here index")
-//            print(info["index"])
-////            didSelectItem(atIndex: index)
-//        }
+    func switchTab(notification: Notification) {
+        // extract index from notification info
         guard let userInfo = notification.userInfo else {
-            print("noo")
             return
         }
-        print("hi")
         if let index = userInfo["index"] as? Int {
-            print("here!")
+            // move to selected index
             didSelectItem(atIndex: index)
         }
-        
-        
     }
     
     // MARK: CollectionView DataSources

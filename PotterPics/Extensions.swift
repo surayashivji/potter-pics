@@ -66,3 +66,5 @@ extension UserDefaults {
     }
     
 }
+
+// Gif Compatibility

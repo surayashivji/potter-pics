@@ -40,7 +40,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
 //        user = FIRAuth.auth()?.currentUser
 //        uid = user?.uid
-        print("PROFILE VIEW DID LOAD WOO")
 //        configureHeader()
 //        getUserPosts()
     }
@@ -69,17 +68,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         self.tableView.reloadData()
     }
-
-    @IBAction func testTab(_ sender: Any) {
-        
-        print("we are testing the tab switch..")
-        
-        let data:[String: Int] = ["index": 0] 
-        let notificationName = Notification.Name("switchT")
-//        NotificationCenter.default.post(name: notificationName, object: data)
-        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: data)
-        
-    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -88,7 +77,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func logoutUser(_ sender: UIButton) {
         let firebaseAuth = FIRAuth.auth()
         do {
-            print("signing out")
             try firebaseAuth?.signOut()
             FBSDKLoginManager().logOut()
             self.dismiss(animated: true, completion: nil)
@@ -163,15 +151,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.captionLabel.text = caption
         
         // profile image
-            let url = URL(string: profPic!)
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: url!)
-                DispatchQueue.main.async {
-                    let image = UIImage(data: data!)?.circle
-                    cell.smallProfileImg.contentMode = UIViewContentMode.scaleAspectFill
-                    cell.smallProfileImg.image = image
-                }
-            }
+//            let url = URL(string: profPic!)
+//            DispatchQueue.global().async {
+//                let data = try? Data(contentsOf: url!)
+//                DispatchQueue.main.async {
+//                    let image = UIImage(data: data!)?.circle
+//                    cell.smallProfileImg.contentMode = UIViewContentMode.scaleAspectFill
+//                    cell.smallProfileImg.image = image
+//                }
+//            }
         
         // post image
         let postURL = URL(string: downloadURL)

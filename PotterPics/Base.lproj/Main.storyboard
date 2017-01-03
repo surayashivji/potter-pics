@@ -217,7 +217,6 @@
                                         <connections>
                                             <outlet property="searchImageView" destination="5IU-0L-9r1" id="yvu-Mc-rRF"/>
                                             <outlet property="searchName" destination="DeM-3T-UxC" id="fpm-G8-Yyx"/>
-                                            <segue destination="ZQR-Og-P69" kind="show" id="sFL-Gx-LIL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -529,14 +528,6 @@
                                         </state>
                                         <connections>
                                             <action selector="logoutUser:" destination="ZQR-Og-P69" eventType="touchUpInside" id="TdT-ge-yPd"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PcR-st-Dqs">
-                                        <rect key="frame" x="153" y="116" width="80" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Test Switch"/>
-                                        <connections>
-                                            <action selector="testTab:" destination="ZQR-Og-P69" eventType="touchUpInside" id="OvN-hu-yWo"/>
                                         </connections>
                                     </button>
                                 </subviews>
