@@ -508,7 +508,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IrU-o0-B78">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="default.png" translatesAutoresizingMaskIntoConstraints="NO" id="IrU-o0-B78">
                                         <rect key="frame" x="32" y="31" width="110" height="110"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -628,6 +628,7 @@
     </scenes>
     <resources>
         <image name="background.jpg" width="1920" height="1080"/>
+        <image name="default.png" width="186" height="211"/>
         <image name="filterPlaceholder.png" width="585" height="585"/>
         <image name="nav_more_icon" width="24" height="24"/>
     </resources>

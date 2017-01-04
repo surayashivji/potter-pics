@@ -15,6 +15,7 @@ target 'PotterPics' do
   pod 'FBSDKShareKit'
   pod 'SwiftyJSON'
   pod 'SAConfettiView'
+  pod 'MBProgressHUD'
 
   target 'PotterPicsTests' do
     inherit! :search_paths

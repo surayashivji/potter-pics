@@ -4,6 +4,11 @@
 
 **PotterPics** is a Harry Potter themed iOS clone of Instagram using Firebase.
 
+## Installation
+Want to try the app out? Use this test Facebook account to login:
+username: Harry Potter
+password: voldemort123
+
 ## Walkthrough
 
 

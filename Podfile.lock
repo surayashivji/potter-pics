@@ -48,6 +48,7 @@ PODS:
   - GoogleSymbolUtilities (1.1.2)
   - GoogleUtilities (1.3.2):
     - GoogleSymbolUtilities (~> 1.1)
+  - MBProgressHUD (1.0.0)
   - SAConfettiView (0.1.8)
   - SwiftyJSON (3.1.1)
 
@@ -59,6 +60,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - MBProgressHUD
   - SAConfettiView
   - SwiftyJSON
 
@@ -78,9 +80,10 @@ SPEC CHECKSUMS:
   GoogleNetworkingUtilities: 3edd3a8161347494f2da60ea0deddc8a472d94cb
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SAConfettiView: c87031a2280659261b730fce3669fb10e73636ee
   SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
 
-PODFILE CHECKSUM: 65b065d06b2b08e59315fc63e0c07c1da7fb4438
+PODFILE CHECKSUM: 624bcab97af5740d1017796706818d36f4c4b618
 
 COCOAPODS: 1.1.0.beta.1

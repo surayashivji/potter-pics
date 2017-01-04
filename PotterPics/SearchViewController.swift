@@ -93,15 +93,17 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // let destinationVC = segue.destination as! ProfileViewController
-        // let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
-        // let user = filteredUsers[(indexPath?.row)!]
-        // destinationVC.searchUID = user.userID
+         let indexPath = self.tableView.indexPathForSelectedRow
+         let user = filteredUsers[(indexPath?.row)!]
         
         // go to profile tab
-        let data:[String: Int] = ["index": 3]
+        let data: [String: Int] = ["index": 3]
         let notificationName = Notification.Name("switchTab")
         NotificationCenter.default.post(name: notificationName, object: nil, userInfo: data)
+        
+        let userID: [String: String] = ["id": user.userID]
+        let profileName = Notification.Name("loadProfileData")
+        NotificationCenter.default.post(name: profileName, object: nil, userInfo: userID)
     }
     
     // MARK: - Search Bar Methods
