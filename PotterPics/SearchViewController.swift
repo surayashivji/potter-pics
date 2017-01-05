@@ -43,8 +43,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let profPicURL: String = json["profPicString"].stringValue
                     // create User, add to users array
                     let user = User(name: name, email: email, facebookID: fbID, userID: firebaseID, profPic: profPicURL)
-                    self.users.append(user)
-                    self.filteredUsers = self.users
+                    if let currentID = FIRAuth.auth()?.currentUser?.uid {
+                        if(firebaseID != currentID) {
+                            self.users.append(user)
+                            self.filteredUsers = self.users
+                        }
+                    }
                 }
             }
         })

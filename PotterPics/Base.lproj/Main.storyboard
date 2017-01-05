@@ -502,7 +502,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="154"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxi-sN-8HZ">
-                                        <rect key="frame" x="170" y="42" width="139" height="28"/>
+                                        <rect key="frame" x="170" y="42" width="183" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="23"/>
                                         <nil key="textColor"/>
@@ -531,18 +531,18 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kvG-x4-tut">
-                                        <rect key="frame" x="290" y="78" width="63" height="60"/>
+                                        <rect key="frame" x="290" y="73" width="63" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NGZ-Tf-A1Y">
-                                        <rect key="frame" x="170" y="108" width="112" height="33"/>
+                                        <rect key="frame" x="170" y="119" width="112" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zum-UJ-MeA">
-                                                <rect key="frame" x="0.0" y="1" width="112" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="112" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
-                                                <state key="normal" title="Return To Your Profile">
+                                                <state key="normal" title="Return To Profile">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -637,6 +637,7 @@
                     </view>
                     <connections>
                         <outlet property="houseCrest" destination="kvG-x4-tut" id="3QK-Yt-bhb"/>
+                        <outlet property="mainView" destination="VXT-xF-joA" id="IRK-1i-7iU"/>
                         <outlet property="nameLabel" destination="zxi-sN-8HZ" id="3GJ-C8-EKa"/>
                         <outlet property="numPostsLabel" destination="gPA-Us-hNT" id="fuW-XD-Mmf"/>
                         <outlet property="proileImageView" destination="IrU-o0-B78" id="sii-Pa-RHn"/>

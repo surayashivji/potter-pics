@@ -15,6 +15,7 @@ class User {
     var userID: String  // firebase ID
     var profPic: String // fb profile picture
     
+    
     init(name: String, email: String, facebookID: String, userID: String, profPic: String){
         self.name = name
         self.email = email

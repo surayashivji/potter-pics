@@ -13,7 +13,7 @@ import FBSDKLoginKit
 import FBSDKCoreKit
 
 class PostFeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     @IBOutlet weak var feedTableView: UITableView!
     
     var user: FIRUser?
@@ -28,7 +28,7 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         uid = user?.uid
         getAllPosts()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -108,12 +108,11 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         })
     }
-
+    
     
     func getInfo(id: String) {
         let usersReference = FIRDatabase.database().reference(withPath: "users").queryOrderedByKey().queryEqual(toValue: id)
         usersReference.observeSingleEvent(of: .value, with: { snapshot in
-            print("whats the num \(snapshot.childrenCount)") // should be 1
             if let dict = snapshot.value as? NSDictionary {
                 for item in dict {
                     let json = JSON(item.value)
@@ -121,10 +120,9 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
                     self.userName = name
                     let pic: String = json["profPicString"].stringValue
                     self.picURL = pic
-                    
                 }
             }
         })
     }
-
+    
 }

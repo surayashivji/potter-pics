@@ -21,6 +21,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     var userName: String!
     var picURL: String!
     
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var returnButton: UIButton!
     @IBOutlet weak var houseCrest: UIImageView!
     @IBOutlet weak var numPostsLabel: UILabel!
@@ -119,9 +120,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             let house = value?["house"] as! String
             let image = "\(house).png"
             self.houseCrest.image = UIImage(named: image)
-            if(!currentUser) {
-                // came from search
-            }
             
             // set num posts
             if self.posts.count == 1 {

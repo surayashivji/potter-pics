@@ -60,8 +60,6 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
             }else{
                 // store downloadURL
                 let downloadURL = metaData!.downloadURL()!.absoluteString
-                print("DOWNLOAD URL SUCCESS \(downloadURL)")
-                
                 let values: Dictionary<String, Any> = ["uid": uid, "caption": caption, "download_url": downloadURL]
                 
                 // store downloadURL at database
