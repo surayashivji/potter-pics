@@ -11,7 +11,6 @@ import UIKit
 
 class SearchTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var searchCountPosts: UILabel!
     @IBOutlet weak var searchImageView: UIImageView!
     @IBOutlet weak var searchName: UILabel!
     

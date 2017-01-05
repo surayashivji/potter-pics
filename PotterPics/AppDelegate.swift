@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if launchedBefore  {
             // app has been launched before, segue to login
             let houseValue = defaults.string(forKey: "userHouse")
-//            let houseValue = "Gryffindor"
                 var navCol = UIColor()
                 switch houseValue! {
                 case "Gryffindor":
@@ -48,12 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     break
             }
             defaults.setColor(color: navCol, forKey: "navCol")
-            print("HERE")
             initialViewController = storyboard.instantiateViewController(withIdentifier: "homeView") as! HomeViewController
 
         } else {
-            print("OKK")
-            
             // app has not been launched before, segue to house quiz to set defaults
             UserDefaults.standard.set(true, forKey: "launchedBefore")
             UserDefaults.standard.set(true, forKey: "pickHouse")
@@ -64,10 +60,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let randomHouse = houses[Int(randomNum)]
             defaults.set(randomHouse, forKey: "userHouse")
             defaults.synchronize()
-            
-            let houseValue = "Gryffindor"
             var navCol = UIColor()
-            switch houseValue {
+            switch randomHouse {
             case "Gryffindor":
                 navCol = Gryffindor.navigation
                 break

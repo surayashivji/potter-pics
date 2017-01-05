@@ -19,13 +19,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let defaults = UserDefaults.standard
-        
-        
         // set up background video
         self.cloudsVideo = BackgroundVideo(on: self, withVideoURL: "IntroMusic.mp4")
 //        self.cloudsVideo?.setUpBackground()
-        self.view.backgroundColor = UIColor.black
+        self.view.backgroundColor = UIColor.purple
     }
     
     // login user via Facebook
@@ -68,7 +65,6 @@ class HomeViewController: UIViewController {
                             }
                             let usersReference = ref.child("users").child(uid)
                             
-                            // perform Facebook graph request to get the user data that just logged in so we can assign this stuff to our Firebase database:
                             let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
                             graphRequest.start(completionHandler: { (connection, result, error) -> Void in
                                 
@@ -77,19 +73,17 @@ class HomeViewController: UIViewController {
                                     print("Error: \(error)")
                                 } else {
                             
-                                    let data:[String:AnyObject] = result as! [String : AnyObject]
+                                    let data: [String:AnyObject] = result as! [String:AnyObject]
                                     
-                                    let userName:NSString = data["name"] as! NSString
-                                    let userEmail:NSString = data["email"] as! NSString
-                                    let userID:NSString = data["id"] as! NSString
-                                    let imgURLString = "http://graph.facebook.com/\(userID)/picture?type=large" as NSString
+                                    let userName:String = data["name"] as! String
+                                    let userEmail:String = data["email"] as! String
+                                    let userID:String = data["id"] as! String
+                                    let imgURLString = "http://graph.facebook.com/\(userID)/picture?type=large" as String
                                     
-                                    // save name and pic in defaults
                                     let defaults = UserDefaults.standard
-                                    defaults.set(String(imgURLString), forKey: "fbImgURL")
-                                    defaults.set(String(userName), forKey: "userName")
+                                    let houseValue = defaults.string(forKey: "userHouse")
                                     
-                                    let values = ["name": userName, "email": userEmail, "facebookID": userID, "profPicString": imgURLString]
+                                    let values = ["name": userName, "email": userEmail, "facebookID": userID, "profPicString": imgURLString, "house": houseValue]
                                     
                                     // update database with new user
                                     usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in

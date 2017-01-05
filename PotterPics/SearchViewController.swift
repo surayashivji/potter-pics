@@ -22,7 +22,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         self.searchBar.delegate = self
         getUsers()
-        filteredUsers = users
     }
     
     override func didReceiveMemoryWarning() {
