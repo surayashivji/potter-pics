@@ -101,7 +101,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             
             // set name label
             name = value?["name"] as! String
-            print("Current name for profile: \(name)")
             self.nameLabel.text = name
             
             profPicURL = value?["profPicString"] as! String

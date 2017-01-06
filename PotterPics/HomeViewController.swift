@@ -21,8 +21,8 @@ class HomeViewController: UIViewController {
         
         // set up background video
         self.cloudsVideo = BackgroundVideo(on: self, withVideoURL: "IntroMusic.mp4")
-//        self.cloudsVideo?.setUpBackground()
-        self.view.backgroundColor = UIColor.purple
+        self.cloudsVideo?.setUpBackground()
+//        self.view.backgroundColor = UIColor.purple
     }
     
     // login user via Facebook
@@ -31,10 +31,8 @@ class HomeViewController: UIViewController {
         // check that the user isn't already logged in
         if FBSDKAccessToken.current() != nil {
             // user logged in, segue to navigation controller
-            print("User already logged in")
             self.cloudsVideo?.pause()
             self.performSegue(withIdentifier: "mainNavSegue", sender: nil)
-
         } else {
             loginManager.logIn(withReadPermissions: self.facebookPermissions, from: self, handler: { (result, error) in
                 if (error != nil) {
@@ -58,7 +56,7 @@ class HomeViewController: UIViewController {
                         } else {
                             print("Successful Login with Firebase")
                             let ref = FIRDatabase.database().reference(fromURL: "https://potterpics-2bcbc.firebaseio.com")
-
+                            
                             // guard for user id
                             guard let uid = user?.uid else {
                                 return
@@ -72,7 +70,6 @@ class HomeViewController: UIViewController {
                                     // Process error
                                     print("Error: \(error)")
                                 } else {
-                            
                                     let data: [String:AnyObject] = result as! [String:AnyObject]
                                     
                                     let userName:String = data["name"] as! String
@@ -97,15 +94,14 @@ class HomeViewController: UIViewController {
                                     })
                                 }
                             })
-                        self.dismiss(animated: false, completion: nil)
-                        self.performSegue(withIdentifier: "mainNavSegue", sender: nil)
+                            self.dismiss(animated: false, completion: nil)
+                            self.performSegue(withIdentifier: "mainNavSegue", sender: nil)
                         }
                     }
                 }
             })
         }
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

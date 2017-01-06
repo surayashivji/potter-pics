@@ -25,19 +25,16 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
         imagePicker.delegate = self
         self.hideKeyboardWhenTappedAround()
         self.captionTextField.attributedPlaceholder = NSAttributedString(string: "Enter Caption",   attributes:[NSForegroundColorAttributeName: UIColor.white])
-
     }
     
     @IBAction func dismissKeyboard(_ sender: AnyObject) {
         sender.resignFirstResponder()
     }
 
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     @IBAction func postToFeed(_ sender: UIButton) {
         // post image to firebase storage
@@ -75,7 +72,7 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
             } else {
                 // store downloadURL
                 let downloadURL = metaData!.downloadURL()!.absoluteString
-                let values: Dictionary<String, Any> = ["uid": uid, "caption": caption, "download_url": downloadURL]
+                let values: Dictionary<String, Any> = ["uid": uid, "caption": caption ?? "", "download_url": downloadURL]
                 
                 // store downloadURL at database
                 let databaseRef = FIRDatabase.database().reference()
@@ -95,10 +92,7 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
         let usersRef = FIRDatabase.database().reference().child("users")
         let newCount = currentNumPosts + 1
         let values = ["postCount": newCount]
-        print("new post count \n ")
-        print(values["postCount"])
         usersRef.child(uid).updateChildValues(values)
-        print("updateD")
     }
     
     @IBAction func chooseFromRoll(_ sender: AnyObject) {
@@ -108,6 +102,7 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
     }
     
     @IBAction func takePhoto(_ sender: AnyObject) {
+        // check for simulator
         #if (arch(i386) || arch(x86_64)) && os(iOS)
             // alert
             let message: String = "Please run on a device to use the camera!"

@@ -26,7 +26,6 @@
 		639AB92F1DED1B7F003BEB0E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB92E1DED1B7F003BEB0E /* MainViewController.swift */; };
 		639AB9311DED1BCC003BEB0E /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB9301DED1BCC003BEB0E /* TabBar.swift */; };
 		639AB9331DED1BDA003BEB0E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB9321DED1BDA003BEB0E /* Extensions.swift */; };
-		639AB9351DED1BFD003BEB0E /* SettingsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB9341DED1BFD003BEB0E /* SettingsTable.swift */; };
 		639AB9371DED1C1E003BEB0E /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB9361DED1C1E003BEB0E /* GlobalVariables.swift */; };
 		639AB9391DED2007003BEB0E /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB9381DED2007003BEB0E /* ColorPalette.swift */; };
 		639AB93B1DED2AAD003BEB0E /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB93A1DED2AAD003BEB0E /* QuizViewController.swift */; };
@@ -97,7 +96,6 @@
 		639AB92E1DED1B7F003BEB0E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		639AB9301DED1BCC003BEB0E /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		639AB9321DED1BDA003BEB0E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		639AB9341DED1BFD003BEB0E /* SettingsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTable.swift; sourceTree = "<group>"; };
 		639AB9361DED1C1E003BEB0E /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		639AB9381DED2007003BEB0E /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		639AB93A1DED2AAD003BEB0E /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
@@ -262,7 +260,6 @@
 			children = (
 				63FE0AC61DF79A7800BF7113 /* FilterCollectionViewCell.swift */,
 				639AB9301DED1BCC003BEB0E /* TabBar.swift */,
-				639AB9341DED1BFD003BEB0E /* SettingsTable.swift */,
 				633919DA1DDD578800ABFF34 /* HomeButton.swift */,
 				63FE0A671DF55F4C00BF7113 /* SearchTableViewCell.swift */,
 				6358ADF11DF8C1C7007C7A25 /* PostFeedTableViewCell.swift */,
@@ -625,7 +622,6 @@
 				63FE0AC71DF79A7800BF7113 /* FilterCollectionViewCell.swift in Sources */,
 				63FE0AC11DF6FF9A00BF7113 /* PostViewController.swift in Sources */,
 				63FE0A591DF51BE300BF7113 /* FacebookService.swift in Sources */,
-				639AB9351DED1BFD003BEB0E /* SettingsTable.swift in Sources */,
 				633919D31DDD32F200ABFF34 /* HomeViewController.swift in Sources */,
 				63FE0A681DF55F4C00BF7113 /* SearchTableViewCell.swift in Sources */,
 				639AB9311DED1BCC003BEB0E /* TabBar.swift in Sources */,

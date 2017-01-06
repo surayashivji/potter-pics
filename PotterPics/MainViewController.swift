@@ -6,10 +6,9 @@
 //  Copyright © 2016 Suraya Shivji. All rights reserved.
 //
 
-
 import UIKit
 
-class MainViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SettingsDelegate, TabBarDelegate   {
+class MainViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, TabBarDelegate   {
     
     //MARK: Properties
     var navColor: UIColor!
@@ -37,13 +36,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         tb.delegate = self
         return tb
     }()
-    
-    lazy var settings: Settings = {
-        let st = Settings.init(frame: UIScreen.main.bounds)
-        st.delegate = self
-        return st
-    }()
-    
+
     let titleLabel: UILabel = {
         let tl = UILabel.init(frame: CGRect.init(x: 30, y: 17, width: 200, height: 30))
         tl.font = UIFont(name: "Avenir-Medium", size: 25)!
@@ -52,9 +45,11 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         return tl
     }()
     
+    class func updateNav() {
+    }
+    
     // MARK: Methods
     func customization()  {
-        
         // Collection View Customization
         self.collectionView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0)
         self.view.addSubview(self.collectionView)
@@ -64,7 +59,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         let defaults = UserDefaults.standard
         let navigationColor = defaults.colorForKey(key: "navCol")
 
-         self.navigationController?.view.backgroundColor = navigationColor
+        self.navigationController?.view.backgroundColor = navigationColor
         self.navigationController?.navigationItem.hidesBackButton = true
         self.navigationItem.hidesBackButton = true
         
@@ -79,8 +74,6 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         // Tab Bar
         self.view.addSubview(self.tabBar)
         
-        print("views initialized? \(self.viewsAreInitialized))")
-        
         // View Controllers init
         for title in self.items {
             let storyBoard = self.storyboard!
@@ -93,37 +86,15 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.viewsAreInitialized = true
     }
     
-    // MARK: Settings
-    @IBAction func handleMore(_ sender: AnyObject) {
-        if let window = UIApplication.shared.keyWindow {
-            window.addSubview(self.settings)
-            self.settings.animate()
-        }
-    }
-    
-    func hideBar(notification: NSNotification)  {
-        let state = notification.object as! Bool
-        self.navigationController?.setNavigationBarHidden(state, animated: true)
-    }
-    
     // MARK: Delegates implementation
     func didSelectItem(atIndex: Int) {
         self.collectionView.scrollRectToVisible(CGRect.init(origin: CGPoint.init(x: (self.view.bounds.width * CGFloat(atIndex)), y: 0), size: self.view.bounds.size), animated: true)
         
         }
-    
-    func hideSettingsView(status: Bool) {
-        if status == true {
-            self.settings.removeFromSuperview()
-        }
-    }
     override func viewDidLoad() {
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         super.viewDidLoad()
-        print("mainv iew controller loading in")
         customization()
-        didSelectItem(atIndex: 0)
-        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.hideBar(notification:)), name: NSNotification.Name("hide"), object: nil)
         
         // add notification center to switch tab
         let notificationName = Notification.Name("switchTab")

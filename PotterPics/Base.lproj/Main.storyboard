@@ -75,14 +75,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Dsc-ab-gBz">
-                        <barButtonItem key="rightBarButtonItem" image="nav_more_icon" id="7Tb-FT-jVs">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="handleMore:" destination="70H-vF-hfQ" id="42O-Rh-x1J"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Dsc-ab-gBz"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esx-fA-NlF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -511,7 +504,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="154"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxi-sN-8HZ">
-                                        <rect key="frame" x="170" y="42" width="183" height="28"/>
+                                        <rect key="frame" x="165" y="42" width="183" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="23"/>
                                         <nil key="textColor"/>
@@ -522,7 +515,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="# Posts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPA-Us-hNT">
-                                        <rect key="frame" x="170" y="78" width="96" height="22"/>
+                                        <rect key="frame" x="165" y="78" width="96" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                         <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -544,7 +537,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NGZ-Tf-A1Y">
-                                        <rect key="frame" x="170" y="119" width="112" height="22"/>
+                                        <rect key="frame" x="165" y="119" width="112" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zum-UJ-MeA">
@@ -665,6 +658,5 @@
         <image name="background.jpg" width="1920" height="1080"/>
         <image name="default.png" width="186" height="211"/>
         <image name="filterPlaceholder.png" width="585" height="585"/>
-        <image name="nav_more_icon" width="24" height="24"/>
     </resources>
 </document>

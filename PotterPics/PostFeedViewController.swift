@@ -91,7 +91,6 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         let uid = FIRAuth.auth()?.currentUser?.uid
         let ref = FIRDatabase.database().reference(withPath: "posts")
         ref.observeSingleEvent(of: .value, with: { snapshot in
-            print("COUNT \(snapshot.childrenCount)")
             if let dict = snapshot.value as? NSDictionary {
                 for item in dict {
                     let json = JSON(item.value)
