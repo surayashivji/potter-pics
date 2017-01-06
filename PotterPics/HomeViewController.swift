@@ -81,9 +81,10 @@ class HomeViewController: UIViewController {
                                     let imgURLString = "http://graph.facebook.com/\(userID)/picture?type=large" as String
                                     
                                     let defaults = UserDefaults.standard
-                                    let houseValue = defaults.string(forKey: "userHouse")
+                                    let houseValue = defaults.string(forKey: "userHouse")! as String
                                     
-                                    let values = ["name": userName, "email": userEmail, "facebookID": userID, "profPicString": imgURLString, "house": houseValue]
+                                    // initial # posts = 0
+                                    let values = ["name": userName, "email": userEmail, "facebookID": userID, "profPicString": imgURLString, "house": houseValue, "postCount": 4] as [String : Any]
                                     
                                     // update database with new user
                                     usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in

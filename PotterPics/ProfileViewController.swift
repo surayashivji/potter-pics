@@ -38,7 +38,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // set the UID so that we know if it's the current user
         if let currentUser = FIRAuth.auth()?.currentUser?.uid {
-            configureHeader(currentID: currentUser, currentUser: true)
+            configureHeader(currentID: currentUser)
+            getUserPosts(currentID: currentUser)
         }
         
         let profileName = Notification.Name("loadProfileData")
@@ -56,13 +57,19 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             let navigationColor = defaults.colorForKey(key: "navCol")
             self.returnView.backgroundColor = navigationColor
             self.returnView.isHidden = false
-            configureHeader(currentID: id, currentUser: false)
+            self.posts = []
+            configureHeader(currentID: id)
+            getUserPosts(currentID: id)
+            self.tableView.reloadData()
         }
     }
     
     @IBAction func returnToProfile(_ sender: Any) {
         if let currentUser = FIRAuth.auth()?.currentUser?.uid {
-            configureHeader(currentID: currentUser, currentUser: true)
+            configureHeader(currentID: currentUser)
+            self.posts = []
+            getUserPosts(currentID: currentUser)
+            self.tableView.reloadData()
             self.returnView.isHidden = true
         }
     }
@@ -84,7 +91,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    func configureHeader(currentID: String, currentUser: Bool) {
+    func configureHeader(currentID: String) {
         let uid = currentID
         var profPicURL: String = ""
         var name: String = "Name"
@@ -122,15 +129,30 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             self.houseCrest.image = UIImage(named: image)
             
             // set num posts
-            if self.posts.count == 1 {
-                self.numPostsLabel.text = "\(self.posts.count) Post"
-            } else {
-                self.numPostsLabel.text = "\(self.posts.count) Posts"
+            let usersRef = FIRDatabase.database().reference().child("users")
+            var currentNumPosts: Int?
+            usersRef.child(currentID).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                currentNumPosts = value?["postCount"] as? Int
+                if let posts = currentNumPosts {
+                    if posts == 1 {
+                        self.numPostsLabel.text = "\(posts) Post"
+                    } else {
+                        self.numPostsLabel.text = "\(posts) Posts"
+                    }
+                }
+            }) { (error) in
+                print(error.localizedDescription)
             }
             
         }) { (error) in
             print(error.localizedDescription)
         }
+    }
+    
+    func setNumPosts() {
+        
     }
     
     // MARK: Table View Methods
@@ -185,37 +207,27 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: Firebase Query Methods
     
     // get current user's posts
-    func getUserPosts() {
-        //        let uid = self.searchUID
-        //        let ref = FIRDatabase.database().reference(withPath: "posts").queryOrdered(byChild: "uid").queryEqual(toValue: uid)
-        //        ref.observeSingleEvent(of: .value, with: { snapshot in
-        //            self.updatePostCount(numPosts: String(snapshot.childrenCount))
-        //            if let dict = snapshot.value as? NSDictionary {
-        //                for item in dict {
-        //
-        //                    let json = JSON(item.value)
-        //                    let caption: String = json["caption"].stringValue
-        //                    let downloadURL: String = json["download_url"].stringValue
-        //
-        ////                    let defaults = UserDefaults.standard
-        ////                    let profPic = defaults.string(forKey: "fbImgURL")
-        ////                    let name = defaults.string(forKey: "userName")
-        //
-        ////                    let name = n
-        ////                    let profPic = self.picURL
-        //
-        //                    let name: String = json["name"].stringValue
-        //                    let profPic: String = json["profPicString"].stringValue
-        //
-        //                    let post = Post(uid: uid!, caption: caption, downloadURL: downloadURL, name: name, profPic: profPic)
-        //
-        ////                    let post = Post(uid: uid!, caption: caption, downloadURL: downloadURL, name: "Jenny Terando", profPic: "http://graph.facebook.com/1265035910223625/picture?type=large")
-        //                    self.posts.append(post)
-        //                    self.tableView.reloadData()
-        //                }
-        //            }
-        //        })
-        print("getting posts")
+    func getUserPosts(currentID: String) {
+        let uid = currentID
+        let ref = FIRDatabase.database().reference(withPath: "posts").queryOrdered(byChild: "uid").queryEqual(toValue: uid)
+        ref.observeSingleEvent(of: .value, with: { snapshot in
+            self.updatePostCount(numPosts: String(snapshot.childrenCount))
+            if let dict = snapshot.value as? NSDictionary {
+                for item in dict {
+                    let json = JSON(item.value)
+                    let caption: String = json["caption"].stringValue
+                    let downloadURL: String = json["download_url"].stringValue
+                    let name: String = json["name"].stringValue
+                    let profPic: String = json["profPicString"].stringValue
+                    
+                    let post = Post(uid: uid, caption: caption, downloadURL: downloadURL, name: name, profPic: profPic)
+                    
+                    //                    let post = Post(uid: uid!, caption: caption, downloadURL: downloadURL, name: "Jenny Terando", profPic: "http://graph.facebook.com/1265035910223625/picture?type=large")
+                    self.posts.append(post)
+//                    self.tableView.reloadData()
+                }
+            }
+        })
     }
     
     func updatePostCount(numPosts: String) {

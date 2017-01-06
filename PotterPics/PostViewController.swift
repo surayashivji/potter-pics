@@ -18,6 +18,7 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
     let imagePicker = UIImagePickerController()
     @IBOutlet weak var imagetoUpload: UIImageView!
     @IBOutlet weak var captionTextField: UITextField!
+    @IBOutlet weak var takePhotoButton: HomeButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,17 +26,18 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
         self.hideKeyboardWhenTappedAround()
         self.captionTextField.attributedPlaceholder = NSAttributedString(string: "Enter Caption",   attributes:[NSForegroundColorAttributeName: UIColor.white])
 
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func dismissKeyboard(_ sender: AnyObject) {
         sender.resignFirstResponder()
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     @IBAction func postToFeed(_ sender: UIButton) {
         // post image to firebase storage
@@ -44,11 +46,24 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
         
         let storage = FIRStorage.storage()
         let data = UIImagePNGRepresentation(postImage!)
+        
         // guard for user id
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {
             return
         }
         let photosRef = storage.reference().child("posts")
+        let usersRef = FIRDatabase.database().reference().child("users")
+        var currentNumPosts: Int?
+        // increase post count
+        usersRef.child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            currentNumPosts = value?["postCount"] as? Int
+            self.updateNumPosts(currentNumPosts: currentNumPosts!, uid: uid)
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
         let imageName = NSUUID().uuidString
         let photoRef = photosRef.child("\(uid)")
         
@@ -57,7 +72,7 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
                 print("there was an error")
                 print(error.localizedDescription)
                 return
-            }else{
+            } else {
                 // store downloadURL
                 let downloadURL = metaData!.downloadURL()!.absoluteString
                 let values: Dictionary<String, Any> = ["uid": uid, "caption": caption, "download_url": downloadURL]
@@ -76,6 +91,16 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
         self.captionTextField.text = ""
     }
     
+    func updateNumPosts(currentNumPosts: Int, uid: String) {
+        let usersRef = FIRDatabase.database().reference().child("users")
+        let newCount = currentNumPosts + 1
+        let values = ["postCount": newCount]
+        print("new post count \n ")
+        print(values["postCount"])
+        usersRef.child(uid).updateChildValues(values)
+        print("updateD")
+    }
+    
     @IBAction func chooseFromRoll(_ sender: AnyObject) {
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
@@ -83,10 +108,18 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
     }
     
     @IBAction func takePhoto(_ sender: AnyObject) {
+        #if (arch(i386) || arch(x86_64)) && os(iOS)
+            // alert
+            let message: String = "Please run on a device to use the camera!"
+            let alertView = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
+            alertView.addAction(UIAlertAction(title: "Ok ", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alertView, animated: true, completion: nil)
+        #else
         if let modalVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModalViewController") as? CameraViewController {
             modalVC.delegate = self
             present(modalVC, animated: true, completion: nil)
         }
+        #endif
     }
     
     // MARK: - UIImagePickerControllerDelegate Methods

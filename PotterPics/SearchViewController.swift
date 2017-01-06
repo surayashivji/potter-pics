@@ -18,7 +18,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var users : [User] = []
     
     override func viewDidLoad() {
-        print("SEARCH VIEW DID LOAD")
         super.viewDidLoad()
         self.searchBar.delegate = self
         getUsers()
@@ -41,12 +40,15 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let fbID: String = json["facebookID"].stringValue
                     let firebaseID: String = item.key as! String
                     let profPicURL: String = json["profPicString"].stringValue
+                    let numPosts: Int = json["postCount"].intValue
+                    
                     // create User, add to users array
-                    let user = User(name: name, email: email, facebookID: fbID, userID: firebaseID, profPic: profPicURL)
+                    let user = User(name: name, email: email, facebookID: fbID, userID: firebaseID, profPic: profPicURL, postCount: numPosts)
                     if let currentID = FIRAuth.auth()?.currentUser?.uid {
                         if(firebaseID != currentID) {
                             self.users.append(user)
                             self.filteredUsers = self.users
+                            self.tableView.reloadData()
                         }
                     }
                 }
@@ -86,18 +88,20 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 cell.searchImageView.image = image
             }
         }
+        // set # of posts
+        cell.numPostsLabel.text = user.postCount == 1 ? "\(user.postCount) Post" : "\(user.postCount) Posts"
+        
         cell.searchName.text = name
         return cell
     }
-    
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.selectionStyle = UITableViewCellSelectionStyle.none
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         let indexPath = self.tableView.indexPathForSelectedRow
-         let user = filteredUsers[(indexPath?.row)!]
+        let indexPath = self.tableView.indexPathForSelectedRow
+        let user = filteredUsers[(indexPath?.row)!]
         
         // go to profile tab
         let data: [String: Int] = ["index": 3]
@@ -108,7 +112,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let profileName = Notification.Name("loadProfileData")
         NotificationCenter.default.post(name: profileName, object: nil, userInfo: userID)
     }
-    
     // MARK: - Search Bar Methods
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // search bar text changed
@@ -126,7 +129,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             })
         }
-        self.tableView.reloadData()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
