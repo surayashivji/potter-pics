@@ -44,16 +44,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SAConfettiView-SAConfettiView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>SAConfettiView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,17 +52,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0DE2A52593DFAFD596FA87BB4A7A6EC5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>2E303C3CE7513908EE880D9CA833AFAE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>30D7FCF8072F5D59AE1C98D94F9A6EC9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>30FB7954FDFB8349CD8225C607CF88F0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,11 +82,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A9627C3353EF52485A269AB411159550</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>D30773D0BBD4340DB037F15A69FD567F</key>
 		<dict>
 			<key>primary</key>
@@ -107,12 +92,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E66EC0BE24C20A285FE7D0C24BB725D6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E686A6A1AE9E0CB56609961C3BA3C953</key>
+		<key>EE172DABB9E4DC4E85DC731E49FE9134</key>
 		<dict>
 			<key>primary</key>
 			<true/>

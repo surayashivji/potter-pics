@@ -15,7 +15,7 @@ import FBSDKCoreKit
 
 class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var user: FIRUser?
+    var user: User?
     var ref: FIRDatabaseReference! = FIRDatabase.database().reference()
     var posts = [Post]()
     var userName: String!
@@ -79,6 +79,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    func buildUser(id: String) {
+        
+    }
+    
     @IBAction func logoutUser(_ sender: UIButton) {
         let firebaseAuth = FIRAuth.auth()
         do {
@@ -96,13 +100,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         var profPicURL: String = ""
         var name: String = "Name"
         ref.child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            
             let value = snapshot.value as? NSDictionary
             
             // set name label
             name = value?["name"] as! String
             self.nameLabel.text = name
-            
             profPicURL = value?["profPicString"] as! String
             
             // set image
@@ -144,14 +146,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             }) { (error) in
                 print(error.localizedDescription)
             }
-            
         }) { (error) in
             print(error.localizedDescription)
         }
-    }
-    
-    func setNumPosts() {
-        
     }
     
     // MARK: Table View Methods
@@ -179,16 +176,18 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.captionLabel.text = caption
         
         // profile image
-        //            let url = URL(string: profPic!)
-        //            DispatchQueue.global().async {
-        //                let data = try? Data(contentsOf: url!)
-        //                DispatchQueue.main.async {
-        //                    let image = UIImage(data: data!)?.circle
-        //                    cell.smallProfileImg.contentMode = UIViewContentMode.scaleAspectFill
-        //                    cell.smallProfileImg.image = image
-        //                }
-        //            }
-        
+        DispatchQueue.global().async {
+            let url = URL(string: profPic!)
+            if let picURL = url {
+                let data = try? Data(contentsOf: url!)
+                DispatchQueue.main.async {
+                    let image = UIImage(data: data!)?.circle
+                    cell.smallProfileImg.contentMode = UIViewContentMode.scaleAspectFill
+                    cell.smallProfileImg.image = image
+                }
+            }
+        }
+    
         // post image
         let postURL = URL(string: downloadURL)
         DispatchQueue.global().async {
@@ -199,7 +198,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 cell.postImage.image = image
             }
         }
-        
         return cell
     }
     
@@ -223,7 +221,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                     
                     //                    let post = Post(uid: uid!, caption: caption, downloadURL: downloadURL, name: "Jenny Terando", profPic: "http://graph.facebook.com/1265035910223625/picture?type=large")
                     self.posts.append(post)
-//                    self.tableView.reloadData()
+                    //                    self.tableView.reloadData()
                 }
             }
         })

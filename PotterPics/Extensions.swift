@@ -48,7 +48,6 @@ extension UIViewController {
 
 // store colors on user defaults
 extension UserDefaults {
-    
     func colorForKey(key: String) -> UIColor? {
         var color: UIColor?
         if let colorData = data(forKey: key) {
@@ -64,7 +63,4 @@ extension UserDefaults {
         }
         set(colorData, forKey: key)
     }
-    
 }
-
-// Gif Compatibility

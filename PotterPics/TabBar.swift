@@ -42,7 +42,6 @@ class TabBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! TabBarCellCollectionViewCell
         cell.icon.image = UIImage.init(named: darkItems[indexPath.row])
         
-        
         if indexPath.row == 0 {
             cell.icon.image = UIImage.init(named: items[0])
             }
@@ -110,7 +109,6 @@ class TabBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICo
         fatalError("init(coder:) has not been implemented")
     }
 }
-
 
 // TabBarCell Class
 class TabBarCellCollectionViewCell: UICollectionViewCell {

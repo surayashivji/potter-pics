@@ -11,6 +11,7 @@ import Firebase
 import SwiftyJSON
 import FBSDKLoginKit
 import FBSDKCoreKit
+import MBProgressHUD
 
 class PostFeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -24,6 +25,11 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = ColorPalette.white
+        
+        // refresh control
+        let refreshControl = UIRefreshControl()
+//        refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
+        
         user = FIRAuth.auth()?.currentUser
         uid = user?.uid
         getAllPosts()
@@ -86,7 +92,7 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-    // MARK: Queries
+    // MARK: Queries  
     func getAllPosts() {
         let uid = FIRAuth.auth()?.currentUser?.uid
         let ref = FIRDatabase.database().reference(withPath: "posts")

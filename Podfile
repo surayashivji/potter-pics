@@ -14,7 +14,6 @@ target 'PotterPics' do
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
   pod 'SwiftyJSON'
-  pod 'SAConfettiView'
   pod 'MBProgressHUD'
 
   target 'PotterPicsTests' do

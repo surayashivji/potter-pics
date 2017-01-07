@@ -22,7 +22,6 @@ class HomeViewController: UIViewController {
         // set up background video
         self.cloudsVideo = BackgroundVideo(on: self, withVideoURL: "IntroMusic.mp4")
         self.cloudsVideo?.setUpBackground()
-//        self.view.backgroundColor = UIColor.purple
     }
     
     // login user via Facebook
@@ -54,7 +53,6 @@ class HomeViewController: UIViewController {
                             // handle error
                             print(error ?? "Error")
                         } else {
-                            print("Successful Login with Firebase")
                             let ref = FIRDatabase.database().reference(fromURL: "https://potterpics-2bcbc.firebaseio.com")
                             
                             // guard for user id
@@ -76,7 +74,7 @@ class HomeViewController: UIViewController {
                                     let userEmail:String = data["email"] as! String
                                     let userID:String = data["id"] as! String
                                     let imgURLString = "http://graph.facebook.com/\(userID)/picture?type=large" as String
-                                    
+        
                                     let defaults = UserDefaults.standard
                                     let houseValue = defaults.string(forKey: "userHouse")! as String
                                     

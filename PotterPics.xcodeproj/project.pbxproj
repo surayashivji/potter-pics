@@ -28,7 +28,6 @@
 		639AB9331DED1BDA003BEB0E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB9321DED1BDA003BEB0E /* Extensions.swift */; };
 		639AB9371DED1C1E003BEB0E /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB9361DED1C1E003BEB0E /* GlobalVariables.swift */; };
 		639AB9391DED2007003BEB0E /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB9381DED2007003BEB0E /* ColorPalette.swift */; };
-		639AB93B1DED2AAD003BEB0E /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639AB93A1DED2AAD003BEB0E /* QuizViewController.swift */; };
 		63EF63751DF85C1F00727FAD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EF63741DF85C1F00727FAD /* Post.swift */; };
 		63F4EB3C1DE689E5001832F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63F4EB3B1DE689E5001832F4 /* GoogleService-Info.plist */; };
 		63FE0A591DF51BE300BF7113 /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE0A581DF51BE300BF7113 /* FacebookService.swift */; };
@@ -37,7 +36,6 @@
 		63FE0A6A1DF5F08A00BF7113 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE0A691DF5F08A00BF7113 /* User.swift */; };
 		63FE0AB01DF6D03800BF7113 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE0AAF1DF6D03800BF7113 /* ProfileViewController.swift */; };
 		63FE0AB21DF6D93E00BF7113 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 63FE0AB11DF6D93E00BF7113 /* default.png */; };
-		63FE0AB41DF6E1B300BF7113 /* sortinghat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 63FE0AB31DF6E1B300BF7113 /* sortinghat.gif */; };
 		63FE0ABA1DF6F0F000BF7113 /* Gryffindor.png in Resources */ = {isa = PBXBuildFile; fileRef = 63FE0AB61DF6F0F000BF7113 /* Gryffindor.png */; };
 		63FE0ABB1DF6F0F000BF7113 /* Slytherin.png in Resources */ = {isa = PBXBuildFile; fileRef = 63FE0AB71DF6F0F000BF7113 /* Slytherin.png */; };
 		63FE0ABC1DF6F0F000BF7113 /* Ravenclaw.png in Resources */ = {isa = PBXBuildFile; fileRef = 63FE0AB81DF6F0F000BF7113 /* Ravenclaw.png */; };
@@ -98,7 +96,6 @@
 		639AB9321DED1BDA003BEB0E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		639AB9361DED1C1E003BEB0E /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		639AB9381DED2007003BEB0E /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
-		639AB93A1DED2AAD003BEB0E /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		63EF63741DF85C1F00727FAD /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		63F4EB3B1DE689E5001832F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		63FE0A581DF51BE300BF7113 /* FacebookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
@@ -107,7 +104,6 @@
 		63FE0A691DF5F08A00BF7113 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		63FE0AAF1DF6D03800BF7113 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		63FE0AB11DF6D93E00BF7113 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
-		63FE0AB31DF6E1B300BF7113 /* sortinghat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sortinghat.gif; sourceTree = "<group>"; };
 		63FE0AB61DF6F0F000BF7113 /* Gryffindor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gryffindor.png; sourceTree = "<group>"; };
 		63FE0AB71DF6F0F000BF7113 /* Slytherin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slytherin.png; sourceTree = "<group>"; };
 		63FE0AB81DF6F0F000BF7113 /* Ravenclaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ravenclaw.png; sourceTree = "<group>"; };
@@ -228,7 +224,6 @@
 			children = (
 				63FE0AB11DF6D93E00BF7113 /* default.png */,
 				633919D01DDD2F1000ABFF34 /* IntroMusic.mp4 */,
-				63FE0AB31DF6E1B300BF7113 /* sortinghat.gif */,
 				63FE0AC21DF78E5B00BF7113 /* filterPlaceholder.png */,
 				63FE0AB61DF6F0F000BF7113 /* Gryffindor.png */,
 				63FE0AB71DF6F0F000BF7113 /* Slytherin.png */,
@@ -246,7 +241,6 @@
 				63FE0AC41DF78E9900BF7113 /* CameraViewController.swift */,
 				633919D21DDD32F200ABFF34 /* HomeViewController.swift */,
 				639AB92E1DED1B7F003BEB0E /* MainViewController.swift */,
-				639AB93A1DED2AAD003BEB0E /* QuizViewController.swift */,
 				63FE0A651DF55F2C00BF7113 /* SearchViewController.swift */,
 				63FE0AAF1DF6D03800BF7113 /* ProfileViewController.swift */,
 				6390A94C1DF8C0E60050E75C /* PostFeedViewController.swift */,
@@ -435,7 +429,6 @@
 				63FE0AB21DF6D93E00BF7113 /* default.png in Resources */,
 				63FE0ABA1DF6F0F000BF7113 /* Gryffindor.png in Resources */,
 				63F4EB3C1DE689E5001832F4 /* GoogleService-Info.plist in Resources */,
-				63FE0AB41DF6E1B300BF7113 /* sortinghat.gif in Resources */,
 				63FE0ABD1DF6F0F000BF7113 /* Hufflepuff.png in Resources */,
 				63FE0ABC1DF6F0F000BF7113 /* Ravenclaw.png in Resources */,
 				633919D11DDD2F1000ABFF34 /* IntroMusic.mp4 in Resources */,
@@ -610,7 +603,6 @@
 				639AB92D1DED1B4C003BEB0E /* NavVC.swift in Sources */,
 				6358ADF21DF8C1C7007C7A25 /* PostFeedTableViewCell.swift in Sources */,
 				633919A21DDD2B5400ABFF34 /* AppDelegate.swift in Sources */,
-				639AB93B1DED2AAD003BEB0E /* QuizViewController.swift in Sources */,
 				6390A94D1DF8C0E60050E75C /* PostFeedViewController.swift in Sources */,
 				63FE0AB01DF6D03800BF7113 /* ProfileViewController.swift in Sources */,
 				639AB9331DED1BDA003BEB0E /* Extensions.swift in Sources */,

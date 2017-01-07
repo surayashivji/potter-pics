@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import MBProgressHUD
 
 class PostViewController: UIViewController, ModalViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -37,6 +38,8 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
     }
     
     @IBAction func postToFeed(_ sender: UIButton) {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        
         // post image to firebase storage
         let postImage = self.imagetoUpload.image
         let caption = self.captionTextField.text
@@ -64,7 +67,7 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
         let imageName = NSUUID().uuidString
         let photoRef = photosRef.child("\(uid)")
         
-        photoRef.child("\(imageName)").put(data!, metadata: nil){(metaData,error) in
+        photoRef.child("\(imageName)").put(data!, metadata: nil) { (metaData,error) in
             if let error = error {
                 print("there was an error")
                 print(error.localizedDescription)
@@ -80,6 +83,8 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
                 path.setValue(values) { (error, ref) -> Void in
                     if error != nil {
                         print("error saving post in db")
+                    } else {
+                        MBProgressHUD.hide(for: self.view, animated: true)
                     }
                 }
             }
