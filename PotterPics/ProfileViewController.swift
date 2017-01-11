@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     var posts = [Post]()
     var userName: String!
     var picURL: String!
+    typealias CompletionHandler = (_ success:Bool) -> Void
     
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var returnButton: UIButton!
@@ -38,8 +39,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // set the UID so that we know if it's the current user
         if let currentUser = FIRAuth.auth()?.currentUser?.uid {
-            configureHeader(currentID: currentUser)
-            getUserPosts(currentID: currentUser)
+            configureHeader(currentID: currentUser, completionHandler: { (success) -> Void in
+                if success {
+                    // header success
+                    getUserPosts(currentID: currentUser)
+                } else {
+                    // header fail
+                    print("Failure downloading header!")
+                }
+            })
         }
         
         let profileName = Notification.Name("loadProfileData")
@@ -58,18 +66,31 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             self.returnView.backgroundColor = navigationColor
             self.returnView.isHidden = false
             self.posts = []
-            configureHeader(currentID: id)
-            getUserPosts(currentID: id)
-            self.tableView.reloadData()
+            configureHeader(currentID: id, completionHandler: { (success) -> Void in
+                if success {
+                    // header success
+                    getUserPosts(currentID: id)
+                } else {
+                    // download fail
+                    print("Failure setting up header")
+                }
+            })
         }
     }
     
     @IBAction func returnToProfile(_ sender: Any) {
         if let currentUser = FIRAuth.auth()?.currentUser?.uid {
-            configureHeader(currentID: currentUser)
-            self.posts = []
-            getUserPosts(currentID: currentUser)
-            self.tableView.reloadData()
+            configureHeader(currentID: currentUser,  completionHandler: { (success) -> Void in
+                if success {
+                    // header success
+                    print("0 - return to profile ")
+                    self.posts.removeAll()
+                    getUserPosts(currentID: currentUser)
+                } else {
+                    // download fail
+                    print("Failure to load header info")
+                }
+            })
             self.returnView.isHidden = true
         }
     }
@@ -77,10 +98,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func buildUser(id: String) {
-        
     }
     
     @IBAction func logoutUser(_ sender: UIButton) {
@@ -95,10 +112,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    func configureHeader(currentID: String) {
+    func configureHeader(currentID: String, completionHandler: CompletionHandler) {
         let uid = currentID
         var profPicURL: String = ""
         var name: String = "Name"
+        var flag: Bool = false
         ref.child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             
@@ -144,11 +162,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                     }
                 }
             }) { (error) in
+                flag = false
                 print(error.localizedDescription)
             }
         }) { (error) in
+            flag = false
             print(error.localizedDescription)
         }
+        flag = true
+        completionHandler(flag)
     }
     
     // MARK: Table View Methods
@@ -176,17 +198,17 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.captionLabel.text = caption
         
         // profile image
-        DispatchQueue.global().async {
-            let url = URL(string: profPic!)
-            if let picURL = url {
-                let data = try? Data(contentsOf: url!)
-                DispatchQueue.main.async {
-                    let image = UIImage(data: data!)?.circle
-                    cell.smallProfileImg.contentMode = UIViewContentMode.scaleAspectFill
-                    cell.smallProfileImg.image = image
-                }
-            }
-        }
+//        DispatchQueue.global().async {
+//            let url = URL(string: profPic!)
+//            if let picURL = url {
+//                let data = try? Data(contentsOf: picURL)
+//                DispatchQueue.main.async {
+//                    let image = UIImage(data: data!)?.circle
+//                    cell.smallProfileImg.contentMode = UIViewContentMode.scaleAspectFill
+//                    cell.smallProfileImg.image = image
+//                }
+//            }
+//        }
     
         // post image
         let postURL = URL(string: downloadURL)
@@ -221,10 +243,14 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                     
                     //                    let post = Post(uid: uid!, caption: caption, downloadURL: downloadURL, name: "Jenny Terando", profPic: "http://graph.facebook.com/1265035910223625/picture?type=large")
                     self.posts.append(post)
-                    //                    self.tableView.reloadData()
+                    print(self.posts.count)
+                    self.tableView.reloadData()
                 }
             }
         })
+//        print("about to reload count: ")
+//        print(self.posts.count)
+//        self.tableView.reloadData()
     }
     
     func updatePostCount(numPosts: String) {

@@ -92,7 +92,7 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-    // MARK: Queries  
+    // MARK: Queries
     func getAllPosts() {
         let uid = FIRAuth.auth()?.currentUser?.uid
         let ref = FIRDatabase.database().reference(withPath: "posts")
@@ -114,7 +114,6 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         })
     }
     
-    
     func getInfo(id: String) {
         let usersReference = FIRDatabase.database().reference(withPath: "users").queryOrderedByKey().queryEqual(toValue: id)
         usersReference.observeSingleEvent(of: .value, with: { snapshot in
@@ -129,5 +128,4 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         })
     }
-    
 }
