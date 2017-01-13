@@ -1,4 +1,19 @@
 PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -52,6 +67,7 @@ PODS:
   - SwiftyJSON (3.1.1)
 
 DEPENDENCIES:
+  - AFNetworking
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
@@ -63,6 +79,7 @@ DEPENDENCIES:
   - SwiftyJSON
 
 SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
   FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
@@ -81,6 +98,6 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
 
-PODFILE CHECKSUM: 078003db6346de68bda97d51f8c4592c83c70e20
+PODFILE CHECKSUM: d1bf8a38f08912af620d02d775c2fbe470b76985
 
 COCOAPODS: 1.1.0.beta.1

@@ -5,11 +5,10 @@
 **PotterPics** is a Harry Potter themed iOS clone of Instagram using Firebase.
 
 ## Installation
-####Test Facebook account:
-<p style="color:#7f7f7f">
-<i>Email: <b>harry_cpmpqmi_potter@tfbnw.net</b> <br>
+####Test Facebook Account:
+<i>Email: **harry_cpmpqmi_potter@tfbnw.net** <br>
 Password: <b>voldemort123</b></i>
-</p>
+
 
 ## Walkthrough
 <img src='http://i.imgur.com/1PcHS5u.gif' title='Home Screen' width='' alt='Home Screen'/>
@@ -23,3 +22,4 @@ Password: <b>voldemort123</b></i>
 - [Firebase] (https://firebase.google.com/)
 - [SwiftyJSON] (https://github.com/SwiftyJSON/SwiftyJSON)
 - [MBProgressHUD] (https://github.com/jdg/MBProgressHUD)
+- [AFNetworking](https://github.com/AFNetworking/AFNetworking)

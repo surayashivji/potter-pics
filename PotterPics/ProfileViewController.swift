@@ -162,26 +162,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             // set num posts
             let usersRef = FIRDatabase.database().reference().child("users")
             var currentNumPosts: Int?
-//            usersRef.child(currentID).observeSingleEvent(of: .value, with: { (snapshot) in
-//                // Get user value
-//                let value = snapshot.value as? NSDictionary
-//                currentNumPosts = value?["postCount"] as? Int
-//                if let posts = currentNumPosts {
-//                    if posts == 1 {
-//                        self.numPostsLabel.text = "\(posts) Post"
-//                    } else {
-//                        self.numPostsLabel.text = "\(posts) Posts"
-//                    }
-//                }
-//            }) { (error) in
-//                flag = false
-//                print(error.localizedDescription)
-//            }
-                                if postCount == 1 {
-                                    self.numPostsLabel.text = "\(postCount) Post"
-                                } else {
-                                    self.numPostsLabel.text = "\(postCount) Posts"
-                                }
+            if postCount == 1 {
+                self.numPostsLabel.text = "\(postCount) Post"
+            } else {
+                self.numPostsLabel.text = "\(postCount) Posts"
+            }
         }) { (error) in
             flag = false
             print(error.localizedDescription)
@@ -208,6 +193,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         let name = self.user?.name
         
         // post image
+        cell.postImage.image = nil
         let postURL = URL(string: downloadURL)
         DispatchQueue.global().async {
             let data = try? Data(contentsOf: postURL!)
@@ -264,8 +250,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.tableView.reloadData()
             }
         })
-//        print("about to reload count: ")
-//        self.tableView.reloadData()
     }
     
     func updatePostCount(numPosts: String) {
