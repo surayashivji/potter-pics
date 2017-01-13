@@ -85,6 +85,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                     // header success
                     print("0 - return to profile ")
                     self.posts.removeAll()
+                    self.tableView.reloadData()
                     getUserPosts(currentID: currentUser)
                 } else {
                     // download fail
@@ -116,14 +117,25 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         let uid = currentID
         var profPicURL: String = ""
         var name: String = "Name"
+        var email: String = "Email"
+        var fbID: String = ""
         var flag: Bool = false
+        var postCount: Int = 0
         ref.child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             
-            // set name label
+            // extract values
             name = value?["name"] as! String
-            self.nameLabel.text = name
             profPicURL = value?["profPicString"] as! String
+            email = value?["email"] as! String
+            fbID = value?["facebookID"] as! String
+            postCount = value?["postCount"] as! Int
+            
+            // user: name, email, facebookID, userID, profPic, postCount
+            self.user = User(name: name, email: email, facebookID: fbID, userID: currentID, profPic: profPicURL, postCount: postCount)
+            
+            // set name label
+            self.nameLabel.text = name
             
             // set image
             if profPicURL.characters.count > 0 {
@@ -150,21 +162,26 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             // set num posts
             let usersRef = FIRDatabase.database().reference().child("users")
             var currentNumPosts: Int?
-            usersRef.child(currentID).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                currentNumPosts = value?["postCount"] as? Int
-                if let posts = currentNumPosts {
-                    if posts == 1 {
-                        self.numPostsLabel.text = "\(posts) Post"
-                    } else {
-                        self.numPostsLabel.text = "\(posts) Posts"
-                    }
-                }
-            }) { (error) in
-                flag = false
-                print(error.localizedDescription)
-            }
+//            usersRef.child(currentID).observeSingleEvent(of: .value, with: { (snapshot) in
+//                // Get user value
+//                let value = snapshot.value as? NSDictionary
+//                currentNumPosts = value?["postCount"] as? Int
+//                if let posts = currentNumPosts {
+//                    if posts == 1 {
+//                        self.numPostsLabel.text = "\(posts) Post"
+//                    } else {
+//                        self.numPostsLabel.text = "\(posts) Posts"
+//                    }
+//                }
+//            }) { (error) in
+//                flag = false
+//                print(error.localizedDescription)
+//            }
+                                if postCount == 1 {
+                                    self.numPostsLabel.text = "\(postCount) Post"
+                                } else {
+                                    self.numPostsLabel.text = "\(postCount) Posts"
+                                }
         }) { (error) in
             flag = false
             print(error.localizedDescription)
@@ -186,10 +203,20 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as! ProfileTableViewCell
         let post = self.posts[indexPath.row]
         let caption = post.caption
-        let uid = post.uid
         let downloadURL = post.downloadURL
-        let profPic = self.picURL
-        let name = self.userName
+        let profPic = self.user?.profPic
+        let name = self.user?.name
+        
+        // post image
+        let postURL = URL(string: downloadURL)
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: postURL!)
+            DispatchQueue.main.async {
+                let image = UIImage(data: data!)
+                cell.postImage.contentMode = UIViewContentMode.scaleToFill
+                cell.postImage.image = image
+            }
+        }
         
         // user's name
         cell.nameLabel.text = name
@@ -198,26 +225,17 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.captionLabel.text = caption
         
         // profile image
-//        DispatchQueue.global().async {
-//            let url = URL(string: profPic!)
-//            if let picURL = url {
-//                let data = try? Data(contentsOf: picURL)
-//                DispatchQueue.main.async {
-//                    let image = UIImage(data: data!)?.circle
-//                    cell.smallProfileImg.contentMode = UIViewContentMode.scaleAspectFill
-//                    cell.smallProfileImg.image = image
-//                }
-//            }
-//        }
-    
-        // post image
-        let postURL = URL(string: downloadURL)
         DispatchQueue.global().async {
-            let data = try? Data(contentsOf: postURL!)
-            DispatchQueue.main.async {
-                let image = UIImage(data: data!)
-                cell.postImage.contentMode = UIViewContentMode.scaleAspectFill
-                cell.postImage.image = image
+            if let urlString = profPic {
+                if let picURL = URL(string: urlString) {
+                    if let data = try? Data(contentsOf: picURL) {
+                        DispatchQueue.main.async {
+                            let image = UIImage(data: data)?.circle
+                            cell.smallProfileImg.contentMode = UIViewContentMode.scaleAspectFill
+                            cell.smallProfileImg.image = image
+                        }
+                    }
+                }
             }
         }
         return cell
@@ -241,15 +259,12 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                     
                     let post = Post(uid: uid, caption: caption, downloadURL: downloadURL, name: name, profPic: profPic)
                     
-                    //                    let post = Post(uid: uid!, caption: caption, downloadURL: downloadURL, name: "Jenny Terando", profPic: "http://graph.facebook.com/1265035910223625/picture?type=large")
                     self.posts.append(post)
-                    print(self.posts.count)
-                    self.tableView.reloadData()
                 }
+                self.tableView.reloadData()
             }
         })
 //        print("about to reload count: ")
-//        print(self.posts.count)
 //        self.tableView.reloadData()
     }
     
