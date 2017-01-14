@@ -84,13 +84,15 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
                     if error != nil {
                         print("error saving post in db")
                     } else {
+                        // reset caption field
+                        self.captionTextField.text = ""
+                        // reset placeholder image
+                        self.imagetoUpload.image = UIImage(named: "filterPlaceholder")
                         MBProgressHUD.hide(for: self.view, animated: true)
                     }
                 }
             }
         }
-        // reset caption field
-        self.captionTextField.text = ""
     }
     
     func updateNumPosts(currentNumPosts: Int, uid: String) {

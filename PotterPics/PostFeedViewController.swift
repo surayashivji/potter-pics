@@ -18,7 +18,6 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var feedTableView: UITableView!
 
-//    typealias CompletionHandler = (_ success:Bool) -> Void
     var feeds = [Post]()
     
     override func viewDidLoad() {
@@ -61,8 +60,6 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         
         // user's name
         cell.nameLabel.text = name
-        print("PLS SOMETHING ")
-        print(name)
         
         // caption
         cell.captionLabel.text = caption
@@ -70,8 +67,6 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         // post image
         cell.postImage.image = nil
         if let postURL = URL(string: downloadURL) {
-            print("SMETHING AGAIN?   ")
-            print(postURL)
             let postRequest = URLRequest(url: postURL)
             cell.postImage.setImageWith(postRequest, placeholderImage: nil, success:
                 { (imageRequest, imageResponse, image) in

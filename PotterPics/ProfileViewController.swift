@@ -42,7 +42,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             configureHeader(currentID: currentUser, completionHandler: { (success) -> Void in
                 if success {
                     // header success
-                    getUserPosts(currentID: currentUser, refreshing: false, refreshControl: nil)
+                    self.getUserPosts(currentID: currentUser, refreshing: false, refreshControl: nil)
                 } else {
                     // header fail
                     print("Failure downloading header!")
@@ -79,7 +79,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             configureHeader(currentID: id, completionHandler: { (success) -> Void in
                 if success {
                     // header success
-                    getUserPosts(currentID: id, refreshing: false, refreshControl: nil)
+                    self.getUserPosts(currentID: id, refreshing: false, refreshControl: nil)
                 } else {
                     // download fail
                     print("Failure setting up header")
@@ -95,7 +95,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                     // header success
                     self.posts.removeAll()
                     self.tableView.reloadData()
-                    getUserPosts(currentID: currentUser, refreshing: false, refreshControl: nil)
+                    self.getUserPosts(currentID: currentUser, refreshing: false, refreshControl: nil)
                 } else {
                     // download fail
                     print("Failure to load header info")
@@ -122,7 +122,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    func configureHeader(currentID: String, completionHandler: CompletionHandler) {
+    func configureHeader(currentID: String, completionHandler: @escaping CompletionHandler) {
         let uid = currentID
         var profPicURL: String = ""
         var name: String = "Name"
@@ -174,12 +174,13 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             } else {
                 self.numPostsLabel.text = "\(postCount) Posts"
             }
+            flag = true
+            completionHandler(flag)
         }) { (error) in
             flag = false
+            completionHandler(flag)
             print(error.localizedDescription)
         }
-        flag = true
-        completionHandler(flag)
     }
     
     // MARK: Table View Methods
@@ -242,13 +243,19 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // get current user's posts
     func getUserPosts(currentID: String?, refreshing: Bool, refreshControl: UIRefreshControl?) {
-        print("getting posts")
         if let uid = currentID {
             let ref = FIRDatabase.database().reference(withPath: "posts").queryOrdered(byChild: "uid").queryEqual(toValue: uid)
             MBProgressHUD.showAdded(to: self.view, animated: true)
             ref.observeSingleEvent(of: .value, with: { snapshot in
-                self.updatePostCount(numPosts: String(snapshot.childrenCount))
                 if let dict = snapshot.value as? NSDictionary {
+                    if self.posts.count == Int(snapshot.childrenCount) {
+                        if refreshing {
+                            refreshControl?.endRefreshing()
+                        }
+                        MBProgressHUD.hide(for: self.view, animated: true)
+                        return
+                    }
+                    self.posts = []
                     for item in dict {
                         let json = JSON(item.value)
                         let caption: String = json["caption"].stringValue
@@ -267,14 +274,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
                 MBProgressHUD.hide(for: self.view, animated: true)
             })
-        }
-    }
-    
-    func updatePostCount(numPosts: String) {
-        if(Int(numPosts) == 1) {
-            self.numPostsLabel.text = "\(numPosts) Post"
-        } else {
-            self.numPostsLabel.text = "\(numPosts) Posts"
         }
     }
 }
