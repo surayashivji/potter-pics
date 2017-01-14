@@ -53,7 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // app has not been launched before, segue to house quiz to set defaults
             UserDefaults.standard.set(true, forKey: "launchedBefore")
             UserDefaults.standard.set(true, forKey: "pickHouse")
-            
             let randomNum:UInt32 = arc4random_uniform(4)
             let houses = ["Slytherin", "Gryffindor", "Hufflepuff", "Ravenclaw"]
             let defaults = UserDefaults.standard
@@ -78,7 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 break
             }
             defaults.setColor(color: navCol, forKey: "navCol")
-
             initialViewController = storyboard.instantiateViewController(withIdentifier: "homeView") as! HomeViewController
         }
         self.window?.rootViewController = initialViewController
@@ -88,11 +86,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }  
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        
         let handled  = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String!, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
-        
         return handled
-        
     }
 }
 

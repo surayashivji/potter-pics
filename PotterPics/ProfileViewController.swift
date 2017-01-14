@@ -12,6 +12,8 @@ import Firebase
 import SwiftyJSON
 import FBSDKLoginKit
 import FBSDKCoreKit
+import AFNetworking
+import MBProgressHUD
 
 class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -42,7 +44,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             configureHeader(currentID: currentUser, completionHandler: { (success) -> Void in
                 if success {
                     // header success
-                    getUserPosts(currentID: currentUser)
+                    getUserPosts(currentID: currentUser, refreshing: false, refreshControl: nil)
                 } else {
                     // header fail
                     print("Failure downloading header!")
@@ -52,24 +54,34 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let profileName = Notification.Name("loadProfileData")
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileViewController.loadData(notification:)), name: profileName, object: nil)
+        
+        // refresh control
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
+        self.tableView.insertSubview(refreshControl, at: 0)
+    }
+    
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        getUserPosts(currentID: self.user?.userID, refreshing: true, refreshControl: refreshControl)
     }
     
     func loadData(notification: Notification) {
         // extract user id from notification info
+        self.posts.removeAll()
+        self.tableView.reloadData()
         guard let userID = notification.userInfo else {
             return
         }
         if let id = userID["id"] as? String {
-            // reload profile with user's info
+            // reload profile with u.ser's info
             let defaults = UserDefaults.standard
             let navigationColor = defaults.colorForKey(key: "navCol")
             self.returnView.backgroundColor = navigationColor
             self.returnView.isHidden = false
-            self.posts = []
             configureHeader(currentID: id, completionHandler: { (success) -> Void in
                 if success {
                     // header success
-                    getUserPosts(currentID: id)
+                    getUserPosts(currentID: id, refreshing: false, refreshControl: nil)
                 } else {
                     // download fail
                     print("Failure setting up header")
@@ -83,10 +95,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             configureHeader(currentID: currentUser,  completionHandler: { (success) -> Void in
                 if success {
                     // header success
-                    print("0 - return to profile ")
                     self.posts.removeAll()
                     self.tableView.reloadData()
-                    getUserPosts(currentID: currentUser)
+                    getUserPosts(currentID: currentUser, refreshing: false, refreshControl: nil)
                 } else {
                     // download fail
                     print("Failure to load header info")
@@ -160,8 +171,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             self.houseCrest.image = UIImage(named: image)
             
             // set num posts
-            let usersRef = FIRDatabase.database().reference().child("users")
-            var currentNumPosts: Int?
             if postCount == 1 {
                 self.numPostsLabel.text = "\(postCount) Post"
             } else {
@@ -192,36 +201,39 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         let profPic = self.user?.profPic
         let name = self.user?.name
         
-        // post image
+        // user's post image
         cell.postImage.image = nil
-        let postURL = URL(string: downloadURL)
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: postURL!)
-            DispatchQueue.main.async {
-                let image = UIImage(data: data!)
-                cell.postImage.contentMode = UIViewContentMode.scaleToFill
-                cell.postImage.image = image
-            }
+        if let postURL = URL(string: downloadURL) {
+            let postRequest = URLRequest(url: postURL)
+            cell.postImage.setImageWith(postRequest, placeholderImage: nil, success:
+                { (imageRequest, imageResponse, image) in
+                    cell.postImage.contentMode = UIViewContentMode.scaleToFill
+                    cell.postImage.image = image
+            }, failure: { (imageRequest, imageResponse, error) -> Void in
+                // failure downloading image
+                print("Error downloading Firebase post image")
+                print(error)
+            })
         }
         
         // user's name
         cell.nameLabel.text = name
         
-        // caption
+        // user's post caption
         cell.captionLabel.text = caption
         
         // profile image
-        DispatchQueue.global().async {
-            if let urlString = profPic {
-                if let picURL = URL(string: urlString) {
-                    if let data = try? Data(contentsOf: picURL) {
-                        DispatchQueue.main.async {
-                            let image = UIImage(data: data)?.circle
-                            cell.smallProfileImg.contentMode = UIViewContentMode.scaleAspectFill
-                            cell.smallProfileImg.image = image
-                        }
-                    }
-                }
+        if let urlString = profPic {
+            if let picUrl = URL(string: urlString) {
+                let profileRequest = URLRequest(url: picUrl)
+                cell.smallProfileImg.setImageWith(profileRequest, placeholderImage: nil, success:
+                    { (imageRequest, imageResponse, image) in
+                        cell.smallProfileImg.image = image.circle
+                }, failure: { (imageRequest, imageResponse, error) -> Void in
+                    // failure downloading image
+                    print("Error downloading Firebase profile image")
+                    print(error)
+                })
             }
         }
         return cell
@@ -230,26 +242,33 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: Firebase Query Methods
     
     // get current user's posts
-    func getUserPosts(currentID: String) {
-        let uid = currentID
-        let ref = FIRDatabase.database().reference(withPath: "posts").queryOrdered(byChild: "uid").queryEqual(toValue: uid)
-        ref.observeSingleEvent(of: .value, with: { snapshot in
-            self.updatePostCount(numPosts: String(snapshot.childrenCount))
-            if let dict = snapshot.value as? NSDictionary {
-                for item in dict {
-                    let json = JSON(item.value)
-                    let caption: String = json["caption"].stringValue
-                    let downloadURL: String = json["download_url"].stringValue
-                    let name: String = json["name"].stringValue
-                    let profPic: String = json["profPicString"].stringValue
-                    
-                    let post = Post(uid: uid, caption: caption, downloadURL: downloadURL, name: name, profPic: profPic)
-                    
-                    self.posts.append(post)
+    func getUserPosts(currentID: String?, refreshing: Bool, refreshControl: UIRefreshControl?) {
+        print("getting posts")
+        if let uid = currentID {
+            let ref = FIRDatabase.database().reference(withPath: "posts").queryOrdered(byChild: "uid").queryEqual(toValue: uid)
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+            ref.observeSingleEvent(of: .value, with: { snapshot in
+                self.updatePostCount(numPosts: String(snapshot.childrenCount))
+                if let dict = snapshot.value as? NSDictionary {
+                    for item in dict {
+                        let json = JSON(item.value)
+                        let caption: String = json["caption"].stringValue
+                        let downloadURL: String = json["download_url"].stringValue
+                        let name: String = json["name"].stringValue
+                        let profPic: String = json["profPicString"].stringValue
+                        
+                        // create post from firebase data
+                        let post = Post(uid: uid, caption: caption, downloadURL: downloadURL, name: name, profPic: profPic)
+                        self.posts.append(post)
+                    }
+                    self.tableView.reloadData()
                 }
-                self.tableView.reloadData()
-            }
-        })
+                if refreshing {
+                    refreshControl?.endRefreshing()
+                }
+                MBProgressHUD.hide(for: self.view, animated: true)
+            })
+        }
     }
     
     func updatePostCount(numPosts: String) {

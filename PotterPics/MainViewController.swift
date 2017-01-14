@@ -32,17 +32,17 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     }()
     
     lazy var tabBar: TabBar = {
-        let tb = TabBar.init(frame: CGRect.init(x: 0, y: 0, width: globalVariables.width, height: 64))
-        tb.delegate = self
-        return tb
+        let tab = TabBar.init(frame: CGRect.init(x: 0, y: 0, width: globalVariables.width, height: 64))
+        tab.delegate = self
+        return tab
     }()
 
     let titleLabel: UILabel = {
-        let tl = UILabel.init(frame: CGRect.init(x: 30, y: 17, width: 200, height: 30))
-        tl.font = UIFont(name: "Avenir-Medium", size: 25)!
-        tl.textColor = UIColor.white
-        tl.text = ""
-        return tl
+        let title = UILabel.init(frame: CGRect.init(x: 30, y: 17, width: 200, height: 30))
+        title.font = UIFont(name: "Avenir-Medium", size: 25)!
+        title.textColor = UIColor.white
+        title.text = ""
+        return title
     }()
     
     class func updateNav() {

@@ -57,7 +57,6 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PostFeedTableViewCell
         let post = self.feeds[indexPath.row]
         let caption = post.caption
-        let uid = post.uid
         let downloadURL = post.downloadURL
         let profPic = post.profPic
         let name = post.name
