@@ -100,6 +100,17 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         MBProgressHUD.showAdded(to: self.view, animated: true)
         ref.observeSingleEvent(of: .value, with: { snapshot in
             if let dict = snapshot.value as? NSDictionary {
+                print("counttt \(self.feeds.count)")
+//                if self.feeds.count == Int(snapshot.childrenCount) {
+//                    print("NO MORE TO ADD!")
+//                    if refreshing {
+//                        refreshControl?.endRefreshing()
+//                    }
+//                    MBProgressHUD.hide(for: self.view, animated: true)
+//                    return
+//                }
+                print("we out here")
+                self.feeds = []
                 for item in dict {
                     let json = JSON(item.value)
                     let uid = json["uid"].stringValue
@@ -116,12 +127,13 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
                             name = userJSON["name"].stringValue
                             pic = userJSON["profPicString"].stringValue
                         }
-                        let post = Post(uid: uid, caption: caption, downloadURL: downloadURL, name: name, profPic: pic)
+                        let temp = Date()
+                        let post = Post(uid: uid, caption: caption, downloadURL: downloadURL, name: name, profPic: pic, date: temp)
                         self.feeds.append(post)
                     })
                 }
-                self.feedTableView.reloadData()
             }
+             self.feedTableView.reloadData()
             if refreshing {
                 refreshControl?.endRefreshing()
             }

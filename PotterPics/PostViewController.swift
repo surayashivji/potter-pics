@@ -56,7 +56,7 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
         var currentNumPosts: Int?
         // increase post count
         usersRef.child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
+            // get user value
             let value = snapshot.value as? NSDictionary
             currentNumPosts = value?["postCount"] as? Int
             self.updateNumPosts(currentNumPosts: currentNumPosts!, uid: uid)
@@ -74,8 +74,10 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
                 return
             } else {
                 // store downloadURL
+                print("TIME STAMP")
+                print(FIRServerValue.timestamp())
                 let downloadURL = metaData!.downloadURL()!.absoluteString
-                let values: Dictionary<String, Any> = ["uid": uid, "caption": caption ?? "", "download_url": downloadURL]
+                let values: Dictionary<String, Any> = ["uid": uid, "caption": caption ?? "", "download_url": downloadURL, "timestamp": FIRServerValue.timestamp()]
                 
                 // store downloadURL at database
                 let databaseRef = FIRDatabase.database().reference()

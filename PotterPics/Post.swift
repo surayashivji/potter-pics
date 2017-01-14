@@ -14,12 +14,14 @@ class Post {
     var downloadURL: String
     var name: String
     var profPic: String // facebook profile picture
+    var date: Date
     
-    init(uid: String, caption: String, downloadURL: String, name: String, profPic: String){
+    init(uid: String, caption: String, downloadURL: String, name: String, profPic: String, date: Date){
         self.uid = uid
         self.caption = caption
         self.downloadURL = downloadURL
         self.name = name
         self.profPic = profPic
+        self.date = date
     }
 }

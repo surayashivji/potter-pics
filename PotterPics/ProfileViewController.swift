@@ -244,8 +244,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     // get current user's posts
     func getUserPosts(currentID: String?, refreshing: Bool, refreshControl: UIRefreshControl?) {
         if let uid = currentID {
-            let ref = FIRDatabase.database().reference(withPath: "posts").queryOrdered(byChild: "uid").queryEqual(toValue: uid)
+           let ref = FIRDatabase.database().reference(withPath: "posts").queryOrdered(byChild: "uid").queryEqual(toValue: uid)
+            
             MBProgressHUD.showAdded(to: self.view, animated: true)
+            
             ref.observeSingleEvent(of: .value, with: { snapshot in
                 if let dict = snapshot.value as? NSDictionary {
                     if self.posts.count == Int(snapshot.childrenCount) {
@@ -262,14 +264,33 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                         let downloadURL: String = json["download_url"].stringValue
                         let name: String = json["name"].stringValue
                         let profPic: String = json["profPicString"].stringValue
+                        let timestamp = json["timestamp"].doubleValue
+                        print("TIMEEEEE")
+                        print(timestamp)
+                        
+                        let date = Date(timeIntervalSince1970: timestamp/1000)
+                         print(date)
                         
                         // create post from firebase data
-                        let post = Post(uid: uid, caption: caption, downloadURL: downloadURL, name: name, profPic: profPic)
+                        let post = Post(uid: uid, caption: caption, downloadURL: downloadURL, name: name, profPic: profPic, date: date)
                         self.posts.append(post)
+                        print("testing post order! - not ordered")
+                        for p in self.posts {
+                            print(p.date)
+                            print("----")
+                        }
+                    }
+                    // sort posts by timestamp
+                    self.posts.sort{ $0.date.compare($1.date) == .orderedDescending }
+                    print("testing post order! -  ordered")
+                    for x in self.posts {
+                        print(x.date)
+                        print("----")
                     }
                     self.tableView.reloadData()
                 }
                 if refreshing {
+                    // update post count
                     refreshControl?.endRefreshing()
                 }
                 MBProgressHUD.hide(for: self.view, animated: true)
