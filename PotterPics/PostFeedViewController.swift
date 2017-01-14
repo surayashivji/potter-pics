@@ -12,36 +12,34 @@ import SwiftyJSON
 import FBSDKLoginKit
 import FBSDKCoreKit
 import MBProgressHUD
+import AFNetworking
 
 class PostFeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var feedTableView: UITableView!
-    
-    var user: FIRUser?
-    var uid: String?
+
+//    typealias CompletionHandler = (_ success:Bool) -> Void
     var feeds = [Post]()
-    var userName: String!
-    var picURL: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = ColorPalette.white
+        
+        // get posts for all users
+        getAllPosts(refreshing: false, refreshControl: nil)
         
         // refresh control
         let refreshControl = UIRefreshControl()
-//        refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
-        
-        user = FIRAuth.auth()?.currentUser
-        uid = user?.uid
-        getAllPosts()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
+        self.feedTableView.insertSubview(refreshControl, at: 0)
+    }
+    
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        getAllPosts(refreshing: true, refreshControl: refreshControl)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        self.feedTableView.reloadData()
     }
     
     // MARK: Table View Methods
@@ -63,68 +61,78 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         
         // user's name
         cell.nameLabel.text = name
+        print("PLS SOMETHING ")
+        print(name)
         
         // caption
         cell.captionLabel.text = caption
         
-        // profile image
-        let url = URL(string: profPic)
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: url!)
-            DispatchQueue.main.async {
-                let image = UIImage(data: data!)?.circle
-                cell.smallProfileImg.contentMode = UIViewContentMode.scaleAspectFill
-                cell.smallProfileImg.image = image
-            }
+        // post image
+        cell.postImage.image = nil
+        if let postURL = URL(string: downloadURL) {
+            print("SMETHING AGAIN?   ")
+            print(postURL)
+            let postRequest = URLRequest(url: postURL)
+            cell.postImage.setImageWith(postRequest, placeholderImage: nil, success:
+                { (imageRequest, imageResponse, image) in
+                    cell.postImage.contentMode = UIViewContentMode.scaleToFill
+                    cell.postImage.image = image
+            }, failure: { (imageRequest, imageResponse, error) -> Void in
+                // failure downloading image
+                print("Error downloading Firebase post image")
+                print(error)
+            })
         }
         
-        // post image
-        let postURL = URL(string: downloadURL)
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: postURL!)
-            DispatchQueue.main.async {
-                let image = UIImage(data: data!)
-                cell.postImage.contentMode = UIViewContentMode.scaleAspectFill
-                cell.postImage.image = image
-            }
+        // profile image
+        if let url = URL(string: profPic) {
+            let profileRequest = URLRequest(url: url)
+            cell.smallProfileImg.setImageWith(profileRequest, placeholderImage: nil, success:
+                { (imageRequest, imageResponse, image) in
+                    cell.smallProfileImg.image = image.circle
+            }, failure: { (imageRequest, imageResponse, error) -> Void in
+                // failure downloading image
+                print("Error downloading Firebase profile image for feed/")
+                print(error)
+            })
         }
         return cell
     }
     
     // MARK: Queries
-    func getAllPosts() {
-        let uid = FIRAuth.auth()?.currentUser?.uid
+    func getAllPosts(refreshing: Bool, refreshControl: UIRefreshControl?) {
         let ref = FIRDatabase.database().reference(withPath: "posts")
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         ref.observeSingleEvent(of: .value, with: { snapshot in
             if let dict = snapshot.value as? NSDictionary {
                 for item in dict {
                     let json = JSON(item.value)
                     let uid = json["uid"].stringValue
-                    self.getInfo(id: uid)
+                    var name: String = ""
+                    var pic: String = ""
                     let caption: String = json["caption"].stringValue
                     let downloadURL: String = json["download_url"].stringValue
-                    let name = self.userName
-                    let profPic = self.picURL
-                    let post = Post(uid: uid, caption: caption, downloadURL: downloadURL, name: "Jenny Terando", profPic: "http://graph.facebook.com/1265035910223625/picture?type=large")
-                    self.feeds.append(post)
-                    self.feedTableView.reloadData()
+                    
+                    let usersReference = FIRDatabase.database().reference(withPath: "users").queryOrderedByKey().queryEqual(toValue: uid)
+                    usersReference.observeSingleEvent(of: .value, with: { snapshot in
+                        if let dict = snapshot.value as? NSDictionary {
+                            let userInfo = dict.allValues[0]
+                            let userJSON = JSON(userInfo)
+                            name = userJSON["name"].stringValue
+                            pic = userJSON["profPicString"].stringValue
+                        }
+                        let post = Post(uid: uid, caption: caption, downloadURL: downloadURL, name: name, profPic: pic)
+                        self.feeds.append(post)
+                    })
                 }
+                self.feedTableView.reloadData()
             }
+            if refreshing {
+                refreshControl?.endRefreshing()
+            }
+            MBProgressHUD.hide(for: self.view, animated: true)
         })
     }
     
-    func getInfo(id: String) {
-        let usersReference = FIRDatabase.database().reference(withPath: "users").queryOrderedByKey().queryEqual(toValue: id)
-        usersReference.observeSingleEvent(of: .value, with: { snapshot in
-            if let dict = snapshot.value as? NSDictionary {
-                for item in dict {
-                    let json = JSON(item.value)
-                    let name: String = json["name"].stringValue
-                    self.userName = name
-                    let pic: String = json["profPicString"].stringValue
-                    self.picURL = pic
-                }
-            }
-        })
-    }
+    
 }

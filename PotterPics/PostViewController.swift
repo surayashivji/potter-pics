@@ -11,11 +11,7 @@ import Firebase
 import MBProgressHUD
 
 class PostViewController: UIViewController, ModalViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    func sendValue(value: UIImage) {
-        self.imagetoUpload.image = value
-    }
-
+   
     let imagePicker = UIImagePickerController()
     @IBOutlet weak var imagetoUpload: UIImageView!
     @IBOutlet weak var captionTextField: UITextField!
@@ -26,6 +22,10 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
         imagePicker.delegate = self
         self.hideKeyboardWhenTappedAround()
         self.captionTextField.attributedPlaceholder = NSAttributedString(string: "Enter Caption",   attributes:[NSForegroundColorAttributeName: UIColor.white])
+    }
+    
+    func sendValue(value: UIImage) {
+        self.imagetoUpload.image = value
     }
     
     @IBAction func dismissKeyboard(_ sender: AnyObject) {

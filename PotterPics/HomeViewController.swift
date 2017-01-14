@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
         
         // set up background video
         self.cloudsVideo = BackgroundVideo(on: self, withVideoURL: "IntroMusic.mp4")
-        self.cloudsVideo?.setUpBackground()
+//        self.cloudsVideo?.setUpBackground()
     }
     
     // login user via Facebook

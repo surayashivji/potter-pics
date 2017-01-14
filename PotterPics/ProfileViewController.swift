@@ -20,8 +20,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     var user: User?
     var ref: FIRDatabaseReference! = FIRDatabase.database().reference()
     var posts = [Post]()
-    var userName: String!
-    var picURL: String!
     typealias CompletionHandler = (_ success:Bool) -> Void
     
     @IBOutlet weak var mainView: UIView!
@@ -225,8 +223,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         // profile image
         if let urlString = profPic {
             if let picUrl = URL(string: urlString) {
+                let placeholder = UIImage(named: "default")
                 let profileRequest = URLRequest(url: picUrl)
-                cell.smallProfileImg.setImageWith(profileRequest, placeholderImage: nil, success:
+                cell.smallProfileImg.setImageWith(profileRequest, placeholderImage: placeholder, success:
                     { (imageRequest, imageResponse, image) in
                         cell.smallProfileImg.image = image.circle
                 }, failure: { (imageRequest, imageResponse, error) -> Void in
