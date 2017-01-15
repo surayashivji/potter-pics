@@ -5,10 +5,11 @@
 **PotterPics** is a Harry Potter themed social network similar to Instagram.
 
 ## Walkthrough
+#### Home, Main Feed, Profile
 <img src='http://i.imgur.com/QBV9PRg.gif' title='Home' alt='Home'/>
 <img src='http://i.imgur.com/RW69LiJ.gif' title='Main Feed' alt='Main Feed'/>
 <img src='http://i.imgur.com/6Stnwns.gif' title='Profile' alt='Profile'/>
-<br>
+#### Library Post, Search, Camera Post
 <img src='http://i.imgur.com/HE6sM7w.gif' title='Post' alt='Post'/>
 <img src='http://i.imgur.com/geqrxUd.gif' title='Search' alt='Search'/>
 <img src='http://i.imgur.com/4KXfHl3.gif' title='Camera' alt='Camera'/>
