@@ -100,6 +100,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // resign keyboard
+        self.searchBar.resignFirstResponder()
+        
         let indexPath = self.tableView.indexPathForSelectedRow
         let user = filteredUsers[(indexPath?.row)!]
         
@@ -129,6 +132,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             })
         }
+        self.tableView.reloadData()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

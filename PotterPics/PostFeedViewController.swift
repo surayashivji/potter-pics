@@ -22,7 +22,7 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // get posts for all users
         getAllPosts(refreshing: false, refreshControl: nil)
         
