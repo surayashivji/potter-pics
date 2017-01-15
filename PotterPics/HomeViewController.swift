@@ -18,10 +18,9 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // set up background video
         self.cloudsVideo = BackgroundVideo(on: self, withVideoURL: "IntroMusic.mp4")
-//        self.cloudsVideo?.setUpBackground()
+        self.cloudsVideo?.setUpBackground()
     }
     
     // login user via Facebook
@@ -63,7 +62,6 @@ class HomeViewController: UIViewController {
                             
                             let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
                             graphRequest.start(completionHandler: { (connection, result, error) -> Void in
-                                
                                 if ((error) != nil) {
                                     // Process error
                                     print("Error: \(error)")
@@ -88,7 +86,6 @@ class HomeViewController: UIViewController {
                                             print(err ?? "Error saving user to database")
                                             return
                                         }
-                                        print("Save the user successfully into Firebase database")
                                     })
                                 }
                             })

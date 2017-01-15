@@ -2,7 +2,7 @@
 
 [![Language: Swift 3.0](https://img.shields.io/badge/swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift)  [![Language: Swift 3.0](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)
 
-**PotterPics** is a Harry Potter themed iOS clone of Instagram using Firebase.
+**PotterPics** is a Harry Potter themed social network similar to Instagram.
 
 ## Installation
 ####Test Facebook Account:
@@ -11,7 +11,13 @@ Password: <b>voldemort123</b></i>
 
 
 ## Walkthrough
-<img src='http://i.imgur.com/1PcHS5u.gif' title='Home Screen' width='' alt='Home Screen'/>
+<img src='http://i.imgur.com/QBV9PRg.gif' title='Home' alt='Home'/>
+<img src='http://i.imgur.com/RW69LiJ.gif' title='Main Feed' alt='Main Feed'/>
+<img src='http://i.imgur.com/6Stnwns.gif' title='Profile' alt='Profile'/>
+<br>
+<img src='http://i.imgur.com/HE6sM7w.gif' title='Post' alt='Post'/>
+<img src='http://i.imgur.com/geqrxUd.gif' title='Search' alt='Search'/>
+<img src='http://i.imgur.com/4KXfHl3.gif' title='Camera' alt='Camera'/>
 
 ## Design Assets
 - [After Effects Cloud Animation](https://drive.google.com/open?id=0B6aOEAXdWnEGanFLS3JORmNDWDA)

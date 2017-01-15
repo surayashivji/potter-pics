@@ -74,8 +74,6 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
                 return
             } else {
                 // store downloadURL
-                print("TIME STAMP")
-                print(FIRServerValue.timestamp())
                 let downloadURL = metaData!.downloadURL()!.absoluteString
                 let values: Dictionary<String, Any> = ["uid": uid, "caption": caption ?? "", "download_url": downloadURL, "timestamp": FIRServerValue.timestamp()]
                 

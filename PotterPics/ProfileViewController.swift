@@ -257,6 +257,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             
             MBProgressHUD.showAdded(to: self.view, animated: true)
             
+            var postsCount = self.posts.count
+            
             ref.observeSingleEvent(of: .value, with: { snapshot in
                 if let dict = snapshot.value as? NSDictionary {
                     if self.posts.count == Int(snapshot.childrenCount) {
@@ -266,6 +268,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                         MBProgressHUD.hide(for: self.view, animated: true)
                         return
                     }
+                    postsCount = Int(snapshot.childrenCount)
                     self.posts = []
                     for item in dict {
                         let json = JSON(item.value)
@@ -287,6 +290,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
                 if refreshing {
                     // update post count
+                    if postsCount == 1 {
+                        self.numPostsLabel.text = "\(postsCount) Post"
+                    } else {
+                        self.numPostsLabel.text = "\(postsCount) Posts"
+                    }
                     refreshControl?.endRefreshing()
                 }
                 MBProgressHUD.hide(for: self.view, animated: true)
