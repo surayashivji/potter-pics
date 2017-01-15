@@ -98,7 +98,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="457" id="fxz-si-lj7" customClass="PostFeedTableViewCell" customModule="PotterPics" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="feedCell" rowHeight="457" id="fxz-si-lj7" customClass="PostFeedTableViewCell" customModule="PotterPics" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="457"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fxz-si-lj7" id="3BD-x2-zuH">
@@ -114,16 +114,23 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IE7-B6-uxT">
-                                                            <rect key="frame" x="52" y="10" width="252" height="36"/>
+                                                            <rect key="frame" x="38" y="8" width="266" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SfeedDark" translatesAutoresizingMaskIntoConstraints="NO" id="Maf-bH-yd4">
-                                                            <rect key="frame" x="12" y="14" width="29" height="29"/>
+                                                            <rect key="frame" x="8" y="8" width="20" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPk-KP-k1Z">
+                                                            <rect key="frame" x="8" y="33" width="298" height="16"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                                            <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                 </view>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kUd-M1-Fj6">
@@ -148,6 +155,7 @@
                                         <connections>
                                             <outlet property="captionIcon" destination="Maf-bH-yd4" id="uH3-al-9bf"/>
                                             <outlet property="captionLabel" destination="IE7-B6-uxT" id="6SB-hZ-PLL"/>
+                                            <outlet property="dateLabel" destination="zPk-KP-k1Z" id="ctu-qJ-Oat"/>
                                             <outlet property="nameLabel" destination="cVB-zq-L9b" id="3Ik-1V-69X"/>
                                             <outlet property="postImage" destination="FJN-jf-3C2" id="mpf-9O-dLc"/>
                                             <outlet property="smallProfileImg" destination="MfB-lc-1A9" id="QBf-wy-UXg"/>
@@ -168,7 +176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ESp-hR-qlD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-412" y="852.3238380809596"/>
+            <point key="canvasLocation" x="-286" y="852"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="xgy-Bs-9o0">
@@ -596,16 +604,23 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8B-nY-44x">
-                                                            <rect key="frame" x="55" y="6" width="267" height="40"/>
+                                                            <rect key="frame" x="45" y="6" width="265" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SfeedDark" translatesAutoresizingMaskIntoConstraints="NO" id="kPb-wZ-MCz">
-                                                            <rect key="frame" x="12" y="11" width="29" height="29"/>
+                                                            <rect key="frame" x="12" y="6" width="20" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIL-oq-bXh">
+                                                            <rect key="frame" x="12" y="31" width="298" height="15"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                                            <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                 </view>
                                             </subviews>
@@ -613,6 +628,7 @@
                                         <connections>
                                             <outlet property="captionIcon" destination="kPb-wZ-MCz" id="1WI-o9-TCR"/>
                                             <outlet property="captionLabel" destination="K8B-nY-44x" id="kg9-74-lMP"/>
+                                            <outlet property="dateLabel" destination="jIL-oq-bXh" id="rLE-BM-Tow"/>
                                             <outlet property="nameLabel" destination="Wg2-bX-LQp" id="azo-hF-J7v"/>
                                             <outlet property="postImage" destination="QyQ-yO-f8x" id="gaW-He-eJI"/>
                                             <outlet property="smallProfileImg" destination="1Be-bd-XXO" id="5cS-eq-wcm"/>
@@ -641,7 +657,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iyy-cu-aHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1100" y="853"/>
+            <point key="canvasLocation" x="-1100" y="852.3238380809596"/>
         </scene>
     </scenes>
     <resources>

@@ -200,6 +200,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         let profPic = self.user?.profPic
         let name = self.user?.name
         
+        let date = post.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.string(from: date)
+        
         // user's post image
         cell.postImage.image = nil
         if let postURL = URL(string: downloadURL) {
@@ -236,6 +241,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 })
             }
         }
+        
+        // date
+        cell.dateLabel.text = dateString
+        
         return cell
     }
     
@@ -265,28 +274,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                         let name: String = json["name"].stringValue
                         let profPic: String = json["profPicString"].stringValue
                         let timestamp = json["timestamp"].doubleValue
-                        print("TIMEEEEE")
-                        print(timestamp)
                         
                         let date = Date(timeIntervalSince1970: timestamp/1000)
-                         print(date)
                         
                         // create post from firebase data
                         let post = Post(uid: uid, caption: caption, downloadURL: downloadURL, name: name, profPic: profPic, date: date)
                         self.posts.append(post)
-                        print("testing post order! - not ordered")
-                        for p in self.posts {
-                            print(p.date)
-                            print("----")
-                        }
                     }
                     // sort posts by timestamp
-                    self.posts.sort{ $0.date.compare($1.date) == .orderedDescending }
-                    print("testing post order! -  ordered")
-                    for x in self.posts {
-                        print(x.date)
-                        print("----")
-                    }
+                    self.posts.sort{$0.date.compare($1.date) == .orderedDescending}
                     self.tableView.reloadData()
                 }
                 if refreshing {

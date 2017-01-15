@@ -51,12 +51,16 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PostFeedTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! PostFeedTableViewCell
         let post = self.feeds[indexPath.row]
         let caption = post.caption
         let downloadURL = post.downloadURL
         let profPic = post.profPic
         let name = post.name
+        let date = post.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.string(from: date)
         
         // user's name
         cell.nameLabel.text = name
@@ -80,6 +84,7 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         // profile image
+        cell.smallProfileImg.image = nil
         if let url = URL(string: profPic) {
             let profileRequest = URLRequest(url: url)
             cell.smallProfileImg.setImageWith(profileRequest, placeholderImage: nil, success:
@@ -91,6 +96,10 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
                 print(error)
             })
         }
+        
+        // set date of post
+        cell.dateLabel.text = dateString
+        
         return cell
     }
     
@@ -100,16 +109,13 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         MBProgressHUD.showAdded(to: self.view, animated: true)
         ref.observeSingleEvent(of: .value, with: { snapshot in
             if let dict = snapshot.value as? NSDictionary {
-                print("counttt \(self.feeds.count)")
-//                if self.feeds.count == Int(snapshot.childrenCount) {
-//                    print("NO MORE TO ADD!")
-//                    if refreshing {
-//                        refreshControl?.endRefreshing()
-//                    }
-//                    MBProgressHUD.hide(for: self.view, animated: true)
-//                    return
-//                }
-                print("we out here")
+                if self.feeds.count == Int(snapshot.childrenCount) {
+                    if refreshing {
+                        refreshControl?.endRefreshing()
+                    }
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    return
+                }
                 self.feeds = []
                 for item in dict {
                     let json = JSON(item.value)
@@ -118,6 +124,8 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
                     var pic: String = ""
                     let caption: String = json["caption"].stringValue
                     let downloadURL: String = json["download_url"].stringValue
+                    let timestamp = json["timestamp"].doubleValue
+                    let date = Date(timeIntervalSince1970: timestamp/1000)
                     
                     let usersReference = FIRDatabase.database().reference(withPath: "users").queryOrderedByKey().queryEqual(toValue: uid)
                     usersReference.observeSingleEvent(of: .value, with: { snapshot in
@@ -127,19 +135,19 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
                             name = userJSON["name"].stringValue
                             pic = userJSON["profPicString"].stringValue
                         }
-                        let temp = Date()
-                        let post = Post(uid: uid, caption: caption, downloadURL: downloadURL, name: name, profPic: pic, date: temp)
+                        let post = Post(uid: uid, caption: caption, downloadURL: downloadURL, name: name, profPic: pic, date: date)
                         self.feeds.append(post)
+                        
+                        // sort posts by date
+                        self.feeds.sort{$0.date.compare($1.date) == .orderedDescending}
+                        self.feedTableView.reloadData()
                     })
                 }
             }
-             self.feedTableView.reloadData()
             if refreshing {
                 refreshControl?.endRefreshing()
             }
             MBProgressHUD.hide(for: self.view, animated: true)
         })
     }
-    
-    
 }
