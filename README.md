@@ -1,6 +1,7 @@
 # Potter Pics
 
-[![Language: Swift 3.0](https://img.shields.io/badge/swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift)  [![Language: Swift 3.0](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)
+[![Language: Swift 3.0](https://img.shields.io/badge/swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift)  
+[![License: MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)
 
 **PotterPics** is a Harry Potter themed social network similar to Instagram.
 
@@ -17,7 +18,7 @@
 ## Installation
 ####Test Facebook Account:
 <i>Email: **harry_cpmpqmi_potter@tfbnw.net** <br>
-Password: <b>voldemort123</b></i>
+Password: <b>voldemort123</b></i> <br>
 
 ## Design Assets
 - [After Effects Cloud Animation](https://drive.google.com/open?id=0B6aOEAXdWnEGanFLS3JORmNDWDA)
