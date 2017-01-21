@@ -22,9 +22,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUi-5h-OnH" customClass="HomeButton" customModule="PotterPics" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUi-5h-OnH" customClass="HomeButton" customModule="PotterPics" customModuleProvider="target">
                                 <rect key="frame" x="111" y="529" width="152" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="152" id="ebs-dK-smd"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
                                 <state key="normal" title="Alohamora">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -35,6 +37,10 @@
                             </button>
                         </subviews>
                         <color key="tintColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hUi-5h-OnH" secondAttribute="bottom" constant="98" id="4Pf-19-yPg"/>
+                            <constraint firstItem="hUi-5h-OnH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fVM-eT-Ou1"/>
+                        </constraints>
                     </view>
                     <connections>
                         <segue destination="4ln-vW-Eru" kind="show" identifier="mainNavSegue" id="B4b-ZY-7Ps"/>
@@ -645,6 +651,7 @@
                     </view>
                     <connections>
                         <outlet property="houseCrest" destination="kvG-x4-tut" id="3QK-Yt-bhb"/>
+                        <outlet property="logoutButton" destination="wKL-f9-JHA" id="vpL-04-87A"/>
                         <outlet property="mainView" destination="VXT-xF-joA" id="IRK-1i-7iU"/>
                         <outlet property="nameLabel" destination="zxi-sN-8HZ" id="3GJ-C8-EKa"/>
                         <outlet property="numPostsLabel" destination="gPA-Us-hNT" id="fuW-XD-Mmf"/>

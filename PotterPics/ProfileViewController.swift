@@ -30,6 +30,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var proileImageView: UIImageView!
+    @IBOutlet weak var logoutButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,11 +72,13 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             return
         }
         if let id = userID["id"] as? String {
-            // reload profile with u.ser's info
+            // reload profile with user's info
             let defaults = UserDefaults.standard
             let navigationColor = defaults.colorForKey(key: "navCol")
             self.returnView.backgroundColor = navigationColor
             self.returnView.isHidden = false
+            // hide logout button
+            self.logoutButton.isHidden = true
             configureHeader(currentID: id, completionHandler: { (success) -> Void in
                 if success {
                     // header success
@@ -89,6 +92,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @IBAction func returnToProfile(_ sender: Any) {
+        self.logoutButton.isHidden = false
         if let currentUser = FIRAuth.auth()?.currentUser?.uid {
             configureHeader(currentID: currentUser,  completionHandler: { (success) -> Void in
                 if success {
