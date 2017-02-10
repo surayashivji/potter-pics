@@ -35,7 +35,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         let defaults = UserDefaults.standard
-        let stripCol = defaults.colorForKey(key: "navCol")
+        let stripCol = defaults.potter_colorForKey(key: "navCol")
         self.view.backgroundColor = stripCol
         
         // set the UID so that we know if it's the current user
@@ -74,7 +74,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         if let id = userID["id"] as? String {
             // reload profile with user's info
             let defaults = UserDefaults.standard
-            let navigationColor = defaults.colorForKey(key: "navCol")
+            let navigationColor = defaults.potter_colorForKey(key: "navCol")
             self.returnView.backgroundColor = navigationColor
             self.returnView.isHidden = false
             // hide logout button
@@ -156,13 +156,13 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 DispatchQueue.global().async {
                     let data = try? Data(contentsOf: url!)
                     DispatchQueue.main.async {
-                        let image = UIImage(data: data!)?.circle
+                        let image = UIImage(data: data!)?.potter_circle
                         self.proileImageView.contentMode = UIViewContentMode.scaleAspectFill
                         self.proileImageView.image = image
                     }
                 }
             } else {
-                let image = UIImage(named: "default")?.circle
+                let image = UIImage(named: "default")?.potter_circle
                 self.proileImageView.contentMode = UIViewContentMode.scaleAspectFill
                 self.proileImageView.image = image
             }
@@ -235,9 +235,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             if let picUrl = URL(string: urlString) {
                 let placeholder = UIImage(named: "default")
                 let profileRequest = URLRequest(url: picUrl)
-                cell.smallProfileImg.setImageWith(profileRequest, placeholderImage: placeholder, success:
+                cell.smallProfileImg.setImageWith(profileRequest, placeholderImage: placeholder,
+                success:
                     { (imageRequest, imageResponse, image) in
-                        cell.smallProfileImg.image = image.circle
+                        cell.smallProfileImg.image = image.potter_circle
                 }, failure: { (imageRequest, imageResponse, error) -> Void in
                     // failure downloading image
                     print("Error downloading Firebase profile image")

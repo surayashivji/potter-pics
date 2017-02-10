@@ -89,7 +89,7 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
             let profileRequest = URLRequest(url: url)
             cell.smallProfileImg.setImageWith(profileRequest, placeholderImage: nil, success:
                 { (imageRequest, imageResponse, image) in
-                    cell.smallProfileImg.image = image.circle
+                    cell.smallProfileImg.image = image.potter_circle
             }, failure: { (imageRequest, imageResponse, error) -> Void in
                 // failure downloading image
                 print("Error downloading Firebase profile image for feed/")

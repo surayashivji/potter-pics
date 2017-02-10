@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 default:
                     break
             }
-            defaults.setColor(color: navCol, forKey: "navCol")
+            defaults.potter_setColor(color: navCol, forKey: "navCol")
             initialViewController = storyboard.instantiateViewController(withIdentifier: "homeView") as! HomeViewController
 
         } else {
@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             default:
                 break
             }
-            defaults.setColor(color: navCol, forKey: "navCol")
+            defaults.potter_setColor(color: navCol, forKey: "navCol")
             initialViewController = storyboard.instantiateViewController(withIdentifier: "homeView") as! HomeViewController
         }
         self.window?.rootViewController = initialViewController

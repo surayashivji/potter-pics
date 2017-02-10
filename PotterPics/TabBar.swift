@@ -19,7 +19,7 @@ class TabBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICo
     let items = ["feed", "search", "post", "profile"]
     lazy var whiteView: UIView = {
         let wv = UIView.init(frame: CGRect.init(x: 0, y: self.frame.height - 5, width: self.frame.width / 4, height: 5))
-        wv.backgroundColor = UIColor.rbg(r: 245, g: 245, b: 245)
+        wv.backgroundColor = UIColor.potter_rbg(r: 245, g: 245, b: 245)
         return wv
     }()
     lazy var collectionView: UICollectionView  = {
@@ -98,7 +98,7 @@ class TabBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICo
         }
         
         // house background color
-        let navigationColor = defaults.colorForKey(key: "navCol")
+        let navigationColor = defaults.potter_colorForKey(key: "navCol")
         self.backgroundColor = navigationColor
         
         addSubview(self.collectionView)

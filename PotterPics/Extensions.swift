@@ -10,7 +10,7 @@ import UIKit
 
 // rgb to uicolor
 extension UIColor {
-    class func rbg(r: CGFloat, g: CGFloat, b: CGFloat) -> UIColor {
+    class func potter_rbg(r: CGFloat, g: CGFloat, b: CGFloat) -> UIColor {
         let color = UIColor.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
         return color
     }
@@ -18,7 +18,7 @@ extension UIColor {
 
 // crop uiimage into a circle
 extension UIImage {
-    var circle: UIImage? {
+    var potter_circle: UIImage? {
         let square = CGSize(width: min(size.width, size.height), height: min(size.width, size.height))
         let imageView = UIImageView(frame: CGRect(origin: .zero, size: square))
         imageView.contentMode = .scaleAspectFill
@@ -48,7 +48,7 @@ extension UIViewController {
 
 // store colors on user defaults
 extension UserDefaults {
-    func colorForKey(key: String) -> UIColor? {
+    func potter_colorForKey(key: String) -> UIColor? {
         var color: UIColor?
         if let colorData = data(forKey: key) {
             color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
@@ -56,7 +56,7 @@ extension UserDefaults {
         return color
     }
     
-    func setColor(color: UIColor?, forKey key: String) {
+    func potter_setColor(color: UIColor?, forKey key: String) {
         var colorData: NSData?
         if let color = color {
             colorData = NSKeyedArchiver.archivedData(withRootObject: color) as NSData?

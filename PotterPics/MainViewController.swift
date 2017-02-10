@@ -57,7 +57,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         // Navigation Controller Customization
         // house background color
         let defaults = UserDefaults.standard
-        let navigationColor = defaults.colorForKey(key: "navCol")
+        let navigationColor = defaults.potter_colorForKey(key: "navCol")
 
         self.navigationController?.view.backgroundColor = navigationColor
         self.navigationController?.navigationItem.hidesBackButton = true

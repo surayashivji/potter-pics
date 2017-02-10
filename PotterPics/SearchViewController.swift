@@ -83,7 +83,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let data = try? Data(contentsOf: url!)
             DispatchQueue.main.async {
                 var image = UIImage(data: data!)
-                image = image?.circle
+                image = image?.potter_circle
                 cell.searchImageView.contentMode = UIViewContentMode.scaleAspectFill
                 cell.searchImageView.image = image
             }
