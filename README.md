@@ -5,17 +5,25 @@
 **PotterPics** is a Harry Potter themed social network similar to Instagram.
 
 ## Walkthrough
-####Home, Main Feed, Profile
+#### Home, Main Feed, Profile
+
+<div>
 <img style="float:left;" src='http://i.imgur.com/QBV9PRg.gif' title='Home' alt='Home'/>
 <img style="float:left;" src='http://i.imgur.com/RW69LiJ.gif' title='Main Feed' alt='Main Feed'/>
 <img style="float:left;" src='http://i.imgur.com/6Stnwns.gif' title='Profile' alt='Profile'/>
-####Library Post, Search, Camera Post
+</div>
+
+#### Library Post, Search, Camera Post <br>
+
+<div>
 <img style="float:left;" src='http://i.imgur.com/HE6sM7w.gif' title='Post' alt='Post'/>
 <img style="float:left;" src='http://i.imgur.com/geqrxUd.gif' title='Search' alt='Search'/>
 <img style="float:left;" src='http://i.imgur.com/4KXfHl3.gif' title='Camera' alt='Camera'/>
+</div>
 
 ## Installation
-####Test Facebook Account:
+#### Test Facebook Account:
+
 <i>Email: **harry_cpmpqmi_potter@tfbnw.net** <br>
 Password: <b>voldemort123</b></i> <br>
 
