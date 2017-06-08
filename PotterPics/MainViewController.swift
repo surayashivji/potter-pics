@@ -10,7 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, TabBarDelegate   {
     
-    //MARK: Properties
+    // MARK: Properties
     var navColor: UIColor!
     var views = [UIView]()
     let items = ["Feed", "Search", "Post", "Profile"]
@@ -36,7 +36,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         tab.delegate = self
         return tab
     }()
-
+    
     let titleLabel: UILabel = {
         let title = UILabel.init(frame: CGRect.init(x: 30, y: 17, width: 200, height: 30))
         title.font = UIFont(name: "Avenir-Medium", size: 25)!
@@ -49,7 +49,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     // MARK: Methods
-    func customization()  {
+    func customization() {
         // Collection View Customization
         self.collectionView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0)
         self.view.addSubview(self.collectionView)
@@ -58,7 +58,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         // house background color
         let defaults = UserDefaults.standard
         let navigationColor = defaults.potter_colorForKey(key: "navCol")
-
+        
         self.navigationController?.view.backgroundColor = navigationColor
         self.navigationController?.navigationItem.hidesBackButton = true
         self.navigationItem.hidesBackButton = true
@@ -89,8 +89,8 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK: Delegates implementation
     func didSelectItem(atIndex: Int) {
         self.collectionView.scrollRectToVisible(CGRect.init(origin: CGPoint.init(x: (self.view.bounds.width * CGFloat(atIndex)), y: 0), size: self.view.bounds.size), animated: true)
-        
-        }
+    }
+    
     override func viewDidLoad() {
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         super.viewDidLoad()
@@ -98,10 +98,10 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         // add notification center to switch tab
         let notificationName = Notification.Name("switchTab")
-                NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.switchTab(notification:)), name: notificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.switchTab(notification:)), name: notificationName, object: nil)
     }
     
-    func switchTab(notification: Notification) {
+    @objc func switchTab(notification: Notification) {
         // extract index from notification info
         guard let userInfo = notification.userInfo else {
             return
@@ -125,7 +125,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     // MARK: Collection View Delegates
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-               return CGSize.init(width: self.view.bounds.width, height: (self.view.bounds.height + 22))
+        return CGSize.init(width: self.view.bounds.width, height: (self.view.bounds.height + 22))
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -137,4 +137,3 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
 }
-

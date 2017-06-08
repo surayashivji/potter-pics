@@ -22,7 +22,7 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var filterCollectionView: UICollectionView!
     @IBOutlet weak var captureImageView: UIImageView!
     @IBOutlet weak var previewImgView: UIView!
-
+    
     var photoTaken: Bool = false
     var imagePicker: UIImagePickerController!
     var session: AVCaptureSession?
@@ -48,35 +48,37 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         // setup camera
         session = AVCaptureSession()
-        session!.sessionPreset = AVCaptureSessionPresetMedium
+        session!.sessionPreset = AVCaptureSession.Preset.medium
         
         // select rear camera for input
-        let backCamera = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-        
-        var error: NSError?
-        var input: AVCaptureDeviceInput!
-        do {
-            input = try AVCaptureDeviceInput(device: backCamera)
-        } catch let error1 as NSError {
-            error = error1
-            input = nil
-            print(error!.localizedDescription)
-        }
-        if error == nil && session!.canAddInput(input) {
-            session!.addInput(input)
-            stillImageOutput = AVCaptureStillImageOutput()
-            stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
-        }
-        if session!.canAddOutput(stillImageOutput) {
-            session!.addOutput(stillImageOutput)
-            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
-            videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
-            videoPreviewLayer!.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
-            previewImgView.layer.addSublayer(videoPreviewLayer!)
-            session!.startRunning()
+        if let backCamera = AVCaptureDevice.default(for: AVMediaType.video)
+        {
+            
+            var error: NSError?
+            var input: AVCaptureDeviceInput!
+            do {
+                input = try AVCaptureDeviceInput(device: backCamera)
+            } catch let error1 as NSError {
+                error = error1
+                input = nil
+                print(error!.localizedDescription)
+            }
+            if error == nil && session!.canAddInput(input) {
+                session!.addInput(input)
+                stillImageOutput = AVCaptureStillImageOutput()
+                stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+            }
+            if session!.canAddOutput(stillImageOutput!) {
+                session!.addOutput(stillImageOutput!)
+                videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session!)
+                videoPreviewLayer!.videoGravity = AVLayerVideoGravity.resizeAspectFill
+                videoPreviewLayer!.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
+                previewImgView.layer.addSublayer(videoPreviewLayer!)
+                session!.startRunning()
+            }
         }
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         videoPreviewLayer!.frame = previewImgView.bounds
@@ -89,11 +91,11 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     @IBAction func takePicture(_ sender: UIButton) {
         photoTaken = true
-        if let videoConnection = stillImageOutput!.connection(withMediaType: AVMediaTypeVideo) {
+        if let videoConnection = stillImageOutput!.connection(with: AVMediaType.video) {
             stillImageOutput?.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (sampleBuffer, error) in
                 // process image data (sampleBuffer) to get the file for the image view
                 if sampleBuffer != nil {
-                    let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
+                    let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer!)
                     let dataProvider = CGDataProvider(data: imageData as! CFData)
                     let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
                     let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
@@ -104,7 +106,7 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
             })
         }
     }
-   
+    
     
     // MARK: Collection View Methods
     func setupFlow() {
@@ -143,7 +145,7 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func generateFilteredImage(name: String!, image: CIImage, placeholder: Bool) -> UIImage {
-        if(name == "Original") {
+        if name == "Original" {
             return UIImage(ciImage: image)
         }
         var filteredImage = UIImage()
@@ -153,13 +155,13 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         let inputKeys = filter.inputKeys
         
-        if (inputKeys.contains(kCIInputIntensityKey)) {
+        if inputKeys.contains(kCIInputIntensityKey) {
             filter.setValue(1.7, forKey: kCIInputIntensityKey)
         }
-        if (inputKeys.contains(kCIInputRadiusKey)) {
+        if inputKeys.contains(kCIInputRadiusKey) {
             filter.setValue(10, forKey: kCIInputRadiusKey)
         }
-        if (inputKeys.contains(kCIInputScaleKey)) {
+        if inputKeys.contains(kCIInputScaleKey) {
             filter.setValue(0.9 * 10, forKey: kCIInputScaleKey)
         }
         
@@ -174,4 +176,5 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBAction func uploadPicture(_ sender: AnyObject) {
         delegate?.sendValue(value: self.captureImageView.image!)
         self.dismiss(animated: true, completion: nil)
-    }}
+    }
+}

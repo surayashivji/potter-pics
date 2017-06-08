@@ -39,16 +39,17 @@ class TabBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! TabBarCellCollectionViewCell
-        cell.icon.image = UIImage.init(named: darkItems[indexPath.row])
-        
-        if indexPath.row == 0 {
-            cell.icon.image = UIImage.init(named: items[0])
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? TabBarCellCollectionViewCell {
+            cell.icon.image = UIImage.init(named: darkItems[indexPath.row])
+            if indexPath.row == 0 {
+                cell.icon.image = UIImage.init(named: items[0])
             }
-        return cell
+            return cell
+        }
+        return UICollectionViewCell()
     }
-    
-    //MARK: CollectionView Delegates
+
+    // MARK: CollectionView Delegates
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize.init(width: self.frame.width / 4, height: (self.frame.height - 20))
     }
@@ -64,16 +65,18 @@ class TabBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICo
     // MARK: Methods
     func highlightItem(atIndex: Int)  {
         for index in  0...3 {
-            let cell = collectionView.cellForItem(at: IndexPath.init(row: index, section: 0)) as! TabBarCellCollectionViewCell
-            cell.icon.contentMode = UIViewContentMode.scaleAspectFit
-            cell.icon.image = UIImage.init(named: darkItems[index])
+            if let cell = collectionView.cellForItem(at: IndexPath.init(row: index, section: 0)) as? TabBarCellCollectionViewCell {
+                cell.icon.contentMode = UIViewContentMode.scaleAspectFit
+                cell.icon.image = UIImage.init(named: darkItems[index])
+            }
         }
-        let cell = collectionView.cellForItem(at: IndexPath.init(row: atIndex, section: 0)) as! TabBarCellCollectionViewCell
-        cell.icon.contentMode = UIViewContentMode.scaleAspectFit
-        cell.icon.image = UIImage.init(named: items[atIndex])
+        if let cell = collectionView.cellForItem(at: IndexPath.init(row: atIndex, section: 0)) as? TabBarCellCollectionViewCell {
+            cell.icon.contentMode = UIViewContentMode.scaleAspectFit
+            cell.icon.image = UIImage.init(named: items[atIndex])
+        }
     }
     
-    //MARK: - Inits
+    // MARK: - Inits
     override init(frame: CGRect) {
         super.init(frame: frame)
         collectionView.register(TabBarCellCollectionViewCell.self, forCellWithReuseIdentifier: identifier)

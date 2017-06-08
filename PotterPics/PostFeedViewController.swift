@@ -17,12 +17,12 @@ import AFNetworking
 class PostFeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var feedTableView: UITableView!
-
+    
     var feeds = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // get posts for all users
         getAllPosts(refreshing: false, refreshControl: nil)
         
@@ -32,7 +32,7 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         self.feedTableView.insertSubview(refreshControl, at: 0)
     }
     
-    func refreshControlAction(refreshControl: UIRefreshControl) {
+    @objc func refreshControlAction(refreshControl: UIRefreshControl) {
         getAllPosts(refreshing: true, refreshControl: refreshControl)
     }
     
@@ -51,56 +51,59 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! PostFeedTableViewCell
-        let post = self.feeds[indexPath.row]
-        let caption = post.caption
-        let downloadURL = post.downloadURL
-        let profPic = post.profPic
-        let name = post.name
-        let date = post.date
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateString = dateFormatter.string(from: date)
-        
-        // user's name
-        cell.nameLabel.text = name
-        
-        // caption
-        cell.captionLabel.text = caption
-        
-        // post image
-        cell.postImage.image = nil
-        if let postURL = URL(string: downloadURL) {
-            let postRequest = URLRequest(url: postURL)
-            cell.postImage.setImageWith(postRequest, placeholderImage: nil, success:
-                { (imageRequest, imageResponse, image) in
-                    cell.postImage.contentMode = UIViewContentMode.scaleToFill
-                    cell.postImage.image = image
-            }, failure: { (imageRequest, imageResponse, error) -> Void in
-                // failure downloading image
-                print("Error downloading Firebase post image")
-                print(error)
-            })
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as? PostFeedTableViewCell
+        {
+            let post = self.feeds[indexPath.row]
+            let caption = post.caption
+            let downloadURL = post.downloadURL
+            let profPic = post.profPic
+            let name = post.name
+            let date = post.date
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let dateString = dateFormatter.string(from: date)
+            
+            // user's name
+            cell.nameLabel.text = name
+            
+            // caption
+            cell.captionLabel.text = caption
+            
+            // post image
+            cell.postImage.image = nil
+            if let postURL = URL(string: downloadURL) {
+                let postRequest = URLRequest(url: postURL)
+                cell.postImage.setImageWith(postRequest, placeholderImage: nil, success:
+                    { (imageRequest, imageResponse, image) in
+                        cell.postImage.contentMode = UIViewContentMode.scaleToFill
+                        cell.postImage.image = image
+                }, failure: { (imageRequest, imageResponse, error) -> Void in
+                    // failure downloading image
+                    print("Error downloading Firebase post image")
+                    print(error)
+                })
+            }
+            
+            // profile image
+            cell.smallProfileImg.image = nil
+            if let url = URL(string: profPic) {
+                let profileRequest = URLRequest(url: url)
+                cell.smallProfileImg.setImageWith(profileRequest, placeholderImage: nil, success:
+                    { (imageRequest, imageResponse, image) in
+                        cell.smallProfileImg.image = image.potter_circle
+                }, failure: { (imageRequest, imageResponse, error) -> Void in
+                    // failure downloading image
+                    print("Error downloading Firebase profile image for feed/")
+                    print(error)
+                })
+            }
+            
+            // set date of post
+            cell.dateLabel.text = dateString
+            
+            return cell
         }
-        
-        // profile image
-        cell.smallProfileImg.image = nil
-        if let url = URL(string: profPic) {
-            let profileRequest = URLRequest(url: url)
-            cell.smallProfileImg.setImageWith(profileRequest, placeholderImage: nil, success:
-                { (imageRequest, imageResponse, image) in
-                    cell.smallProfileImg.image = image.potter_circle
-            }, failure: { (imageRequest, imageResponse, error) -> Void in
-                // failure downloading image
-                print("Error downloading Firebase profile image for feed/")
-                print(error)
-            })
-        }
-        
-        // set date of post
-        cell.dateLabel.text = dateString
-        
-        return cell
+        return UITableViewCell()
     }
     
     // MARK: Queries
@@ -139,7 +142,7 @@ class PostFeedViewController: UIViewController, UITableViewDataSource, UITableVi
                         self.feeds.append(post)
                         
                         // sort posts by date
-                        self.feeds.sort{$0.date.compare($1.date) == .orderedDescending}
+                        self.feeds.sort {$0.date.compare($1.date) == .orderedDescending}
                         self.feedTableView.reloadData()
                     })
                 }

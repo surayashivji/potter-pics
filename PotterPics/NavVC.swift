@@ -1,14 +1,14 @@
 //
 //  NavVC.swift
 //  PotterPics
-// 
+//
 //  Created by Suraya Shivji on 11/27/16.
 //  Copyright © 2016 Suraya Shivji. All rights reserved.
 //
 
 import UIKit
 
-class NavVC: UINavigationController  {
+class NavVC: UINavigationController {
 
     // MARK: Properties
     let statusView: UIView = {

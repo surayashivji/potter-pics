@@ -33,9 +33,9 @@ class HomeViewController: UIViewController {
             self.performSegue(withIdentifier: "mainNavSegue", sender: nil)
         } else {
             loginManager.logIn(withReadPermissions: self.facebookPermissions, from: self, handler: { (result, error) in
-                if (error != nil) {
+                if error != nil {
                     loginManager.logOut()
-                    let message: String = "An error has occured. \(error)"
+                    let message: String = "An error has occured. \(String(describing: error))"
                     let alertView = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
                     alertView.addAction(UIAlertAction(title: "Ok ", style: UIAlertActionStyle.default, handler: nil))
                     self.present(alertView, animated: true, completion: nil)
@@ -62,15 +62,26 @@ class HomeViewController: UIViewController {
                             
                             let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
                             graphRequest.start(completionHandler: { (connection, result, error) -> Void in
-                                if ((error) != nil) {
+                                if error != nil {
                                     // Process error
-                                    print("Error: \(error)")
+                                    print("Error: \(String(describing: error))")
                                 } else {
-                                    let data: [String:AnyObject] = result as! [String:AnyObject]
-                                    
-                                    let userName:String = data["name"] as! String
-                                    let userEmail:String = data["email"] as! String
-                                    let userID:String = data["id"] as! String
+                                    guard let data: [String:AnyObject] = result as? [String:AnyObject] else {
+                                        print("Can't pull data from JSON")
+                                        return
+                                    }
+                                    guard let userName: String = data["name"] as? String else {
+                                        print("Can't pull username from JSON")
+                                        return
+                                    }
+                                    guard let userEmail: String = data["email"] as? String else {
+                                        print("Can't pull email from JSON")
+                                        return
+                                    }
+                                    guard let userID: String = data["id"] as? String else {
+                                        print("Can't pull ID from JSON")
+                                        return
+                                    }
                                     let imgURLString = "http://graph.facebook.com/\(userID)/picture?type=large" as String
         
                                     let defaults = UserDefaults.standard

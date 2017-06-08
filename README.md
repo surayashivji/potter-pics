@@ -1,6 +1,6 @@
 # Potter Pics
 
-[![Language: Swift 3.0](https://img.shields.io/badge/swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift) [![License: MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)
+[![Language: Swift 4.0](https://img.shields.io/badge/swift-4.0-orange.svg?style=flat)](https://developer.apple.com/swift) [![License: MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/59242a4e7d224e178caf013098ffe5ce)](https://www.codacy.com)
 
 **PotterPics** is a Harry Potter themed social network similar to Instagram.
 

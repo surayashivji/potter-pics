@@ -14,4 +14,5 @@ class HomeButton: UIButton {
         layer.borderWidth = 1.0
         layer.backgroundColor = UIColor.black.withAlphaComponent(0.55).cgColor
     }
+    
 }

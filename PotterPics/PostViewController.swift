@@ -11,7 +11,6 @@ import Firebase
 import MBProgressHUD
 
 class PostViewController: UIViewController, ModalViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-   
     let imagePicker = UIImagePickerController()
     @IBOutlet weak var imagetoUpload: UIImageView!
     @IBOutlet weak var captionTextField: UITextField!
@@ -21,7 +20,7 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
         super.viewDidLoad()
         imagePicker.delegate = self
         self.hideKeyboardWhenTappedAround()
-        self.captionTextField.attributedPlaceholder = NSAttributedString(string: "Enter Caption",   attributes:[NSForegroundColorAttributeName: UIColor.white])
+        self.captionTextField.attributedPlaceholder = NSAttributedString(string: "Enter Caption",   attributes:[NSAttributedStringKey.foregroundColor: UIColor.white])
     }
     
     func sendValue(value: UIImage) {
@@ -124,6 +123,7 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
         #endif
     }
     
+    @objc
     // MARK: - UIImagePickerControllerDelegate Methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -132,4 +132,5 @@ class PostViewController: UIViewController, ModalViewControllerDelegate, UIImage
         }
         dismiss(animated: true, completion: nil)
     }
+    
 }

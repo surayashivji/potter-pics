@@ -1,6 +1,6 @@
 //
 //  BackgroundVideo.swift
-//  
+//
 // Adapted From https://github.com/Guzlan/BackgroundVideoiOS
 
 import Foundation
@@ -12,12 +12,12 @@ enum BackgroundVideoErrors: Error {
 }
 
 class BackgroundVideo {
-    // creating an instance of an AVPlayer for background video 
+    // creating an instance of an AVPlayer for background video
     var backGroundPlayer : AVPlayer?
     var videoURL: URL?
     var viewController: UIViewController?
     var hasBeenUsed: Bool = false
-    
+
     init (on viewController: UIViewController, withVideoURL URL: String) {
         self.viewController = viewController
         
@@ -48,13 +48,13 @@ class BackgroundVideo {
     /*
      setUpBackground called in viewDidLoad to load a local video to play as the background
      */
-    func setUpBackground(){
+    func setUpBackground() {
         self.backGroundPlayer?.actionAtItemEnd = .none
         
         // add the video to your view
-        let loginView: UIView = self.viewController!.view //get our view controllers view
+        let loginView: UIView = self.viewController!.view // get our view controllers view
         let playerLayer = AVPlayerLayer(player: self.backGroundPlayer)
-        playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill // preserve aspect ratio and resize to fill screen
+        playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill // preserve aspect ratio and resize to fill screen
         playerLayer.zPosition = -1 // set it's position behined anything in our view
         playerLayer.frame = loginView.frame // set our player frame to our view's frame
         loginView.layer.addSublayer(playerLayer)
@@ -70,10 +70,11 @@ class BackgroundVideo {
         self.backGroundPlayer?.play()
     }
     
-    // incase you want to pause or play the video at any moment
+    // play/pause video
     func pause() {
         self.backGroundPlayer?.pause()
     }
+
     func play() {
         self.backGroundPlayer?.play()
         

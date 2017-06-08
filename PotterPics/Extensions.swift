@@ -10,6 +10,7 @@ import UIKit
 
 // rgb to uicolor
 extension UIColor {
+    
     class func potter_rbg(r: CGFloat, g: CGFloat, b: CGFloat) -> UIColor {
         let color = UIColor.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
         return color
@@ -18,6 +19,7 @@ extension UIColor {
 
 // crop uiimage into a circle
 extension UIImage {
+    
     var potter_circle: UIImage? {
         let square = CGSize(width: min(size.width, size.height), height: min(size.width, size.height))
         let imageView = UIImageView(frame: CGRect(origin: .zero, size: square))
@@ -36,12 +38,13 @@ extension UIImage {
 
 // hide keyboards in view controllers
 extension UIViewController {
+    
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
 }

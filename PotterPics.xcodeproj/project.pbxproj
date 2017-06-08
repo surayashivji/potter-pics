@@ -183,12 +183,12 @@
 			children = (
 				633919E41DDF9AF600ABFF34 /* PotterPics.entitlements */,
 				63F4EB3B1DE689E5001832F4 /* GoogleService-Info.plist */,
-				633919CF1DDD2F0200ABFF34 /* Assets */,
+				633919A11DDD2B5400ABFF34 /* AppDelegate.swift */,
 				639AB93C1DED35AD003BEB0E /* Helpers */,
 				633919D61DDD330500ABFF34 /* Models */,
 				633919D51DDD330000ABFF34 /* Views */,
 				633919D41DDD32FB00ABFF34 /* ViewControllers */,
-				633919A11DDD2B5400ABFF34 /* AppDelegate.swift */,
+				633919CF1DDD2F0200ABFF34 /* Assets */,
 				633919A51DDD2B5400ABFF34 /* Main.storyboard */,
 				633919A81DDD2B5400ABFF34 /* Assets.xcassets */,
 				633919AA1DDD2B5400ABFF34 /* LaunchScreen.storyboard */,
@@ -369,6 +369,7 @@
 					6339199D1DDD2B5400ABFF34 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 97Q63CPWP2;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -379,12 +380,14 @@
 					633919B11DDD2B5400ABFF34 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 97Q63CPWP2;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 6339199D1DDD2B5400ABFF34;
 					};
 					633919BC1DDD2B5400ABFF34 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 97Q63CPWP2;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 6339199D1DDD2B5400ABFF34;
 					};
@@ -761,13 +764,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PotterPics/PotterPics.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 97Q63CPWP2;
 				INFOPLIST_FILE = PotterPics/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.surayashivji.PotterPics;
+				PRODUCT_BUNDLE_IDENTIFIER = com.surayashivji.PotterPicsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -778,13 +784,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PotterPics/PotterPics.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 97Q63CPWP2;
 				INFOPLIST_FILE = PotterPics/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.surayashivji.PotterPics;
+				PRODUCT_BUNDLE_IDENTIFIER = com.surayashivji.PotterPicsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -800,7 +809,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surayashivji.PotterPicsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PotterPics.app/PotterPics";
 			};
 			name = Debug;
@@ -816,7 +826,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surayashivji.PotterPicsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PotterPics.app/PotterPics";
 			};
 			name = Release;
@@ -831,7 +842,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surayashivji.PotterPicsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = PotterPics;
 			};
 			name = Debug;
@@ -846,7 +858,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surayashivji.PotterPicsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = PotterPics;
 			};
 			name = Release;

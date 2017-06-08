@@ -1,4 +1,3 @@
-
 //
 //  AppDelegate.swift
 //  PotterPics
@@ -47,7 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     break
             }
             defaults.potter_setColor(color: navCol, forKey: "navCol")
-            initialViewController = storyboard.instantiateViewController(withIdentifier: "homeView") as! HomeViewController
+            guard let initialViewController = storyboard.instantiateViewController(withIdentifier: "homeView") as? HomeViewController else {
+                print("Could not cast VC to HomeViewController")
+                return false
+            }
 
         } else {
             // app has not been launched before, segue to house quiz to set defaults
@@ -84,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }  
-    
+
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let handled  = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String!, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
         return handled

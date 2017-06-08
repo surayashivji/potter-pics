@@ -60,11 +60,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.tableView.insertSubview(refreshControl, at: 0)
     }
     
-    func refreshControlAction(refreshControl: UIRefreshControl) {
+    @objc func refreshControlAction(refreshControl: UIRefreshControl) {
         getUserPosts(currentID: self.user?.userID, refreshing: true, refreshControl: refreshControl)
     }
     
-    func loadData(notification: Notification) {
+    @objc func loadData(notification: Notification) {
         // extract user id from notification info
         self.posts.removeAll()
         self.tableView.reloadData()

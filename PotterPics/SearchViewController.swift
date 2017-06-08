@@ -11,7 +11,7 @@ import Firebase
 import SwiftyJSON
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-    
+
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var filteredUsers: [User]!
@@ -115,6 +115,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let profileName = Notification.Name("loadProfileData")
         NotificationCenter.default.post(name: profileName, object: nil, userInfo: userID)
     }
+    
     // MARK: - Search Bar Methods
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // search bar text changed
